@@ -12,8 +12,15 @@
 try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}
 </script>
 <script src="assets/js/theme.js" defer></script>
+<script>
+/* Re-applies the last known colours synchronously, before paint, so an edit does
+   not flash on repeat visits. Falls through harmlessly on a first visit. */
+try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElement('style');s.id='cms-theme';s.textContent=c;document.head.appendChild(s);}}catch(e){}
+</script>
+<script src="assets/js/cms-map.js" defer></script>
+<script src="assets/js/cms.js" defer></script>
 </head>
-<body class="v-eof">
+<body class="v-eof" data-page="eye-of-faith">
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="site-header">
@@ -48,7 +55,7 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
         <p class="lede" style="max-width:28ch; margin-top:1.25rem;">Understanding life through an eye of faith.</p>
         <ul class="meta" style="margin-top:1.5rem;">
           <li>Producer &amp; Host</li>
-          <li><span class="todo">[[TODO: launch date]]</span></li>
+          <li><span class="todo" id="todo-eof-launch">[[TODO: launch date]]</span></li>
         </ul>
       </div>
       <figure style="grid-column: 9 / 13; margin:0;">
@@ -95,7 +102,7 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
       <div style="grid-column: 7 / 13;">
         <p>The same role had him leading a team of volunteer social media content creators from across the United States, mentoring Latin American students in higher education and English literacy, joining humanitarian efforts, and doing community service.</p>
         <p>Two years of running a show with volunteers, on a volunteer schedule, is a specific kind of training. It teaches you that the interview is the easy part.</p>
-        <p><span class="todo">[[TODO: is Eye of Faith that volunteer podcast, or a separate show?]]</span></p>
+        <p><span class="todo" id="todo-eof-same">[[TODO: is Eye of Faith that volunteer podcast, or a separate show?]]</span></p>
       </div>
     </div>
   </section>
@@ -216,7 +223,7 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
     <div class="grid">
       <div style="grid-column: 1 / 7;">
         <figure style="margin:0;">
-          <img src="assets/img/eof-banner.png" width="1600" height="900"
+          <img id="eof-banner" src="assets/img/eof-banner.png" width="1600" height="900"
                loading="lazy" decoding="async"
                style="border:1px solid var(--border); border-radius:var(--radius);"
                alt="Eye of Faith banner: the logo beside the words Eye of Faith and the line Understanding life through an eye of faith.">
@@ -225,7 +232,7 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
       </div>
       <div style="grid-column: 7 / 13;">
         <p>Streaming links are not published here yet.</p>
-        <p><span class="todo">[[TODO: streaming links &mdash; Spotify, Apple Podcasts, YouTube, RSS]]</span></p>
+        <p><span class="todo" id="todo-eof-stream">[[TODO: streaming links &mdash; Spotify, Apple Podcasts, YouTube, RSS]]</span></p>
         <p>Until they are, Instagram is the place to find Sai, and the contact page is open for guest inquiries and interview requests.</p>
         <ul class="linkrow" style="margin-top:1.5rem;">
           <li><a href="https://www.instagram.com/saibrazier/" rel="me noopener">Instagram &#8599;</a></li>

@@ -12,8 +12,15 @@
 try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}
 </script>
 <script src="assets/js/theme.js" defer></script>
+<script>
+/* Re-applies the last known colours synchronously, before paint, so an edit does
+   not flash on repeat visits. Falls through harmlessly on a first visit. */
+try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElement('style');s.id='cms-theme';s.textContent=c;document.head.appendChild(s);}}catch(e){}
+</script>
+<script src="assets/js/cms-map.js" defer></script>
+<script src="assets/js/cms.js" defer></script>
 </head>
-<body class="v-belingo">
+<body class="v-belingo" data-page="belingo">
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="site-header">
@@ -124,7 +131,7 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
         <p>On the commercial side, Sai handles B2B marketing and management accounting. B2B marketing means the pitch is aimed at institutions rather than individual students. Management accounting means the internal numbers, the ones used to decide what the venture does next.</p>
         <p class="meta" style="margin-top:1.5rem;">Open questions</p>
         <p style="margin-top:.75rem;">
-          <span class="todo">[[TODO: current academic partner institutions]]</span>
+          <span class="todo" id="todo-belingo-partners">[[TODO: current academic partner institutions]]</span>
           <span class="todo">[[TODO: U.S. partners and their contribution]]</span>
           <span class="todo">[[TODO: student regions]]</span>
           <span class="todo">[[TODO: funding model]]</span>

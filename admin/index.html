@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Edit your site | Sai Brazier</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="admin.css">
+<script>
+/* GitHub Pages cannot send a frame-ancestors header, and frame-ancestors is
+   ignored inside a <meta> CSP — so this is the only available clickjacking
+   defence. If this page is ever framed, break out of the frame immediately. */
+if (window.top !== window.self) { window.top.location = window.self.location; }
+try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}
+</script>
+<script src="../assets/js/cms-map.js" defer></script>
+</head>
+<body data-page="admin">
+
+<header class="site-header">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../index.html">Sai Brazier</a>
+    <div class="nav-right">
+      <span class="meta" id="who"></span>
+      <button id="signout" class="theme-toggle" type="button" hidden>Sign out</button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+
+  <!-- ---------- signed out ---------- -->
+  <section id="view-login" class="admin-login">
+    <h1>Edit your site</h1>
+    <p class="lede" style="max-width:34ch;">Sign in to change your words, your colours, and your pages.</p>
+
+    <form id="login-form" novalidate>
+      <label class="fld">
+        <span class="fld-label">Email</span>
+        <input type="email" id="email" autocomplete="username" required>
+      </label>
+      <label class="fld">
+        <span class="fld-label">Password</span>
+        <input type="password" id="password" autocomplete="current-password" required>
+      </label>
+      <p class="err" id="login-err" role="alert" hidden></p>
+      <div class="row">
+        <button class="btn btn-primary" type="submit" id="login-btn">Sign in</button>
+        <button class="btn btn-quiet" type="button" id="reset-btn">Forgot password</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- ---------- signed in ---------- -->
+  <section id="view-app" hidden>
+    <nav class="tabs" aria-label="Sections">
+      <button class="tab" data-tab="pages"  aria-current="page">Words</button>
+      <button class="tab" data-tab="colors">Colours</button>
+      <button class="tab" data-tab="todos">To&nbsp;do</button>
+      <button class="tab" data-tab="newpage">Pages</button>
+    </nav>
+
+    <!-- words -->
+    <div class="panel" data-panel="pages">
+      <label class="fld fld-inline">
+        <span class="fld-label">Page</span>
+        <select id="page-select"></select>
+      </label>
+      <div id="fields"></div>
+      <div id="images"></div>
+    </div>
+
+    <!-- colours -->
+    <div class="panel" data-panel="colors" hidden>
+      <p class="hint">Changes preview live on this page. Nothing is public until you press Publish.</p>
+      <div id="swatches"></div>
+      <div class="contrast" id="contrast" role="status"></div>
+      <button class="btn btn-quiet" type="button" id="reset-colors">Reset to the original palette</button>
+    </div>
+
+    <!-- todos -->
+    <div class="panel" data-panel="todos" hidden>
+      <p class="hint">These show on your site as dashed placeholders. Fill one in and the placeholder disappears.</p>
+      <div id="todos"></div>
+    </div>
+
+    <!-- pages -->
+    <div class="panel" data-panel="newpage" hidden>
+      <p class="hint">Pages you add appear in the top menu of every page.</p>
+      <div id="custom-list"></div>
+      <h2 class="eyebrow" style="margin-top:2rem;">Add a page</h2>
+      <label class="fld"><span class="fld-label">Title</span><input type="text" id="np-title" placeholder="Speaking"></label>
+      <label class="fld"><span class="fld-label">Web address</span><input type="text" id="np-slug" placeholder="speaking"></label>
+      <label class="fld"><span class="fld-label">Opening line</span><textarea id="np-lede" rows="2"></textarea></label>
+      <label class="fld"><span class="fld-label">Body</span><textarea id="np-body" rows="8" placeholder="Leave a blank line between paragraphs."></textarea></label>
+      <button class="btn btn-primary" type="button" id="np-add">Add this page</button>
+    </div>
+  </section>
+</main>
+
+<!-- save bar -->
+<div class="savebar" id="savebar" hidden>
+  <span class="meta" id="save-status">Unpublished changes</span>
+  <div class="row">
+    <button class="btn btn-quiet" type="button" id="discard">Discard</button>
+    <button class="btn btn-primary" type="button" id="publish">Publish</button>
+  </div>
+</div>
+
+<script type="module" src="admin.js"></script>
+</body>
+</html>

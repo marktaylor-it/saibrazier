@@ -1,0 +1,110 @@
+rules_version = '2';
+
+// Security rules for saibrazier.com's CMS.
+//
+// THESE RULES ARE THE ENTIRE SECURITY BOUNDARY. The site lives in a public repo,
+// so the Firebase apiKey, projectId and appId are world-readable by design (they
+// are identifiers, not secrets). Assume an attacker has the full source and the
+// config, and everything except Sai's password. Nothing else stands between a
+// stranger and defacing the site.
+//
+// Hardened against findings from an adversarial review. Notably:
+//  - No Cloud Storage surface at all. Storage requires the Blaze plan, and an
+//    unconfigured bucket defaults to `allow read, write: if request.auth != null`,
+//    which is equivalent to `if true` once anyone can self-register. Images live
+//    in Firestore instead, so that surface does not exist.
+//  - Images are stored as (mime + base64) rather than a URL, so the database
+//    cannot be pointed at an attacker-controlled, silently-mutable image host.
+//  - mime is allowlisted to raster formats. image/svg+xml is NEVER permitted:
+//    an SVG rendered from a data: URL can execute script.
+//  - No regex is run across the large base64 payload; only the short mime field
+//    is pattern-matched, and length is capped. Rule evaluation stays cheap.
+//
+// SIGNUP ORDERING IS SECURITY-CRITICAL. Email/password auth allows anyone to
+// self-register using the public apiKey. A self-registered stranger gets an
+// account but matches no branch below, so they can write nothing. The one way
+// that fails is if a stranger registers an allowlisted address BEFORE Sai does.
+// Create Sai's account first, then deploy these rules.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email != null
+        && request.auth.token.email.lower() in [
+             'sai@saibrazier.com',
+             'mataylor.it@icloud.com'
+           ];
+    }
+
+    function isHex(v) {
+      return v is string && v.matches('^#[0-9A-Fa-f]{6}$');
+    }
+
+    // ---- the one public document -------------------------------------------
+    // Text, theme and nav for the whole site. World-readable so a visitor's page
+    // view costs exactly ONE document read. Written only by an admin.
+    match /public/content {
+      allow read: if true;
+
+      allow write: if isAdmin()
+        // Exact key set — nothing unexpected can be smuggled in.
+        && request.resource.data.keys().hasOnly(
+             ['theme', 'nav', 'pages', 'custom', 'rev', 'updatedAt', 'updatedBy'])
+        && request.resource.data.keys().hasAll(['theme', 'nav', 'pages', 'rev'])
+        && request.resource.data.rev is int
+        && request.resource.data.rev > 0
+        // Monotonic revision: two admin tabs cannot silently clobber each other.
+        && (!exists(/databases/$(database)/documents/public/content)
+            || request.resource.data.rev >
+               get(/databases/$(database)/documents/public/content).data.rev)
+        // Bound the shape. map size() counts entries, not bytes.
+        && request.resource.data.theme is map
+        && request.resource.data.nav is list
+        && request.resource.data.nav.size() <= 20
+        && request.resource.data.pages is map
+        && request.resource.data.pages.size() <= 60
+        // Colour tokens must be real hex. One malformed value can otherwise
+        // drop the whole site's contrast, and the hydrator has nothing to
+        // compare a bad palette against.
+        && isHex(request.resource.data.theme.get('accentLight', '#000000'))
+        && isHex(request.resource.data.theme.get('accentDark', '#000000'))
+        && isHex(request.resource.data.theme.get('eof', '#000000'))
+        && isHex(request.resource.data.theme.get('belingo', '#000000'))
+        && isHex(request.resource.data.theme.get('r2l', '#000000'));
+
+      allow delete: if false;   // the site would go blank; there is no reason to
+    }
+
+    // ---- images -------------------------------------------------------------
+    // One document per image, fetched only by pages that actually use it, so a
+    // text-only page view still costs a single read.
+    match /media/{id} {
+      allow read: if true;
+
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly(['mime', 'b64', 'alt', 'w', 'h', 'updatedAt'])
+        && request.resource.data.keys().hasAll(['mime', 'b64'])
+        // Raster only. NEVER image/svg+xml — SVG from a data: URL runs script.
+        && request.resource.data.mime in ['image/jpeg', 'image/png', 'image/webp']
+        && request.resource.data.b64 is string
+        // ~525 KB of binary once decoded, comfortably inside the 1 MiB doc cap.
+        && request.resource.data.b64.size() < 700000
+        && request.resource.data.b64.size() > 0
+        && request.resource.data.alt is string
+        && request.resource.data.alt.size() < 500
+        && request.resource.data.w is int && request.resource.data.w > 0 && request.resource.data.w <= 4000
+        && request.resource.data.h is int && request.resource.data.h > 0 && request.resource.data.h <= 4000;
+
+      allow delete: if isAdmin();
+    }
+
+    // ---- everything else ----------------------------------------------------
+    // Default deny. Any collection not named above is unreachable, so a future
+    // feature cannot accidentally inherit permissive access.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

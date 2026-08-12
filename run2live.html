@@ -12,8 +12,15 @@
 try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}
 </script>
 <script src="assets/js/theme.js" defer></script>
+<script>
+/* Re-applies the last known colours synchronously, before paint, so an edit does
+   not flash on repeat visits. Falls through harmlessly on a first visit. */
+try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElement('style');s.id='cms-theme';s.textContent=c;document.head.appendChild(s);}}catch(e){}
+</script>
+<script src="assets/js/cms-map.js" defer></script>
+<script src="assets/js/cms.js" defer></script>
 </head>
-<body class="v-r2l">
+<body class="v-r2l" data-page="run2live">
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="site-header">
@@ -48,7 +55,7 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
         <p class="lede" style="max-width:30ch;">Coaching that starts from the gait up.</p>
         <ul class="meta" style="margin-top:1.5rem;">
           <li>Sai Brazier</li>
-          <li><span class="todo">[[TODO: founding date]]</span></li>
+          <li><span class="todo" id="todo-r2l-founded">[[TODO: founding date]]</span></li>
         </ul>
       </div>
       <figure style="grid-column: 9 / 13; margin:0;">
@@ -70,7 +77,7 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
       <div style="grid-column: 7 / 13;">
         <p>run2live is Sai Brazier&rsquo;s endurance exercise coaching work. It sits alongside BeLingo in EdTech and Eye of Faith in media publication as the third of the three businesses he builds.</p>
         <p>Sai is an athlete himself. He counts it among the handful of words he uses to describe his own life, next to student, entrepreneur, podcaster, writer, and man of faith. It is the same conviction, applied to the body.</p>
-        <p><span class="todo">[[TODO: run2live&rsquo;s own one-line mission, in Sai&rsquo;s words]]</span></p>
+        <p><span class="todo" id="todo-r2l-mission">[[TODO: run2live&rsquo;s own one-line mission, in Sai&rsquo;s words]]</span></p>
       </div>
     </div>
   </section>
@@ -129,7 +136,7 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
       <span class="todo">[[TODO: who run2live is for]]</span>
       <span class="todo">[[TODO: remote or local to Rexburg]]</span>
       <span class="todo">[[TODO: pricing]]</span>
-      <span class="todo">[[TODO: currently accepting athletes?]]</span>
+      <span class="todo" id="todo-r2l-taking">[[TODO: currently accepting athletes?]]</span>
     </p>
   </section>
 

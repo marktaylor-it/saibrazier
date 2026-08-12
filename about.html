@@ -12,8 +12,15 @@
 try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}
 </script>
 <script src="assets/js/theme.js" defer></script>
+<script>
+/* Re-applies the last known colours synchronously, before paint, so an edit does
+   not flash on repeat visits. Falls through harmlessly on a first visit. */
+try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElement('style');s.id='cms-theme';s.textContent=c;document.head.appendChild(s);}}catch(e){}
+</script>
+<script src="assets/js/cms-map.js" defer></script>
+<script src="assets/js/cms.js" defer></script>
 </head>
-<body>
+<body data-page="about">
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="site-header">
@@ -120,7 +127,7 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
           <li>Assisting in other teaching and communication efforts</li>
           <li>Community service</li>
         </ul>
-        <p style="margin-top:1rem;"><span class="todo">[[TODO: officer role &mdash; organization and exact title]]</span></p>
+        <p style="margin-top:1rem;"><span class="todo" id="todo-officer">[[TODO: officer role &mdash; organization and exact title]]</span></p>
       </li>
 
       <li>
@@ -140,7 +147,7 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
     <h2 class="eyebrow" id="education">Education</h2>
     <h3 style="font-family:var(--font-display); font-weight:400; font-size:var(--step-2);">Brigham Young University &ndash; Idaho</h3>
     <p class="meta" style="margin-top:.5rem;">Rexburg, Idaho, United States</p>
-    <p style="margin-top:1rem;"><span class="todo">[[TODO: degree program, major, expected graduation]]</span></p>
+    <p style="margin-top:1rem;"><span class="todo" id="todo-edu">[[TODO: degree program, major, expected graduation]]</span></p>
   </section>
 
   <div class="band-quote full-bleed">
