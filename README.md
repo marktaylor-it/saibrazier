@@ -51,6 +51,23 @@ Two things to know before editing theme colors:
 The button is `hidden` in the HTML and revealed by `theme.js`, so a visitor with JS disabled never
 sees a dead control — they simply get their OS preference.
 
+
+### Editing the site without touching code
+
+Sai edits his own words, colours, placeholder answers, pictures and pages at
+**https://saibrazier.com/admin/**, signed in with Firebase Auth.
+
+**Setup is not finished until the three steps in [ADMIN-SETUP.md](ADMIN-SETUP.md) are done** —
+enable Email/Password, create Sai's account *first*, and add `saibrazier.com` to the authorized
+domains. Until then the sign-in screen loads but nobody can get in.
+
+Hosting did not move: this is still GitHub Pages, with Firebase as backend only. Public pages read a
+single Firestore document over REST with plain `fetch` — no SDK ships to visitors. Every word stays
+baked into the HTML, so if Firebase is unreachable the site renders exactly as it does today.
+
+Security lives entirely in `firestore.rules`; the apiKey in the client is a public identifier, not a
+secret. Read the Security section of ADMIN-SETUP.md before changing either.
+
 ### Two rules that will break the site if ignored
 
 1. **Every path must stay relative** (`assets/img/x.jpg`, `about.html`). The site is served from a
