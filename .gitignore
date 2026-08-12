@@ -1,0 +1,5 @@
+.DS_Store
+
+# Low-resolution proxy copies of the brand assets, superseded by the
+# downscaled derivatives in assets/img/. Kept locally for provenance only.
+sai-web-photos/
