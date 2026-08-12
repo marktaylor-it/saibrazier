@@ -34,6 +34,23 @@ assets/img/         Web-ready images (originals are NOT in the repo — see belo
 .nojekyll           Stops GitHub Pages running the files through Jekyll
 ```
 
+### Light and dark
+
+The site ships both. The toggle in the header cycles **Auto → Light → Dark**, and the choice is
+saved to `localStorage`. "Auto" means no `data-theme` attribute at all, so the OS preference decides.
+
+Two things to know before editing theme colors:
+
+- The dark declarations in `site.css` are written **twice** — once inside
+  `@media (prefers-color-scheme: dark)` for visitors following their OS, once under
+  `:root[data-theme="dark"]` for visitors who picked dark. CSS cannot share one block between a
+  media query and an attribute selector. **Change one, change the other.**
+- The snippet in each page's `<head>` must stay **inline and synchronous**. Moving it to an external
+  file makes the page paint the wrong theme for a frame before correcting itself.
+
+The button is `hidden` in the HTML and revealed by `theme.js`, so a visitor with JS disabled never
+sees a dead control — they simply get their OS preference.
+
 ### Two rules that will break the site if ignored
 
 1. **Every path must stay relative** (`assets/img/x.jpg`, `about.html`). The site is served from a

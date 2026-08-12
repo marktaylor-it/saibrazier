@@ -6,6 +6,12 @@
 <title>Contact | Sai Brazier</title>
 <meta name="description" content="Get in touch with Sai Brazier about BeLingo partnerships, Eye of Faith podcast guests, run2live coaching, or anything else.">
 <link rel="stylesheet" href="assets/css/site.css">
+<script>
+/* Applies a saved theme before first paint. Must stay inline and synchronous —
+   an external file would let the page paint the wrong theme for a frame. */
+try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}
+</script>
+<script src="assets/js/theme.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -13,16 +19,22 @@
 <header class="site-header">
   <div class="wrap nav-inner">
     <a class="brand" href="index.html">Sai Brazier</a>
-    <nav aria-label="Primary">
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="belingo.html">BeLingo</a></li>
-        <li><a href="eye-of-faith.html">Eye of Faith</a></li>
-        <li><a href="run2live.html">run2live</a></li>
-        <li><a href="contact.html" aria-current="page">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="nav-right">
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="belingo.html">BeLingo</a></li>
+          <li><a href="eye-of-faith.html">Eye of Faith</a></li>
+          <li><a href="run2live.html">run2live</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="theme-toggle" class="theme-toggle" type="button" hidden
+              aria-label="Colour theme: Auto. Activate to change.">
+        <span class="theme-dot" aria-hidden="true"></span><span class="theme-name">Auto</span>
+      </button>
+    </div>
   </div>
 </header>
 

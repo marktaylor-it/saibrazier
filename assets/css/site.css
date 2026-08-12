@@ -69,8 +69,25 @@
 .v-r2l     { --venture: #A34E0E; --venture-fill: #F89850; --venture-2: #FFD65C;
              --venture-tint: rgba(248, 152, 80, .10); }
 
+/* ---------- dark theme -------------------------------------------------- *
+ * Three states, driven by data-theme on <html>:
+ *   absent          follow the operating system  (the default)
+ *   "light"         forced light, even if the OS says dark
+ *   "dark"          forced dark,  even if the OS says light
+ *
+ * The dark declarations are deliberately written TWICE — once inside the media
+ * query for visitors following their OS, once for visitors who picked dark from
+ * the toggle. CSS cannot share one block between a media query and an attribute
+ * selector, and light-dark() would silently blank the whole palette on older
+ * browsers, which is a worse failure than duplication. KEEP THE TWO IN SYNC.
+ * ------------------------------------------------------------------------ */
+
+:root { color-scheme: light; }
+:root[data-theme="light"] { color-scheme: light; }
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
     --bg: #121110;
     --surface: #1B1917;
     --ink: #EDEAE3;
@@ -84,10 +101,25 @@
   }
   /* Tints are re-tuned for dark: the light-mode 9-12% alpha is a ~2% lift on
      #121110 and vanishes entirely. */
-  .v-eof     { --venture: #9FB6CC; --venture-tint: rgba(159, 182, 204, .16); }
-  .v-belingo { --venture: #7FD3E6; --venture-tint: rgba(127, 211, 230, .16); }
-  .v-r2l     { --venture: #F8A860; --venture-tint: rgba(248, 168, 96, .16); }
+  :root:not([data-theme="light"]) .v-eof     { --venture: #9FB6CC; --venture-tint: rgba(159, 182, 204, .16); }
+  :root:not([data-theme="light"]) .v-belingo { --venture: #7FD3E6; --venture-tint: rgba(127, 211, 230, .16); }
+  :root:not([data-theme="light"]) .v-r2l     { --venture: #F8A860; --venture-tint: rgba(248, 168, 96, .16); }
 }
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #121110;
+  --surface: #1B1917;
+  --ink: #EDEAE3;
+  --ink-muted: #A29C92;
+  --border: #454039;
+  --quiet-bg: #191817;
+  --venture: #D4949B;
+  --venture-tint: rgba(212, 148, 155, .16);
+}
+:root[data-theme="dark"] .v-eof     { --venture: #9FB6CC; --venture-tint: rgba(159, 182, 204, .16); }
+:root[data-theme="dark"] .v-belingo { --venture: #7FD3E6; --venture-tint: rgba(127, 211, 230, .16); }
+:root[data-theme="dark"] .v-r2l     { --venture: #F8A860; --venture-tint: rgba(248, 168, 96, .16); }
 
 /* ---------- base -------------------------------------------------------- */
 
@@ -303,10 +335,57 @@ body.v-home .site-header::before {
   box-shadow: 0 2px 0 var(--venture);   /* --venture (text-safe), never --venture-fill */
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0 clamp(.75rem, 2vw, 1.25rem);
+}
+
+/* Theme toggle. Mono uppercase like everything else in the chrome, so it reads
+   as one more ledger label rather than a widget bolted on. It ships with the
+   [hidden] attribute and theme.js removes it, so a visitor with JS disabled
+   never sees a dead control — they just get their OS preference. */
+.theme-toggle {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--ink-muted);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .5rem .65rem;
+  min-height: 40px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  transition: color 100ms ease, border-color 100ms ease;
+}
+.theme-toggle:hover { color: var(--ink); border-color: var(--ink-muted); }
+.theme-toggle[hidden] { display: none; }
+
+.theme-dot {
+  width: 9px;
+  height: 9px;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid var(--ink-muted);
+  background: var(--ink);
+}
+/* Auto shows a half-filled dot: the site is deferring to the OS, not asserting
+   a colour of its own. */
+.theme-toggle[data-state="auto"] .theme-dot {
+  background: linear-gradient(90deg, var(--ink) 0 50%, transparent 50% 100%);
+}
+.theme-toggle[data-state="light"] .theme-dot { background: transparent; }
+
 @media (max-width: 560px) {
   .nav-inner { gap: 0; }
   .brand { width: 100%; padding-bottom: .35rem; }
-  .nav-links { width: 100%; padding-bottom: .35rem; }
+  .nav-right { width: 100%; padding-bottom: .5rem; }
+  .nav-links { width: 100%; }
 }
 
 /* ---------- masthead ---------------------------------------------------- */
@@ -375,9 +454,11 @@ body.v-home .site-header::before {
 @media (max-width: 899px) {
   .portrait img { aspect-ratio: 3 / 2; object-position: 50% 22%; }
 }
+/* the bright field glares against #121110 */
 @media (prefers-color-scheme: dark) {
-  .portrait img { filter: brightness(.94); }   /* the bright field glares on #121110 */
+  :root:not([data-theme="light"]) .portrait img { filter: brightness(.94); }
 }
+:root[data-theme="dark"] .portrait img { filter: brightness(.94); }
 
 .caption {
   font-family: var(--font-mono);
@@ -448,10 +529,16 @@ body.v-home .site-header::before {
   box-shadow: inset 3px 0 0 var(--venture-fill);
 }
 @media (prefers-color-scheme: dark) {
-  .idx-row:hover, .idx-row:focus-visible {
+  :root:not([data-theme="light"]) .idx-row:hover,
+  :root:not([data-theme="light"]) .idx-row:focus-visible {
     background: var(--venture-tint);
     background: color-mix(in srgb, var(--venture-fill) 16%, transparent);
   }
+}
+:root[data-theme="dark"] .idx-row:hover,
+:root[data-theme="dark"] .idx-row:focus-visible {
+  background: var(--venture-tint);
+  background: color-mix(in srgb, var(--venture-fill) 16%, transparent);
 }
 .idx-row:hover .idx-num, .idx-row:focus-visible .idx-num { color: var(--venture); }
 
@@ -585,9 +672,12 @@ body.v-home .site-header::before {
   padding: 8px 14px 10px;
   margin: 0;
 }
+/* The plate stays light in both themes on purpose — it reads as a photographic
+   print. brightness() dims card and photo together so the seam is preserved. */
 @media (prefers-color-scheme: dark) {
-  .print { filter: brightness(.9); border-color: #C9C2B6; }
+  :root:not([data-theme="light"]) .print { filter: brightness(.9); border-color: #C9C2B6; }
 }
+:root[data-theme="dark"] .print { filter: brightness(.9); border-color: #C9C2B6; }
 
 .cards {
   display: grid;
