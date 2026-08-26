@@ -20,21 +20,29 @@ rules_version = '2';
 //  - No regex is run across the large base64 payload; only the short mime field
 //    is pattern-matched, and length is capped. Rule evaluation stays cheap.
 //
-// SIGNUP ORDERING IS SECURITY-CRITICAL. Email/password auth allows anyone to
-// self-register using the public apiKey. A self-registered stranger gets an
-// account but matches no branch below, so they can write nothing. The one way
-// that fails is if a stranger registers an allowlisted address BEFORE Sai does.
-// Create Sai's account first, then deploy these rules.
+// Email/password auth allows anyone to self-register using the public apiKey.
+// A self-registered stranger gets an account but matches no branch below, so
+// they can write nothing — and because authority is pinned to a UID rather than
+// an email address, registering any particular address gains them nothing.
 
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    // Pinned to Firebase UIDs, not email addresses.
+    //
+    // An email allowlist looked equivalent but was not: Firebase email/password
+    // signUp never verifies that the registrant owns the address, so ANY
+    // allowlisted address without an account behind it was claimable by a
+    // stranger, who would have gained write access the moment they registered.
+    // A UID is assigned by Firebase, is opaque, and cannot be claimed that way.
+    //
+    // To grant someone access: create their account, run
+    //   firebase auth:export /tmp/u.json --project saibrazier
+    // and add their localId to this list, then redeploy the rules.
     function isAdmin() {
       return request.auth != null
-        && request.auth.token.email != null
-        && request.auth.token.email.lower() in [
-             'sai@saibrazier.com',
-             'mataylor.it@icloud.com'
+        && request.auth.uid in [
+             'tIvm5pmAbWVMQ5UmSDr67Q4zHrg1'   // sai@saibrazier.com
            ];
     }
 
