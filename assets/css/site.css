@@ -881,3 +881,215 @@ body.v-r2l main .eyebrow::after {
     scroll-behavior: auto !important;
   }
 }
+
+/* ---------- dropdown navigation ----------------------------------------- *
+ * Six top-level items, three of which open a submenu. Built as real <button>
+ * elements with aria-expanded rather than hover-only CSS, because a hover menu
+ * is unreachable by keyboard and unusable on touch. Hover is layered on top for
+ * pointer devices only, via @media (hover: hover).
+ * ------------------------------------------------------------------------ */
+
+.nav-links > li { position: relative; }
+
+.nav-links .navbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--ink-muted);
+  background: none;
+  border: 0;
+  padding: .875rem 0;
+  min-height: 44px;
+  cursor: pointer;
+  transition: color 100ms ease;
+}
+.nav-links .navbtn:hover { color: var(--ink); }
+.nav-links .navbtn[aria-current="page"] {
+  color: var(--ink);
+  box-shadow: 0 2px 0 var(--venture);
+}
+.nav-links .navbtn::after {
+  content: "";
+  width: 0; height: 0;
+  border-left: 3.5px solid transparent;
+  border-right: 3.5px solid transparent;
+  border-top: 4px solid currentColor;
+  transition: transform 120ms ease;
+}
+.nav-links .navbtn[aria-expanded="true"]::after { transform: rotate(180deg); }
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: -.75rem;
+  min-width: 12rem;
+  list-style: none;
+  margin: 0;
+  padding: .4rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  z-index: 60;
+  display: none;
+}
+.submenu[data-open="true"] { display: block; }
+.submenu a {
+  display: block;
+  padding: .7rem .9rem;
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--ink-muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.submenu a:hover { color: var(--ink); background: var(--venture-tint); }
+.submenu a[aria-current="page"] { color: var(--ink); }
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-links > li:hover .submenu { display: block; }
+}
+
+/* On narrow screens the menu is already a wrapping row; a floating panel would
+   overflow it, so submenus render inline underneath their parent instead. */
+@media (max-width: 700px) {
+  .submenu {
+    position: static;
+    display: block;
+    border: 0;
+    background: none;
+    padding: 0 0 .4rem 1rem;
+    min-width: 0;
+  }
+  .submenu a { padding: .55rem 0; }
+  .nav-links .navbtn::after { display: none; }
+  .nav-links { gap: 0 1rem; }
+  .nav-links > li { width: 100%; }
+}
+
+/* Parent items pair a real link (to the section page) with a small caret button
+   that opens the submenu. Two controls, because one control cannot both
+   navigate and disclose without surprising somebody. */
+.nav-links > li.has-sub { display: flex; align-items: center; gap: .3rem; flex-wrap: wrap; }
+.nav-links .navbtn { padding: .875rem .2rem; }
+.nav-links > li.has-sub:focus-within .submenu { display: block; }
+@media (max-width: 700px) {
+  .nav-links > li.has-sub { display: block; }
+  .nav-links .navbtn { display: none; }
+}
+
+/* ---------- wireframe components ---------------------------------------- */
+
+/* A venture / podcast entry: mark on the left, prose on the right. */
+.entry {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: start;
+  border-top: 1px solid var(--border);
+  padding-block: clamp(2rem, 4vw, 3rem);
+}
+.entry:last-of-type { border-bottom: 1px solid var(--border); }
+.entry-mark { display: grid; place-items: center; padding: 1rem; border: 1px solid var(--border); border-radius: 8px; }
+.entry-mark img { width: 100%; }
+.entry h3 { font-family: var(--font-display); font-weight: 400; font-size: var(--step-2); margin-bottom: .5rem; }
+@media (max-width: 700px) { .entry { grid-template-columns: 1fr; } .entry-mark { max-width: 200px; } }
+
+/* Streaming platform links. Text, not logo images — the marks are trademarks
+   and shipping look-alikes would be worse than naming them plainly. */
+.platforms { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; margin: 1rem 0 0; padding: 0; }
+.platforms a {
+  display: inline-block; padding: .45rem .7rem;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  font-family: var(--font-mono); font-size: .7rem;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-muted); text-decoration: none;
+}
+.platforms a:hover { color: var(--ink); border-color: var(--ink-muted); }
+
+/* Horizontal card rails — books, episodes. Scrolls rather than paginates:
+   the wireframe's arrows imply a carousel, and a native scroll rail is both
+   simpler and more usable on touch than JS pagination. */
+.rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(190px, 1fr);
+  gap: 1.25rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  padding-bottom: .75rem;
+}
+.rail > * { scroll-snap-align: start; min-width: 0; }
+.rail::-webkit-scrollbar { height: 6px; }
+.rail::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+.card-cover {
+  aspect-ratio: 3 / 4;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--quiet-bg);
+  display: grid; place-items: center;
+  font-family: var(--font-mono); font-size: .7rem;
+  text-transform: uppercase; letter-spacing: .1em;
+  color: var(--ink-muted); text-align: center; padding: .5rem;
+}
+.card-cover.square { aspect-ratio: 1 / 1; }
+.card h3 { font-family: var(--font-display); font-weight: 400; font-size: var(--step-1); margin: .75rem 0 .25rem; }
+
+/* Stats band — "Books: #   Articles: #" */
+.stats {
+  display: flex; flex-wrap: wrap; gap: clamp(1.5rem, 6vw, 5rem);
+  justify-content: center;
+  border-block: 1px solid var(--border);
+  padding-block: 1.5rem;
+}
+.stats div { text-align: center; }
+.stats .n { font-family: var(--font-display); font-size: var(--step-3); display: block; line-height: 1.1; }
+.stats .k { font-family: var(--font-mono); font-size: var(--step--1); text-transform: uppercase; letter-spacing: .1em; color: var(--ink-muted); }
+
+/* Article row: text left, cover right. */
+.artrow {
+  display: grid; grid-template-columns: 1fr 240px;
+  gap: clamp(1.25rem, 3vw, 2.5rem); align-items: start;
+  border-top: 1px solid var(--border); padding-block: 1.75rem;
+}
+.artrow:last-of-type { border-bottom: 1px solid var(--border); }
+.artrow .card-cover { aspect-ratio: 4 / 3; }
+@media (max-width: 700px) { .artrow { grid-template-columns: 1fr; } }
+
+/* The inline pull quote with a rule down its left edge, used repeatedly. */
+.quote-inline {
+  font-family: var(--font-display); font-size: var(--step-2); line-height: 1.4;
+  border-left: 3px solid var(--venture); padding-left: 1rem;
+  max-width: 40ch; margin: 0 0 2rem;
+}
+
+/* ---------- forms -------------------------------------------------------- */
+.contact-form { margin-top: 2rem; max-width: 34rem; }
+.fld { display: block; margin-bottom: 1.25rem; }
+.fld-label {
+  display: block; font-family: var(--font-mono); font-size: var(--step--1);
+  text-transform: uppercase; letter-spacing: .1em; color: var(--ink-muted); margin-bottom: .5rem;
+}
+.fld input, .fld textarea {
+  width: 100%; font-family: var(--font-body); font-size: var(--step-0); line-height: 1.5;
+  color: var(--ink); background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--radius); padding: .7rem .8rem;
+}
+.fld textarea { resize: vertical; }
+.btn {
+  font-family: var(--font-mono); font-size: .75rem; text-transform: uppercase; letter-spacing: .1em;
+  padding: .85rem 1.2rem; min-height: 44px; border-radius: var(--radius);
+  border: 1px solid var(--border); background: none; color: var(--ink); cursor: pointer;
+}
+.btn-primary { background: var(--venture); border-color: var(--venture); color: #fff; }
+.err {
+  font-family: var(--font-mono); font-size: var(--step--1); color: #A3341F;
+  border-left: 3px solid #A3341F; padding-left: .75rem; margin-bottom: 1rem;
+}

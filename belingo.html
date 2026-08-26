@@ -19,6 +19,7 @@ try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElemen
 </script>
 <script src="assets/js/cms-map.js" defer></script>
 <script src="assets/js/cms.js" defer></script>
+<script src="assets/js/nav.js" defer></script>
 </head>
 <body class="v-belingo" data-page="belingo">
 <a class="skip" href="#main">Skip to content</a>
@@ -31,10 +32,32 @@ try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElemen
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="belingo.html" aria-current="page">BeLingo</a></li>
-          <li><a href="eye-of-faith.html">Eye of Faith</a></li>
-          <li><a href="run2live.html">run2live</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li class="has-sub">
+            <a href="business-ventures.html">Business ventures</a>
+            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-bv"><span class="sr-only">Open Business ventures menu</span></button>
+            <ul class="submenu" id="sm-bv">
+              <li><a href="belingo.html" aria-current="page">BeLingo</a></li>
+              <li><a href="run2live.html">Run 2 Live</a></li>
+              <li><a href="eye-of-faith.html">Eye of Faith</a></li>
+            </ul>
+          </li>
+          <li class="has-sub">
+            <a href="publications.html">Publications</a>
+            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-pub"><span class="sr-only">Open Publications menu</span></button>
+            <ul class="submenu" id="sm-pub">
+              <li><a href="publications.html#books">Books</a></li>
+              <li><a href="publications.html#articles">Articles</a></li>
+            </ul>
+          </li>
+          <li class="has-sub">
+            <a href="podcasts.html">Podcasts</a>
+            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-pod"><span class="sr-only">Open Podcasts menu</span></button>
+            <ul class="submenu" id="sm-pod">
+              <li><a href="podcasts.html#eye-of-faith">Eye of Faith</a></li>
+              <li><a href="podcasts.html#run2live">Run 2 Live</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <button id="theme-toggle" class="theme-toggle" type="button" hidden

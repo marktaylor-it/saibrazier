@@ -19,6 +19,7 @@ try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElemen
 </script>
 <script src="assets/js/cms-map.js" defer></script>
 <script src="assets/js/cms.js" defer></script>
+<script src="assets/js/nav.js" defer></script>
 </head>
 <body class="v-home" data-page="index">
 <a class="skip" href="#main">Skip to content</a>
@@ -31,10 +32,32 @@ try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElemen
         <ul class="nav-links">
           <li><a href="index.html" aria-current="page">Home</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="belingo.html">BeLingo</a></li>
-          <li><a href="eye-of-faith.html">Eye of Faith</a></li>
-          <li><a href="run2live.html">run2live</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li class="has-sub">
+            <a href="business-ventures.html">Business ventures</a>
+            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-bv"><span class="sr-only">Open Business ventures menu</span></button>
+            <ul class="submenu" id="sm-bv">
+              <li><a href="belingo.html">BeLingo</a></li>
+              <li><a href="run2live.html">Run 2 Live</a></li>
+              <li><a href="eye-of-faith.html">Eye of Faith</a></li>
+            </ul>
+          </li>
+          <li class="has-sub">
+            <a href="publications.html">Publications</a>
+            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-pub"><span class="sr-only">Open Publications menu</span></button>
+            <ul class="submenu" id="sm-pub">
+              <li><a href="publications.html#books">Books</a></li>
+              <li><a href="publications.html#articles">Articles</a></li>
+            </ul>
+          </li>
+          <li class="has-sub">
+            <a href="podcasts.html">Podcasts</a>
+            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-pod"><span class="sr-only">Open Podcasts menu</span></button>
+            <ul class="submenu" id="sm-pod">
+              <li><a href="podcasts.html#eye-of-faith">Eye of Faith</a></li>
+              <li><a href="podcasts.html#run2live">Run 2 Live</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <button id="theme-toggle" class="theme-toggle" type="button" hidden
@@ -53,12 +76,9 @@ try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElemen
         <p class="meta" style="margin-bottom:1.25rem;">Rexburg, Idaho &middot; Brigham Young University &ndash; Idaho</p>
         <h1 style="font-size:var(--step-4); line-height:1.08;">Sai Brazier</h1>
         <p class="facets">Entrepreneur &middot; Podcaster &middot; Writer &middot; Athlete &middot; Man of faith</p>
-        <p class="lede">Building businesses in EdTech, media publication, and endurance exercise coaching.</p>
-        <p class="motto">If it&rsquo;s possible, I&rsquo;ll do it. If not, I&rsquo;ll find a way to make it possible.</p>
-        <ul class="linkrow">
-          <li><a href="https://www.instagram.com/saibrazier/" rel="me noopener">Instagram &#8599;</a></li>
-          <li><a href="https://www.linkedin.com/in/sai-brazier-091ba2398/" rel="me noopener">LinkedIn &#8599;</a></li>
-        </ul>
+        <p>I thrive on unrelenting ambition driven by intense curiosity. Embracing the impossible and pushing the limits is my natural response to any challenge or business endeavor.</p>
+        <p>I enjoy learning from others: their successes, their adversities, and the wisdom they acquired along the way. Life is rich with opportunity to do good, and I am here simply to make the most of it.</p>
+        <p class="motto" style="margin-top:2rem;">If it&rsquo;s possible, I&rsquo;ll do it. If not, I&rsquo;ll find a way to make it possible.</p>
       </div>
       <figure class="portrait" style="grid-column: 9 / 13; margin:0;">
         <div class="portrait-frame">
@@ -68,101 +88,133 @@ try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElemen
                width="1200" height="1019" decoding="async"
                alt="Sai Brazier standing outdoors in a field, arms folded.">
         </div>
-        <figcaption class="caption">Fig. 01 &mdash; Rexburg, Idaho</figcaption>
+        <ul class="linkrow" style="margin-top:1.25rem;">
+          <li><a href="https://www.instagram.com/saibrazier/" rel="me noopener">Instagram &#8599;</a></li>
+          <li><a href="https://www.linkedin.com/in/sai-brazier-091ba2398/" rel="me noopener">LinkedIn &#8599;</a></li>
+        </ul>
       </figure>
     </div>
   </div>
 
-  <section class="wrap" aria-labelledby="ventures">
-    <h2 class="eyebrow" id="ventures">Ventures &mdash; 03</h2>
-    <p class="lede" style="max-width:38ch; margin-bottom:2.5rem;">Chapters in one life, not products for sale.</p>
-    <div class="idx">
+  <section class="wrap" aria-labelledby="entrepreneurship">
+    <h2 class="eyebrow" id="entrepreneurship">Entrepreneurship</h2>
+    <p class="quote-inline">Chapters in one life, not products for sale.</p>
 
-      <a class="idx-row v-belingo" href="belingo.html">
-        <span class="idx-num">01</span>
-        <span>
-          <span class="idx-name">BeLingo</span>
-          <span class="idx-tag">EdTech</span>
-          <span class="idx-desc">English conversation clubs, academic partnerships, and the work of helping students actually become fluent.</span>
-        </span>
-        <span class="idx-when">Oct 2025 &ndash; Present &#8599;</span>
-      </a>
-
-      <a class="idx-row v-eof" href="eye-of-faith.html">
-        <span class="idx-num">02</span>
-        <span>
-          <span class="idx-name">Eye of Faith</span>
-          <span class="idx-tag">Media publication</span>
-          <span class="idx-desc">A podcast about understanding life through an eye of faith, and the writing that surrounds it.</span>
-        </span>
-        <span class="idx-when"><span class="todo">[[TODO: launch date]]</span> &#8599;</span>
-      </a>
-
-      <a class="idx-row v-r2l" href="run2live.html">
-        <span class="idx-num">03</span>
-        <span>
-          <span class="idx-name lowercase">run2live</span>
-          <span class="idx-tag">Endurance exercise coaching</span>
-          <span class="idx-desc">Coaching for runners and endurance athletes, built on watching how a person actually moves.</span>
-        </span>
-        <span class="idx-when"><span class="todo">[[TODO: founding date]]</span> &#8599;</span>
-      </a>
-
-    </div>
-  </section>
-
-  <section class="wrap" aria-labelledby="currently">
-    <h2 class="eyebrow" id="currently">Currently</h2>
-    <div class="grid">
-      <div style="grid-column: 1 / 7;">
-        <p class="meta">Apr 2026 &ndash; Present &middot; Contract &middot; Hybrid</p>
-        <h3 style="font-family:var(--font-display); font-weight:400; font-size:var(--step-2); margin:.4rem 0 .75rem;">ConnectIT Technologies, LLC</h3>
-        <p>Analyzing user-engagement data and running digital marketing for BetterCalendar, the world&rsquo;s leading calendar app for returned Latter-day Saint missionaries. Assisting in optimizing app features by identifying areas of improvement, and in app innovation.</p>
+    <div class="entry v-belingo" id="belingo">
+      <figure class="entry-mark" style="margin:0;background:#FFF;">
+        <img src="assets/img/belingo-wordmark.jpg" width="960" height="400" loading="lazy" decoding="async" alt="BeLingo logo.">
+      </figure>
+      <div>
+        <h3>BeLingo</h3>
+        <p class="meta">EdTech &middot; <span class="todo">[[TODO: BeLingo website link]]</span></p>
+        <p class="entry-desc">English conversation clubs, academic partnerships, and the work of helping students actually become fluent. Sai serves as CFO and Director of International and Public Relations.</p>
+        <p><a href="belingo.html">Inside BeLingo &rarr;</a></p>
       </div>
-      <div style="grid-column: 7 / 13;">
-        <p class="meta">Oct 2025 &ndash; Present &middot; Self-employed</p>
-        <h3 style="font-family:var(--font-display); font-weight:400; font-size:var(--step-2); margin:.4rem 0 .75rem;">BeLingo</h3>
-        <p>CFO and Director of International and Public Relations. Leading academic partnerships, coordinating with U.S. partners, B2B marketing, and management accounting, while innovating English conversation clubs to improve student fluency.</p>
-        <p><a href="belingo.html">Read more &rarr;</a></p>
+    </div>
+
+    <div class="entry v-r2l" id="run2live">
+      <figure class="entry-mark" style="margin:0;background:#000;">
+        <img src="assets/img/run2live-mark.png" width="480" height="480" loading="lazy" decoding="async" alt="run2live logo." style="max-width:150px;">
+      </figure>
+      <div>
+        <h3>Run 2 Live</h3>
+        <p class="meta">Endurance coaching &middot; <span class="todo">[[TODO: Run 2 Live store link]]</span></p>
+        <p class="entry-desc">Coaching for runners and endurance athletes, built on watching how a person actually moves &mdash; the same sequence Sai learned fitting runners at Columbus Running Company.</p>
+        <p><a href="run2live.html">Inside Run 2 Live &rarr;</a></p>
+      </div>
+    </div>
+
+    <div class="entry v-eof" id="eye-of-faith">
+      <figure class="entry-mark" style="margin:0;background:#D5CCA3;">
+        <img src="assets/img/eof-logo.png" width="480" height="480" loading="lazy" decoding="async" alt="Eye of Faith logo." style="max-width:150px;">
+      </figure>
+      <div>
+        <h3 class="eof-caps">Eye of Faith</h3>
+        <p class="meta">Media publication &middot; <span class="todo">[[TODO: Eye of Faith store link]]</span></p>
+        <p class="entry-desc">A podcast about understanding life through an eye of faith, the writing that surrounds it, and the store that carries it.</p>
+        <p><a href="eye-of-faith.html">Inside Eye of Faith &rarr;</a></p>
       </div>
     </div>
   </section>
 
-  <div class="band-quote full-bleed">
+  <div class="band-quote full-bleed" id="quote-1">
     <div class="wrap">
       <blockquote>&ldquo;I thrive on unrelenting ambition driven by intense curiosity.&rdquo;</blockquote>
-      <p class="after">Embracing the impossible and pushing the limits is my natural response to any challenge or business endeavor.</p>
       <p class="attrib">&mdash; Sai Brazier</p>
     </div>
   </div>
 
-  <section class="wrap" aria-labelledby="prior">
-    <h2 class="eyebrow" id="prior">Prior</h2>
-    <ul class="roles">
-      <li>
-        <h3>Service Mission &mdash; The Church of Jesus Christ of Latter-day Saints</h3>
-        <ul class="meta">
-          <li>May 2024 &ndash; Feb 2026</li><li>1 yr 10 mos</li>
+  <section class="wrap" aria-labelledby="podcasts">
+    <h2 class="eyebrow" id="podcasts">Podcasts</h2>
+    <p style="margin-bottom:2rem;">Sai produces, hosts and manages both shows &mdash; sitting down with people who have lived something worth learning from, and asking how faith figured into it.</p>
+
+    <div class="entry v-eof">
+      <figure class="entry-mark" style="margin:0;background:#D5CCA3;">
+        <img src="assets/img/eof-logo.png" width="480" height="480" loading="lazy" decoding="async" alt="Eye of Faith logo." style="max-width:150px;">
+      </figure>
+      <div>
+        <h3 class="eof-caps">Eye of Faith</h3>
+        <p>Understanding life through an eye of faith.</p>
+        <ul class="platforms">
+          <li><a href="podcasts.html#eye-of-faith">Apple</a></li>
+          <li><a href="podcasts.html#eye-of-faith">Spotify</a></li>
+          <li><a href="podcasts.html#eye-of-faith">YouTube</a></li>
         </ul>
-        <p style="margin-top:.9rem;">Higher education and English literacy mentoring for Latin American students, leading a national team of volunteer content creators, and producing and hosting a podcast run by a sub-team of service volunteers.</p>
-        <p class="meta"><a href="about.html" style="color:inherit;">&rarr; Full record on About</a></p>
-      </li>
-      <li>
-        <h3>Columbus Running Company</h3>
-        <ul class="meta">
-          <li>Salesperson</li><li>Mar 2023 &ndash; Jun 2023</li><li>Ohio</li>
+      </div>
+    </div>
+
+    <div class="entry v-r2l">
+      <figure class="entry-mark" style="margin:0;">
+        <div class="card-cover square" style="border:0;background:none;">Podcast logo</div>
+      </figure>
+      <div>
+        <h3>Run 2 Live</h3>
+        <p><span class="todo">[[TODO: what the Run 2 Live podcast is about]]</span></p>
+        <ul class="platforms">
+          <li><a href="podcasts.html#run2live">Apple</a></li>
+          <li><a href="podcasts.html#run2live">Spotify</a></li>
+          <li><a href="podcasts.html#run2live">YouTube</a></li>
         </ul>
-        <p style="margin-top:.9rem;">Fitted customers by observing their walking mechanics and matching shoe options to their anatomical needs.</p>
-        <p class="meta"><a href="run2live.html" style="color:inherit;">&rarr; Related: run2live</a></p>
-      </li>
-    </ul>
+      </div>
+    </div>
+
+    <p style="margin-top:2rem;"><a href="podcasts.html">All episodes &rarr;</a></p>
   </section>
 
-  <div class="band-quiet full-bleed">
+  <div class="band-quote full-bleed" id="quote-2">
     <div class="wrap">
-      <p>Life is rich with opportunity to do good and I am here simply to make the most of it.</p>
+      <blockquote>&ldquo;Life is rich with opportunity to do good and I am here simply to make the most of it.&rdquo;</blockquote>
+      <p class="attrib">&mdash; Sai Brazier</p>
     </div>
   </div>
+
+  <section class="wrap" aria-labelledby="publications">
+    <h2 class="eyebrow" id="publications">Publications</h2>
+    <p style="margin-bottom:2rem;">Books and articles. More is in progress; what is finished appears here first.</p>
+
+    <h3 class="meta" style="margin-bottom:1rem;">Books</h3>
+    <div class="rail">
+      <article class="card"><div class="card-cover">Cover</div><h3><span class="todo">[[TODO: book 1 title]]</span></h3><p class="meta"><span class="todo">[[TODO: store link]]</span></p></article>
+      <article class="card"><div class="card-cover">Cover</div><h3><span class="todo">[[TODO: book 2 title]]</span></h3><p class="meta"><span class="todo">[[TODO: store link]]</span></p></article>
+      <article class="card"><div class="card-cover">Cover</div><h3><span class="todo">[[TODO: book 3 title]]</span></h3><p class="meta"><span class="todo">[[TODO: store link]]</span></p></article>
+    </div>
+
+    <h3 class="meta" style="margin:2.5rem 0 1rem;">Most recent articles</h3>
+    <article class="artrow">
+      <div><h3 style="font-family:var(--font-display);font-weight:400;font-size:var(--step-2);"><span class="todo">[[TODO: article 1 title]]</span></h3><p><span class="todo">[[TODO: article 1 summary]]</span></p><p class="meta"><span class="todo">[[TODO: link]]</span></p></div>
+      <div class="card-cover">Cover photo</div>
+    </article>
+    <article class="artrow">
+      <div><h3 style="font-family:var(--font-display);font-weight:400;font-size:var(--step-2);"><span class="todo">[[TODO: article 2 title]]</span></h3><p><span class="todo">[[TODO: article 2 summary]]</span></p><p class="meta"><span class="todo">[[TODO: link]]</span></p></div>
+      <div class="card-cover">Cover photo</div>
+    </article>
+    <article class="artrow">
+      <div><h3 style="font-family:var(--font-display);font-weight:400;font-size:var(--step-2);"><span class="todo">[[TODO: article 3 title]]</span></h3><p><span class="todo">[[TODO: article 3 summary]]</span></p><p class="meta"><span class="todo">[[TODO: link]]</span></p></div>
+      <div class="card-cover">Cover photo</div>
+    </article>
+
+    <p style="margin-top:2rem;"><a href="publications.html">All publications &rarr;</a></p>
+  </section>
 
 </main>
 

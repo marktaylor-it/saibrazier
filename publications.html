@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publications | Sai Brazier</title>
+<meta name="description" content="Books and articles by Sai Brazier.">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>
+/* Applies a saved theme before first paint. Must stay inline and synchronous —
+   an external file would let the page paint the wrong theme for a frame. */
+try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}
+</script>
+<script src="assets/js/theme.js" defer></script>
+<script>
+/* Re-applies the last known colours synchronously, before paint, so an edit does
+   not flash on repeat visits. Falls through harmlessly on a first visit. */
+try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElement('style');s.id='cms-theme';s.textContent=c;document.head.appendChild(s);}}catch(e){}
+</script>
+<script src="assets/js/cms-map.js" defer></script>
+<script src="assets/js/cms.js" defer></script>
+<script src="assets/js/nav.js" defer></script>
+</head>
+<body data-page="publications">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">Sai Brazier</a>
+    <div class="nav-right">
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="has-sub">
+            <a href="business-ventures.html">Business ventures</a>
+            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-bv"><span class="sr-only">Open Business ventures menu</span></button>
+            <ul class="submenu" id="sm-bv">
+              <li><a href="belingo.html">BeLingo</a></li>
+              <li><a href="run2live.html">Run 2 Live</a></li>
+              <li><a href="eye-of-faith.html">Eye of Faith</a></li>
+            </ul>
+          </li>
+          <li class="has-sub">
+            <a href="publications.html" aria-current="page">Publications</a>
+            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-pub"><span class="sr-only">Open Publications menu</span></button>
+            <ul class="submenu" id="sm-pub">
+              <li><a href="publications.html#books">Books</a></li>
+              <li><a href="publications.html#articles">Articles</a></li>
+            </ul>
+          </li>
+          <li class="has-sub">
+            <a href="podcasts.html">Podcasts</a>
+            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-pod"><span class="sr-only">Open Podcasts menu</span></button>
+            <ul class="submenu" id="sm-pod">
+              <li><a href="podcasts.html#eye-of-faith">Eye of Faith</a></li>
+              <li><a href="podcasts.html#run2live">Run 2 Live</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <button id="theme-toggle" class="theme-toggle" type="button" hidden
+              aria-label="Colour theme: Auto. Activate to change.">
+        <span class="theme-dot" aria-hidden="true"></span><span class="theme-name">Auto</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="wrap masthead">
+    <div class="grid">
+      <div style="grid-column: 1 / 8;">
+        <p class="meta" style="margin-bottom:1.25rem;">Publications</p>
+        <h1 style="font-size:var(--step-4); line-height:1.08;">Books &amp; articles</h1>
+        <p class="lede" style="max-width:34ch;">Writing is one of the five words Sai uses to describe his own life. This is where it collects.</p>
+        <ul class="platforms" style="margin-top:1.5rem;">
+          <li><a href="#books">Bookstore &mdash; <span class="todo">[[TODO: bookstore link]]</span></a></li>
+          <li><a href="#articles">Substack &mdash; <span class="todo">[[TODO: Substack link]]</span></a></li>
+        </ul>
+      </div>
+      <figure style="grid-column: 9 / 13; margin:0;">
+        <div class="card-cover" style="aspect-ratio:4/5;">Photo</div>
+        <figcaption class="caption">Fig. 01 &mdash; <span class="todo">[[TODO: photo]]</span></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="stats">
+      <div><span class="n"><span class="todo">[[TODO: #]]</span></span><span class="k">Books</span></div>
+      <div><span class="n"><span class="todo">[[TODO: #]]</span></span><span class="k">Articles</span></div>
+    </div>
+  </div>
+
+  <section class="wrap" aria-labelledby="books">
+    <h2 class="eyebrow" id="books">Books</h2>
+    <p style="margin-bottom:2rem;"><span class="todo">[[TODO: a line about the books]]</span></p>
+    <div class="rail">
+      <article class="card">
+        <div class="card-cover">Cover</div>
+        <h3><span class="todo">[[TODO: book 1 title]]</span></h3>
+        <p class="meta"><span class="todo">[[TODO: link to online store]]</span></p>
+      </article>
+      <article class="card">
+        <div class="card-cover">Cover</div>
+        <h3><span class="todo">[[TODO: book 2 title]]</span></h3>
+        <p class="meta"><span class="todo">[[TODO: link to online store]]</span></p>
+      </article>
+      <article class="card">
+        <div class="card-cover">Cover</div>
+        <h3><span class="todo">[[TODO: book 3 title]]</span></h3>
+        <p class="meta"><span class="todo">[[TODO: link to online store]]</span></p>
+      </article>
+    </div>
+  </section>
+
+  <div class="band-quote full-bleed">
+    <div class="wrap">
+      <blockquote>&ldquo;I enjoy learning from others: their successes, their adversities, and the wisdom they acquired along the way.&rdquo;</blockquote>
+      <p class="attrib">&mdash; Sai Brazier</p>
+    </div>
+  </div>
+
+  <section class="wrap" aria-labelledby="articles">
+    <h2 class="eyebrow" id="articles">Articles</h2>
+    <p style="margin-bottom:1rem;"><span class="todo">[[TODO: a line about the articles]]</span></p>
+    <h3 class="meta" style="margin:2rem 0 .5rem;">Most recent</h3>
+      <article class="artrow">
+        <div>
+          <h3 style="font-family:var(--font-display);font-weight:400;font-size:var(--step-2);"><span class="todo">[[TODO: article 1 title]]</span></h3>
+          <p><span class="todo">[[TODO: article 1 summary]]</span></p>
+          <p class="meta"><span class="todo">[[TODO: article link]]</span></p>
+        </div>
+        <div class="card-cover">Cover photo</div>
+      </article>
+      <article class="artrow">
+        <div>
+          <h3 style="font-family:var(--font-display);font-weight:400;font-size:var(--step-2);"><span class="todo">[[TODO: article 2 title]]</span></h3>
+          <p><span class="todo">[[TODO: article 2 summary]]</span></p>
+          <p class="meta"><span class="todo">[[TODO: article link]]</span></p>
+        </div>
+        <div class="card-cover">Cover photo</div>
+      </article>
+      <article class="artrow">
+        <div>
+          <h3 style="font-family:var(--font-display);font-weight:400;font-size:var(--step-2);"><span class="todo">[[TODO: article 3 title]]</span></h3>
+          <p><span class="todo">[[TODO: article 3 summary]]</span></p>
+          <p class="meta"><span class="todo">[[TODO: article link]]</span></p>
+        </div>
+        <div class="card-cover">Cover photo</div>
+      </article>
+  </section>
+
+  <div class="band-quiet full-bleed">
+    <div class="wrap">
+      <p>More is in progress. What is finished appears here first.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h2>Sai Brazier</h2>
+        <p class="meta">Rexburg, Idaho</p>
+      </div>
+      <div>
+        <ul>
+          <li><a href="belingo.html"><span class="swatch sw-belingo"></span>BeLingo</a></li>
+          <li><a href="eye-of-faith.html"><span class="swatch sw-eof"></span>Eye of Faith</a></li>
+          <li><a href="run2live.html"><span class="swatch sw-r2l"></span>run2live</a></li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li><a href="mailto:sai@saibrazier.com">sai@saibrazier.com</a></li>
+          <li><a href="https://www.instagram.com/saibrazier/" rel="me noopener">Instagram &#8599;</a></li>
+          <li><a href="https://www.linkedin.com/in/sai-brazier-091ba2398/" rel="me noopener">LinkedIn &#8599;</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="colophon">&copy; 2026 Sai Brazier</p>
+  </div>
+</footer>
+
+</body>
+</html>

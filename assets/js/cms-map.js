@@ -18,18 +18,13 @@ window.CMS_MAP = {
       { key: 'hero.eyebrow',    label: 'Location line',        sel: '.masthead .meta' },
       { key: 'hero.h1',         label: 'Name',                 sel: '.masthead h1' },
       { key: 'hero.facets',     label: 'The five facets',      sel: '.masthead .facets' },
-      { key: 'hero.lede',       label: 'Opening line',         sel: '.masthead .lede', multiline: true },
       { key: 'hero.motto',      label: 'Motto',                sel: '.masthead .motto', multiline: true },
-      { key: 'ventures.intro',  label: 'Ventures intro',       sel: '#ventures ~ .lede' },
-      { key: 'v1.desc',         label: 'BeLingo description',  sel: '.idx-row.v-belingo .idx-desc', multiline: true },
-      { key: 'v1.when',         label: 'BeLingo dates',        sel: '.idx-row.v-belingo .idx-when' },
-      { key: 'v2.desc',         label: 'Eye of Faith description', sel: '.idx-row.v-eof .idx-desc', multiline: true },
-      { key: 'v2.when',         label: 'Eye of Faith dates',   sel: '.idx-row.v-eof .idx-when' },
-      { key: 'v3.desc',         label: 'run2live description', sel: '.idx-row.v-r2l .idx-desc', multiline: true },
-      { key: 'v3.when',         label: 'run2live dates',       sel: '.idx-row.v-r2l .idx-when' },
-      { key: 'quote.band',      label: 'Pull quote',           sel: '.band-quote blockquote', multiline: true },
-      { key: 'quote.after',     label: 'Under the pull quote', sel: '.band-quote .after', multiline: true },
-      { key: 'quiet.band',      label: 'Closing line',         sel: '.band-quiet p:first-of-type', multiline: true }
+      { key: 'ent.quote',       label: 'Entrepreneurship quote', sel: '#entrepreneurship ~ .quote-inline' },
+      { key: 'v1.desc',         label: 'BeLingo description',  sel: '#belingo .entry-desc', multiline: true },
+      { key: 'v2.desc',         label: 'Run 2 Live description', sel: '#run2live .entry-desc', multiline: true },
+      { key: 'v3.desc',         label: 'Eye of Faith description', sel: '#eye-of-faith .entry-desc', multiline: true },
+      { key: 'quote.band',      label: 'First pull quote',     sel: '#quote-1 blockquote', multiline: true },
+      { key: 'quote.band2',     label: 'Second pull quote',    sel: '#quote-2 blockquote', multiline: true }
     ],
     images: [
       { slot: 'portrait.home', label: 'Home portrait', sel: '.portrait img', maxW: 1600 }
@@ -39,11 +34,13 @@ window.CMS_MAP = {
   about: {
     title: 'About',
     fields: [
-      { key: 'hero.h1',      label: 'Heading',        sel: '.masthead h1' },
-      { key: 'hero.facets',  label: 'The facets',     sel: '.masthead .facets' },
-      { key: 'hero.lede',    label: 'Location line',  sel: '.masthead .lede' },
-      { key: 'quote.band',   label: 'Pull quote',     sel: '.band-quote blockquote', multiline: true },
-      { key: 'quiet.band',   label: 'Closing line',   sel: '.band-quiet p:first-of-type', multiline: true }
+      { key: 'hero.h1',      label: 'Heading',       sel: '.masthead h1' },
+      { key: 'hero.facets',  label: 'The facets',    sel: '.masthead .facets' },
+      { key: 'hero.quote',   label: 'Opening quote', sel: '.masthead .quote-inline', multiline: true },
+      { key: 'story.lede',   label: 'Story opening', sel: '#story ~ .grid .lede', multiline: true },
+      { key: 'goals.lede',   label: 'Goals line',    sel: '#goals ~ .lede', multiline: true },
+      { key: 'quote.band',   label: 'Pull quote',    sel: '.band-quote blockquote', multiline: true },
+      { key: 'quiet.band',   label: 'Closing line',  sel: '.band-quiet p:first-of-type', multiline: true }
     ],
     images: [
       { slot: 'portrait.studio', label: 'Suit portrait', sel: '.print img', maxW: 1400 }
@@ -94,6 +91,37 @@ window.CMS_MAP = {
     fields: [
       { key: 'hero.h1',    label: 'Heading',      sel: '.masthead h1' },
       { key: 'hero.lede',  label: 'Opening line', sel: '.masthead .lede' },
+      { key: 'quiet.band', label: 'Closing line', sel: '.band-quiet p:first-of-type', multiline: true }
+    ],
+    images: []
+  },
+
+  'business-ventures': {
+    title: 'Business ventures',
+    fields: [
+      { key: 'hero.h1',   label: 'Heading',       sel: '.masthead h1' },
+      { key: 'hero.quote', label: 'Opening quote', sel: '.masthead .quote-inline', multiline: true },
+      { key: 'quiet.band', label: 'Closing line',  sel: '.band-quiet p:first-of-type', multiline: true }
+    ],
+    images: []
+  },
+
+  publications: {
+    title: 'Publications',
+    fields: [
+      { key: 'hero.h1',   label: 'Heading',       sel: '.masthead h1' },
+      { key: 'hero.lede', label: 'Opening line',  sel: '.masthead .lede', multiline: true },
+      { key: 'quote.band', label: 'Pull quote',   sel: '.band-quote blockquote', multiline: true },
+      { key: 'quiet.band', label: 'Closing line', sel: '.band-quiet p:first-of-type', multiline: true }
+    ],
+    images: []
+  },
+
+  podcasts: {
+    title: 'Podcasts',
+    fields: [
+      { key: 'hero.h1',   label: 'Heading',      sel: '.masthead h1' },
+      { key: 'hero.lede', label: 'Opening line', sel: '.masthead .lede', multiline: true },
       { key: 'quiet.band', label: 'Closing line', sel: '.band-quiet p:first-of-type', multiline: true }
     ],
     images: []

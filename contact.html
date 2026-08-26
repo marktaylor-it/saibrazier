@@ -19,6 +19,7 @@ try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElemen
 </script>
 <script src="assets/js/cms-map.js" defer></script>
 <script src="assets/js/cms.js" defer></script>
+<script src="assets/js/nav.js" defer></script>
 </head>
 <body data-page="contact">
 <a class="skip" href="#main">Skip to content</a>
@@ -31,10 +32,32 @@ try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElemen
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="belingo.html">BeLingo</a></li>
-          <li><a href="eye-of-faith.html">Eye of Faith</a></li>
-          <li><a href="run2live.html">run2live</a></li>
           <li><a href="contact.html" aria-current="page">Contact</a></li>
+          <li class="has-sub">
+            <a href="business-ventures.html">Business ventures</a>
+            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-bv"><span class="sr-only">Open Business ventures menu</span></button>
+            <ul class="submenu" id="sm-bv">
+              <li><a href="belingo.html">BeLingo</a></li>
+              <li><a href="run2live.html">Run 2 Live</a></li>
+              <li><a href="eye-of-faith.html">Eye of Faith</a></li>
+            </ul>
+          </li>
+          <li class="has-sub">
+            <a href="publications.html">Publications</a>
+            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-pub"><span class="sr-only">Open Publications menu</span></button>
+            <ul class="submenu" id="sm-pub">
+              <li><a href="publications.html#books">Books</a></li>
+              <li><a href="publications.html#articles">Articles</a></li>
+            </ul>
+          </li>
+          <li class="has-sub">
+            <a href="podcasts.html">Podcasts</a>
+            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-pod"><span class="sr-only">Open Podcasts menu</span></button>
+            <ul class="submenu" id="sm-pod">
+              <li><a href="podcasts.html#eye-of-faith">Eye of Faith</a></li>
+              <li><a href="podcasts.html#run2live">Run 2 Live</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <button id="theme-toggle" class="theme-toggle" type="button" hidden
@@ -48,65 +71,50 @@ try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElemen
 <main id="main">
 
   <div class="wrap masthead">
-    <div class="grid">
-      <div style="grid-column: 1 / 8;">
-        <p class="meta" style="margin-bottom:1.25rem;">Contact</p>
-        <h1 style="font-size:var(--step-4); line-height:1.08;">Get in touch</h1>
-        <p class="lede" style="max-width:32ch; margin-top:1.25rem;">I would rather hear from you than not.</p>
-      </div>
-    </div>
+    <p class="meta" style="margin-bottom:1.25rem;">Contact</p>
+    <h1 style="font-size:var(--step-4); line-height:1.08;">Get in touch</h1>
+    <p class="lede" style="max-width:34ch; margin-top:1.25rem;">I would rather hear from you than not.</p>
   </div>
 
   <section class="wrap" aria-labelledby="reach">
-    <h2 class="eyebrow" id="reach">Reach out</h2>
+    <h2 class="eyebrow" id="reach">Send a message</h2>
     <div class="grid">
       <div style="grid-column: 1 / 7;">
         <p>If you have an idea, a question, a partnership worth exploring, or a story you think is worth telling, send it over. I enjoy learning from others, and most of the work I am doing now began with a conversation I almost did not start.</p>
         <p>I am a student at Brigham Young University &ndash; Idaho and I am building three ventures at once, so a reply may take me a few days. It will come.</p>
+
+        <form id="contact-form" class="contact-form" novalidate>
+          <label class="fld">
+            <span class="fld-label">Name (first and last)</span>
+            <input type="text" id="cf-name" name="name" autocomplete="name" required>
+          </label>
+          <label class="fld">
+            <span class="fld-label">Email</span>
+            <input type="email" id="cf-email" name="email" autocomplete="email" required>
+          </label>
+          <label class="fld">
+            <span class="fld-label">Phone (optional)</span>
+            <input type="tel" id="cf-phone" name="phone" autocomplete="tel">
+          </label>
+          <label class="fld">
+            <span class="fld-label">Message</span>
+            <textarea id="cf-message" name="message" rows="6" required></textarea>
+          </label>
+          <p class="err" id="cf-err" role="alert" hidden></p>
+          <button class="btn btn-primary" type="submit">Submit</button>
+          <p class="meta" style="margin-top:1rem;">Opens your email app with the message ready to send.</p>
+        </form>
       </div>
-      <div style="grid-column: 7 / 13;">
+
+      <div style="grid-column: 8 / 13;">
         <ul class="contact-list">
-          <li>
-            <span class="k">Email</span>
-            <span class="v"><a href="mailto:sai@saibrazier.com">sai@saibrazier.com</a></span>
-          </li>
-          <li>
-            <span class="k">LinkedIn</span>
-            <span class="v"><a href="https://www.linkedin.com/in/sai-brazier-091ba2398/" rel="me noopener">sai-brazier &#8599;</a></span>
-          </li>
-          <li>
-            <span class="k">Instagram</span>
-            <span class="v"><a href="https://www.instagram.com/saibrazier/" rel="me noopener">@saibrazier &#8599;</a></span>
-          </li>
-          <li>
-            <span class="k">Based in</span>
-            <span class="v">Rexburg, Idaho</span>
-          </li>
+          <li><span class="k">Email</span><span class="v"><a href="mailto:sai@saibrazier.com">sai@saibrazier.com</a></span></li>
+          <li><span class="k">LinkedIn</span><span class="v"><a href="https://www.linkedin.com/in/sai-brazier-091ba2398/" rel="me noopener">sai-brazier &#8599;</a></span></li>
+          <li><span class="k">Instagram</span><span class="v"><a href="https://www.instagram.com/saibrazier/" rel="me noopener">@saibrazier &#8599;</a></span></li>
+          <li><span class="k">Based in</span><span class="v">Rexburg, Idaho</span></li>
         </ul>
       </div>
     </div>
-  </section>
-
-  <section class="wrap" aria-labelledby="what">
-    <h2 class="eyebrow" id="what">What to write about</h2>
-    <ol class="ledger">
-      <li>
-        <span class="n">01</span>
-        <span class="t">BeLingo. Academic partnerships, conversation club collaborations, and schools or organizations that want their students speaking English with more confidence.</span>
-      </li>
-      <li>
-        <span class="n">02</span>
-        <span class="t">Eye of Faith. Guests with a story worth hearing, and listeners who want to tell me what an episode meant to them.</span>
-      </li>
-      <li>
-        <span class="n">03</span>
-        <span class="t">run2live. Runners looking for coaching, and anyone with questions about training or fit.</span>
-      </li>
-      <li>
-        <span class="n">04</span>
-        <span class="t">Anything else. Advice, an introduction, a hard question, or a project you think I would want in on. Ask.</span>
-      </li>
-    </ol>
   </section>
 
   <div class="band-quiet full-bleed">
@@ -116,6 +124,39 @@ try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElemen
   </div>
 
 </main>
+
+<script>
+/* The form has no server: GitHub Pages cannot process a POST. Rather than fake
+   a submission, it composes a mailto: so the message actually reaches Sai with
+   zero infrastructure. Swapping in a Formspree endpoint later is a one-line
+   change to the action. */
+(function () {
+  var f = document.getElementById('contact-form');
+  if (!f) return;
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var err = document.getElementById('cf-err');
+    var name = document.getElementById('cf-name').value.trim();
+    var email = document.getElementById('cf-email').value.trim();
+    var phone = document.getElementById('cf-phone').value.trim();
+    var msg = document.getElementById('cf-message').value.trim();
+    if (!name || !email || !msg) {
+      err.textContent = 'Please fill in your name, email and message.';
+      err.hidden = false; return;
+    }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      err.textContent = 'That does not look like an email address.';
+      err.hidden = false; return;
+    }
+    err.hidden = true;
+    var body = 'From: ' + name + '\nEmail: ' + email +
+               (phone ? '\nPhone: ' + phone : '') + '\n\n' + msg;
+    window.location.href = 'mailto:sai@saibrazier.com?subject=' +
+      encodeURIComponent('Website message from ' + name) +
+      '&body=' + encodeURIComponent(body);
+  });
+})();
+</script>
 
 <footer class="site-footer">
   <div class="wrap">
