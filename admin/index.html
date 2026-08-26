@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Edit your site | Sai Brazier</title>
+<title>Admin | saibrazier.com</title>
 <link rel="stylesheet" href="../assets/css/site.css">
 <link rel="stylesheet" href="admin.css">
 <script>
@@ -22,7 +22,7 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
   <div class="wrap nav-inner">
     <a class="brand" href="../index.html">Sai Brazier</a>
     <div class="nav-right">
-      <a class="theme-toggle" href="../index.html" target="_blank" rel="noopener">View site &#8599;</a>
+      <a class="theme-toggle" id="viewsite" href="../index.html" target="_blank" rel="noopener" hidden>View site &#8599;</a>
       <span class="meta" id="who"></span>
       <button id="signout" class="theme-toggle" type="button" hidden>Sign out</button>
     </div>
@@ -33,8 +33,7 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
 
   <!-- ---------- signed out ---------- -->
   <section id="view-login" class="admin-login">
-    <h1>Edit your site</h1>
-    <p class="lede" style="max-width:34ch;">Sign in to change your words, your colours, and your pages.</p>
+    <h1>Sign in</h1>
 
     <form id="login-form" novalidate>
       <label class="fld">
@@ -46,7 +45,6 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
         <input type="password" id="password" autocomplete="current-password" required>
       </label>
       <p class="err" id="login-err" role="alert" hidden></p>
-      <p class="hint" id="first-hint" style="margin-bottom:1.25rem;">First time here? Enter your email and press <strong>Forgot password</strong> &mdash; you&rsquo;ll get a link to set a password only you know.</p>
       <div class="row">
         <button class="btn btn-primary" type="submit" id="login-btn">Sign in</button>
         <button class="btn btn-quiet" type="button" id="reset-btn">Forgot password</button>

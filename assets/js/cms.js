@@ -131,37 +131,30 @@
     try { localStorage.setItem('cms:themecss', css); } catch (e) {}
   }
 
-  // Rebuilds the nav so pages Sai adds actually appear in it. aria-current is
-  // recomputed by comparing against the current filename.
+  // Adds Sai's own pages to the menu. It deliberately does NOT rebuild the nav:
+  // the six-item structure with its three submenus is hand-authored in the HTML,
+  // and regenerating it from stored data would flatten the dropdowns away the
+  // first time anything was published. Stored data can only ever ADD a link.
   function applyNav(nav) {
     if (!nav || !nav.length) return;
     var ul = document.querySelector('.nav-links');
     if (!ul) return;
-    var here = (location.pathname.split('/').pop() || 'index.html');
     var qp = new URLSearchParams(location.search).get('p');
-    var frag = document.createDocumentFragment();
 
     for (var i = 0; i < nav.length; i++) {
       var item = nav[i];
       if (!item || typeof item.label !== 'string' || typeof item.href !== 'string') continue;
-      // Only same-origin relative links; never let stored data emit an
-      // absolute or javascript: URL into the chrome.
-      if (!/^[A-Za-z0-9._~\-]+\.html(\?p=[A-Za-z0-9\-]+)?$/.test(item.href)) continue;
+      // Custom pages only. Anything else is ignored outright.
+      if (!/^page\.html\?p=[a-z0-9-]{1,40}$/.test(item.href)) continue;
+      if (ul.querySelector('a[href="' + item.href + '"]')) continue;
 
       var li = document.createElement('li');
       var a = document.createElement('a');
       a.setAttribute('href', item.href);
       a.textContent = item.label;
-      var isHere = item.href === here ||
-        (qp && item.href === 'page.html?p=' + qp) ||
-        (here === '' && item.href === 'index.html');
-      if (isHere) a.setAttribute('aria-current', 'page');
+      if (qp && item.href === 'page.html?p=' + qp) a.setAttribute('aria-current', 'page');
       li.appendChild(a);
-      frag.appendChild(li);
-    }
-    if (frag.childNodes.length) {
-      ul.textContent = '';
-      ul.appendChild(frag);
+      ul.appendChild(li);
     }
   }
 

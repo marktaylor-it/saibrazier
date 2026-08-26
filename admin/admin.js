@@ -33,14 +33,9 @@ const DEFAULT_THEME = {
   accentLight: '#6E2C3A', accentDark: '#D4949B',
   eof: '#56708A', belingo: '#6ACAE0', r2l: '#F89850'
 };
-const BASE_NAV = [
-  { label: 'Home', href: 'index.html' },
-  { label: 'About', href: 'about.html' },
-  { label: 'BeLingo', href: 'belingo.html' },
-  { label: 'Eye of Faith', href: 'eye-of-faith.html' },
-  { label: 'run2live', href: 'run2live.html' },
-  { label: 'Contact', href: 'contact.html' }
-];
+// The site's six-item nav lives in the HTML and is never published. This list
+// carries ONLY the pages Sai creates, which cms.js appends to the real menu.
+const BASE_NAV = [];
 
 let state = null;        // the working copy
 let dirty = false;
@@ -525,12 +520,14 @@ onAuthStateChanged(auth, async user => {
     $('#view-app').hidden = true;
     $('#savebar').hidden = true;
     $('#signout').hidden = true;
+    var vs = $('#viewsite'); if (vs) vs.hidden = true;
     $('#who').textContent = '';
     return;
   }
   $('#view-login').hidden = true;
   $('#view-app').hidden = false;
   $('#signout').hidden = false;
+  var vs2 = $('#viewsite'); if (vs2) vs2.hidden = false;
   $('#who').textContent = user.email;
 
   const sel = $('#page-select');
