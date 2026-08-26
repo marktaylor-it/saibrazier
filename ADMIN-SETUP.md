@@ -25,7 +25,19 @@ on the sign-in screen.
 > nothing — *unless* they register an allowlisted address before Sai does. Creating his account
 > first takes the address permanently.
 
-## Step 3 — authorise the domain
+## Step 3 — authorise the domain (or let the script do it)
+
+After steps 1 and 2, run:
+
+```sh
+./scripts/finish-auth-setup.sh
+```
+
+It checks that sign-in really is live, adds `saibrazier.com` and `www` to the authorized domains,
+and lists which accounts exist. Safe to re-run. It deliberately does **not** create accounts or set
+passwords — those are credentials, and they belong to you and Sai.
+
+If you would rather click through it:
 
 [Authentication → Settings → Authorized domains](https://console.firebase.google.com/project/saibrazier/authentication/settings)
 → **Add domain** → `saibrazier.com`.

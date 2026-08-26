@@ -22,6 +22,7 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
   <div class="wrap nav-inner">
     <a class="brand" href="../index.html">Sai Brazier</a>
     <div class="nav-right">
+      <a class="theme-toggle" href="../index.html" target="_blank" rel="noopener">View site &#8599;</a>
       <span class="meta" id="who"></span>
       <button id="signout" class="theme-toggle" type="button" hidden>Sign out</button>
     </div>
@@ -45,6 +46,7 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
         <input type="password" id="password" autocomplete="current-password" required>
       </label>
       <p class="err" id="login-err" role="alert" hidden></p>
+      <p class="hint" id="first-hint" style="margin-bottom:1.25rem;">First time here? Enter your email and press <strong>Forgot password</strong> &mdash; you&rsquo;ll get a link to set a password only you know.</p>
       <div class="row">
         <button class="btn btn-primary" type="submit" id="login-btn">Sign in</button>
         <button class="btn btn-quiet" type="button" id="reset-btn">Forgot password</button>

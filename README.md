@@ -5,7 +5,7 @@ Personal website for **Sai Brazier** — entrepreneur, podcaster, writer, athlet
 Six hand-written pages, one stylesheet. No framework, no build step, no npm, no CDN. It works
 offline and from any static host.
 
-**Live:** https://mataylorit-dev.github.io/saibrazier/
+**Live:** https://marktaylor-it.github.io/saibrazier/
 
 ---
 
@@ -138,7 +138,7 @@ disturb his email:
 1. Add a file named `CNAME` at the repo root containing exactly `saibrazier.com`
 2. At the domain registrar, add the four GitHub Pages A records for the apex
    (`185.199.108.153`, `.109.153`, `.110.153`, `.111.153`) plus an AAAA set, and a `CNAME` on
-   `www` pointing at `mataylorit-dev.github.io`
+   `www` pointing at `marktaylor-it.github.io`
 3. Settings → Pages → Custom domain → `saibrazier.com` → Enforce HTTPS
 
 Leave the existing MX records alone and mail keeps working.
