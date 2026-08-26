@@ -158,6 +158,44 @@
     }
   }
 
+
+  // Only these URL shapes are ever written to an href. Stored content is
+  // attacker-reachable in the threat model, and an unvalidated href is a
+  // javascript: injection straight into a page that may hold an admin session.
+  function safeHref(h) {
+    if (typeof h !== 'string') return null;
+    h = h.trim();
+    if (/^https?:\/\//i.test(h)) return h;
+    if (/^mailto:[^\s<>"']+$/i.test(h)) return h;
+    if (/^[A-Za-z0-9._~-]+\.html(\?p=[a-z0-9-]{1,40})?(#[A-Za-z0-9_-]+)?$/.test(h)) return h;
+    if (/^#[A-Za-z0-9_-]+$/.test(h)) return h;
+    return null;                       // blocks javascript:, data:, vbscript:
+  }
+
+  function applyLinks(links) {
+    if (!links) return;
+    Object.keys(links).forEach(function (key) {
+      var el = document.querySelector('[data-cms-link="' + key.replace(/"/g, '') + '"]');
+      if (!el) return;
+      var v = links[key] || {};
+      if (typeof v.text === 'string' && v.text.trim()) el.textContent = v.text;
+      var href = safeHref(v.href);
+      if (href) el.setAttribute('href', href);
+    });
+  }
+
+  function applyMeta(meta) {
+    if (!meta) return;
+    if (typeof meta.title === 'string' && meta.title.trim()) {
+      document.title = meta.title.slice(0, 200);
+    }
+    if (typeof meta.description === 'string' && meta.description.trim()) {
+      var m = document.querySelector('meta[name="description"]');
+      if (!m) { m = document.createElement('meta'); m.setAttribute('name','description'); document.head.appendChild(m); }
+      m.setAttribute('content', meta.description.slice(0, 400));
+    }
+  }
+
   function applyImages(images, slug) {
     if (!images) return;
     var spec = (window.CMS_MAP || {})[slug];
@@ -201,7 +239,12 @@
       applyNav(content.nav);
       var slug = pageSlug();
       var page = (content.pages || {})[slug];
-      if (page) { applyBlocks(page.blocks, slug); applyImages(page.images, slug); }
+      if (page) {
+        applyBlocks(page.blocks, slug);
+        applyLinks(page.links);
+        applyMeta(page.meta);
+        applyImages(page.images, slug);
+      }
       applyTodos(content, slug);
     } catch (e) { /* never let a bad document break the baked-in page */ }
   }

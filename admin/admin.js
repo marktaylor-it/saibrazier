@@ -70,12 +70,26 @@ async function readPage(slug) {
     const dom = new DOMParser().parseFromString(html, 'text/html');
     dom.querySelectorAll('[data-cms]').forEach(el => {
       out.push({
+        kind: 'text',
         key: el.getAttribute('data-cms'),
         label: el.getAttribute('data-cms-label') || el.getAttribute('data-cms'),
         text: el.textContent.replace(/\s+/g, ' ').trim(),
         long: el.textContent.trim().length > 90 || el.tagName === 'BLOCKQUOTE'
       });
     });
+    dom.querySelectorAll('[data-cms-link]').forEach(el => {
+      out.push({
+        kind: 'link',
+        key: el.getAttribute('data-cms-link'),
+        label: el.getAttribute('data-cms-label') || el.getAttribute('data-cms-link'),
+        text: el.textContent.replace(/\s+/g, ' ').trim(),
+        href: el.getAttribute('href') || ''
+      });
+    });
+    out.meta = {
+      title: (dom.querySelector('title') || {}).textContent || '',
+      description: (dom.querySelector('meta[name="description"]') || {getAttribute:()=>''}).getAttribute('content') || ''
+    };
   } catch (e) { /* offline — nothing to edit */ }
   baked[slug] = out;
   return out;
@@ -98,6 +112,33 @@ async function renderFields() {
     wrap.appendChild(p);
   }
 
+  // page title + description
+  const savedMeta = (state.pages[slug] || {}).meta || {};
+  const metaHead = document.createElement('h2');
+  metaHead.className = 'eyebrow';
+  metaHead.style.margin = '0 0 1rem';
+  metaHead.textContent = 'Page details';
+  wrap.appendChild(metaHead);
+  [['title','Browser tab title', false], ['description','Search description', true]].forEach(([k, lab, long]) => {
+    const label = document.createElement('label');
+    label.className = 'fld';
+    const sp = document.createElement('span');
+    sp.className = 'fld-label'; sp.textContent = lab;
+    label.appendChild(sp);
+    const inp = document.createElement(long ? 'textarea' : 'input');
+    if (long) inp.rows = 2; else inp.type = 'text';
+    inp.value = savedMeta[k] !== undefined ? savedMeta[k] : ((fields.meta || {})[k] || '');
+    inp.addEventListener('input', () => {
+      state.pages[slug] = state.pages[slug] || {};
+      state.pages[slug].meta = state.pages[slug].meta || {};
+      state.pages[slug].meta[k] = inp.value;
+      markDirty();
+    });
+    label.appendChild(inp);
+    wrap.appendChild(label);
+  });
+
+  const savedLinks = (state.pages[slug] || {}).links || {};
   let lastGroup = null;
   fields.forEach(f => {
     const group = f.label.split('—')[0].trim();
@@ -117,6 +158,38 @@ async function renderFields() {
     span.textContent = f.label.split('—').slice(1).join('—').trim() || f.label;
     label.appendChild(span);
 
+    if (f.kind === 'link') {
+      const cur = savedLinks[f.key] || {};
+      const t = document.createElement('input');
+      t.type = 'text';
+      t.value = cur.text !== undefined ? cur.text : f.text;
+      t.placeholder = 'Link text';
+      const u = document.createElement('input');
+      u.type = 'text';
+      u.value = cur.href !== undefined ? cur.href : f.href;
+      u.placeholder = 'https://…';
+      u.style.marginTop = '.5rem';
+      const warn = document.createElement('span');
+      warn.className = 'count';
+      function save() {
+        state.pages[slug] = state.pages[slug] || {};
+        state.pages[slug].links = state.pages[slug].links || {};
+        state.pages[slug].links[f.key] = { text: t.value, href: u.value };
+        const h = u.value.trim();
+        const ok = !h || /^https?:\/\//i.test(h) || /^mailto:/i.test(h) ||
+                   /^[A-Za-z0-9._~-]+\.html(\?p=[a-z0-9-]{1,40})?(#[A-Za-z0-9_-]+)?$/.test(h) ||
+                   /^#[A-Za-z0-9_-]+$/.test(h);
+        warn.textContent = ok ? '' : 'That web address will be ignored. Use https://… , an email, or a page on this site.';
+        warn.classList.toggle('over', !ok);
+        markDirty();
+      }
+      t.addEventListener('input', save);
+      u.addEventListener('input', save);
+      label.appendChild(t); label.appendChild(u); label.appendChild(warn);
+      wrap.appendChild(label);
+      return;
+    }
+
     const input = document.createElement(f.long ? 'textarea' : 'input');
     if (f.long) input.rows = 3; else input.type = 'text';
     input.value = saved[f.key] !== undefined ? saved[f.key] : f.text;
@@ -133,7 +206,7 @@ async function renderFields() {
   const count = document.createElement('p');
   count.className = 'hint';
   count.style.marginTop = '2rem';
-  count.textContent = fields.length + ' editable pieces of text on this page.';
+  count.textContent = fields.filter(f => f.kind === 'text').length + ' pieces of text and ' + fields.filter(f => f.kind === 'link').length + ' links on this page.';
   wrap.appendChild(count);
 
   renderImages(slug, spec);
@@ -362,25 +435,82 @@ function renderCustom() {
     wrap.appendChild(p);
     return;
   }
+
   slugs.forEach(slug => {
+    const pg = state.custom[slug];
+    const box = document.createElement('div');
+    box.style.cssText = 'border-top:1px solid var(--border);padding:1.25rem 0;';
+
     const row = document.createElement('div');
     row.className = 'cp-row';
+    row.style.borderTop = '0';
+    row.style.padding = '0';
+
     const n = document.createElement('div');
     const t = document.createElement('div');
-    t.className = 'swatch-name'; t.textContent = state.custom[slug].title || slug;
+    t.className = 'swatch-name'; t.textContent = pg.title || slug;
     const u = document.createElement('span');
-    u.className = 'swatch-sub'; u.textContent = `saibrazier.com/page.html?p=${slug}`;
+    u.className = 'swatch-sub'; u.textContent = 'saibrazier.com/page.html?p=' + slug;
     n.appendChild(t); n.appendChild(u);
+
+    const btns = document.createElement('div');
+    btns.className = 'row';
+    const edit = document.createElement('button');
+    edit.className = 'btn btn-quiet'; edit.type = 'button'; edit.textContent = 'Edit';
     const del = document.createElement('button');
     del.className = 'btn btn-danger'; del.type = 'button'; del.textContent = 'Delete';
+    btns.appendChild(edit); btns.appendChild(del);
+
+    row.appendChild(n); row.appendChild(btns);
+    box.appendChild(row);
+
+    // --- the edit form, hidden until asked for ---
+    const form = document.createElement('div');
+    form.hidden = true;
+    form.style.marginTop = '1.25rem';
+
+    function field(labelText, value, rows) {
+      const l = document.createElement('label');
+      l.className = 'fld';
+      const sp = document.createElement('span');
+      sp.className = 'fld-label'; sp.textContent = labelText;
+      l.appendChild(sp);
+      const el = document.createElement(rows ? 'textarea' : 'input');
+      if (rows) el.rows = rows; else el.type = 'text';
+      el.value = value || '';
+      l.appendChild(el);
+      form.appendChild(l);
+      return el;
+    }
+
+    const fTitle = field('Title', pg.title);
+    const fLede  = field('Opening line', pg.lede, 2);
+    const fBody  = field('Body', (pg.sections && pg.sections[0] ? pg.sections[0].body : ''), 8);
+
+    [fTitle, fLede, fBody].forEach(el => el.addEventListener('input', () => {
+      pg.title = fTitle.value.trim();
+      pg.lede = fLede.value;
+      pg.sections = [{ heading: '', body: fBody.value }];
+      t.textContent = pg.title || slug;
+      // keep the menu label in step with the title
+      const navItem = state.nav.find(x => x.href === 'page.html?p=' + slug);
+      if (navItem) navItem.label = pg.title || slug;
+      markDirty();
+    }));
+
+    edit.addEventListener('click', () => {
+      form.hidden = !form.hidden;
+      edit.textContent = form.hidden ? 'Edit' : 'Done';
+    });
     del.addEventListener('click', () => {
-      if (!confirm(`Delete “${state.custom[slug].title || slug}”? This cannot be undone.`)) return;
+      if (!confirm('Delete \u201c' + (pg.title || slug) + '\u201d? This cannot be undone.')) return;
       delete state.custom[slug];
-      state.nav = state.nav.filter(n2 => n2.href !== `page.html?p=${slug}`);
+      state.nav = state.nav.filter(x => x.href !== 'page.html?p=' + slug);
       markDirty(); renderCustom();
     });
-    row.appendChild(n); row.appendChild(del);
-    wrap.appendChild(row);
+
+    box.appendChild(form);
+    wrap.appendChild(box);
   });
 }
 
