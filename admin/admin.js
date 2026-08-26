@@ -62,64 +62,64 @@ function ratio(a, b) {
 
 /* ---------- reading what is currently on the site --------------------- */
 
-async function readBaked(slug) {
+async function readPage(slug) {
   if (baked[slug]) return baked[slug];
-  const spec = window.CMS_MAP[slug];
-  const out = {};
+  const out = [];
   try {
     const html = await fetch(`../${slug}.html`, { cache: 'no-store' }).then(r => r.text());
     const dom = new DOMParser().parseFromString(html, 'text/html');
-    spec.fields.forEach(f => {
-      const el = dom.querySelector(f.sel);
-      if (el) out[f.key] = el.textContent.replace(/\s+/g, ' ').trim();
+    dom.querySelectorAll('[data-cms]').forEach(el => {
+      out.push({
+        key: el.getAttribute('data-cms'),
+        label: el.getAttribute('data-cms-label') || el.getAttribute('data-cms'),
+        text: el.textContent.replace(/\s+/g, ' ').trim(),
+        long: el.textContent.trim().length > 90 || el.tagName === 'BLOCKQUOTE'
+      });
     });
-  } catch (e) { /* offline — fields simply start empty */ }
+  } catch (e) { /* offline — nothing to edit */ }
   baked[slug] = out;
   return out;
-}
-
-/* ---------- state ----------------------------------------------------- */
-
-function markDirty() {
-  dirty = true;
-  $('#savebar').hidden = false;
-  $('#save-status').textContent = 'Unpublished changes';
-}
-
-async function loadState() {
-  let snap = null;
-  try { snap = await getDoc(doc(db, 'public', 'content')); } catch (e) {}
-  state = (snap && snap.exists()) ? snap.data() : null;
-  if (!state) {
-    state = { rev: 0, theme: { ...DEFAULT_THEME }, nav: [...BASE_NAV], pages: {}, custom: {} };
-  }
-  state.theme = { ...DEFAULT_THEME, ...(state.theme || {}) };
-  state.pages = state.pages || {};
-  state.custom = state.custom || {};
-  state.nav = (state.nav && state.nav.length) ? state.nav : [...BASE_NAV];
 }
 
 /* ---------- words ----------------------------------------------------- */
 
 async function renderFields() {
   const slug = $('#page-select').value;
-  const spec = window.CMS_MAP[slug];
-  const current = await readBaked(slug);
+  const spec = window.CMS_MAP[slug] || { images: [] };
+  const fields = await readPage(slug);
   const saved = (state.pages[slug] || {}).blocks || {};
   const wrap = $('#fields');
   wrap.textContent = '';
 
-  spec.fields.forEach(f => {
+  if (!fields.length) {
+    const p = document.createElement('p');
+    p.className = 'hint';
+    p.textContent = 'Nothing editable found on this page.';
+    wrap.appendChild(p);
+  }
+
+  let lastGroup = null;
+  fields.forEach(f => {
+    const group = f.label.split('—')[0].trim();
+    if (group !== lastGroup) {
+      lastGroup = group;
+      const h = document.createElement('h2');
+      h.className = 'eyebrow';
+      h.style.margin = '2rem 0 1rem';
+      h.textContent = group;
+      wrap.appendChild(h);
+    }
+
     const label = document.createElement('label');
     label.className = 'fld';
     const span = document.createElement('span');
     span.className = 'fld-label';
-    span.textContent = f.label;
+    span.textContent = f.label.split('—').slice(1).join('—').trim() || f.label;
     label.appendChild(span);
 
-    const input = document.createElement(f.multiline ? 'textarea' : 'input');
-    if (f.multiline) input.rows = 3; else input.type = 'text';
-    input.value = saved[f.key] !== undefined ? saved[f.key] : (current[f.key] || '');
+    const input = document.createElement(f.long ? 'textarea' : 'input');
+    if (f.long) input.rows = 3; else input.type = 'text';
+    input.value = saved[f.key] !== undefined ? saved[f.key] : f.text;
     input.addEventListener('input', () => {
       state.pages[slug] = state.pages[slug] || { blocks: {}, images: {} };
       state.pages[slug].blocks = state.pages[slug].blocks || {};
@@ -129,6 +129,12 @@ async function renderFields() {
     label.appendChild(input);
     wrap.appendChild(label);
   });
+
+  const count = document.createElement('p');
+  count.className = 'hint';
+  count.style.marginTop = '2rem';
+  count.textContent = fields.length + ' editable pieces of text on this page.';
+  wrap.appendChild(count);
 
   renderImages(slug, spec);
 }

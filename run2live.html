@@ -1,210 +1,196 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>run2live | Sai Brazier</title>
-<meta name="description" content="run2live is Sai Brazier's endurance exercise coaching work. It begins the way every good fitting begins, by watching how you actually move.">
-<link rel="stylesheet" href="assets/css/site.css">
+<meta content="run2live is Sai Brazier's endurance exercise coaching work. It begins the way every good fitting begins, by watching how you actually move." name="description"/>
+<link href="assets/css/site.css" rel="stylesheet"/>
 <script>
 /* Applies a saved theme before first paint. Must stay inline and synchronous —
    an external file would let the page paint the wrong theme for a frame. */
 try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}
 </script>
-<script src="assets/js/theme.js" defer></script>
+<script defer="" src="assets/js/theme.js"></script>
 <script>
 /* Re-applies the last known colours synchronously, before paint, so an edit does
    not flash on repeat visits. Falls through harmlessly on a first visit. */
 try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElement('style');s.id='cms-theme';s.textContent=c;document.head.appendChild(s);}}catch(e){}
 </script>
-<script src="assets/js/cms-map.js" defer></script>
-<script src="assets/js/cms.js" defer></script>
-<script src="assets/js/nav.js" defer></script>
+<script defer="" src="assets/js/cms-map.js"></script>
+<script defer="" src="assets/js/cms.js"></script>
+<script defer="" src="assets/js/nav.js"></script>
 </head>
 <body class="v-r2l" data-page="run2live">
 <a class="skip" href="#main">Skip to content</a>
-
 <header class="site-header">
-  <div class="wrap nav-inner">
-    <a class="brand" href="index.html">Sai Brazier</a>
-    <div class="nav-right">
-      <nav aria-label="Primary">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li class="has-sub">
-            <a href="business-ventures.html">Business ventures</a>
-            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-bv"><span class="sr-only">Open Business ventures menu</span></button>
-            <ul class="submenu" id="sm-bv">
-              <li><a href="belingo.html">BeLingo</a></li>
-              <li><a href="run2live.html" aria-current="page">Run 2 Live</a></li>
-              <li><a href="eye-of-faith.html">Eye of Faith</a></li>
-            </ul>
-          </li>
-          <li class="has-sub">
-            <a href="publications.html">Publications</a>
-            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-pub"><span class="sr-only">Open Publications menu</span></button>
-            <ul class="submenu" id="sm-pub">
-              <li><a href="publications.html#books">Books</a></li>
-              <li><a href="publications.html#articles">Articles</a></li>
-            </ul>
-          </li>
-          <li class="has-sub">
-            <a href="podcasts.html">Podcasts</a>
-            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-pod"><span class="sr-only">Open Podcasts menu</span></button>
-            <ul class="submenu" id="sm-pod">
-              <li><a href="podcasts.html#eye-of-faith">Eye of Faith</a></li>
-              <li><a href="podcasts.html#run2live">Run 2 Live</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <button id="theme-toggle" class="theme-toggle" type="button" hidden
-              aria-label="Colour theme: Auto. Activate to change.">
-        <span class="theme-dot" aria-hidden="true"></span><span class="theme-name">Auto</span>
-      </button>
-    </div>
-  </div>
+<div class="wrap nav-inner">
+<a class="brand" href="index.html">Sai Brazier</a>
+<div class="nav-right">
+<nav aria-label="Primary">
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li class="has-sub">
+<a href="business-ventures.html">Business ventures</a>
+<button aria-controls="sm-bv" aria-expanded="false" class="navbtn" type="button"><span class="sr-only">Open Business ventures menu</span></button>
+<ul class="submenu" id="sm-bv">
+<li><a href="belingo.html">BeLingo</a></li>
+<li><a aria-current="page" href="run2live.html">Run 2 Live</a></li>
+<li><a href="eye-of-faith.html">Eye of Faith</a></li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="publications.html">Publications</a>
+<button aria-controls="sm-pub" aria-expanded="false" class="navbtn" type="button"><span class="sr-only">Open Publications menu</span></button>
+<ul class="submenu" id="sm-pub">
+<li><a href="publications.html#books">Books</a></li>
+<li><a href="publications.html#articles">Articles</a></li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="podcasts.html">Podcasts</a>
+<button aria-controls="sm-pod" aria-expanded="false" class="navbtn" type="button"><span class="sr-only">Open Podcasts menu</span></button>
+<ul class="submenu" id="sm-pod">
+<li><a href="podcasts.html#eye-of-faith">Eye of Faith</a></li>
+<li><a href="podcasts.html#run2live">Run 2 Live</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+<button aria-label="Colour theme: Auto. Activate to change." class="theme-toggle" hidden="" id="theme-toggle" type="button">
+<span aria-hidden="true" class="theme-dot"></span><span class="theme-name">Auto</span>
+</button>
+</div>
+</div>
 </header>
-
 <main id="main">
-
-  <div class="wrap masthead">
-    <div class="grid">
-      <div style="grid-column: 1 / 8;">
-        <p class="meta" style="margin-bottom:1.25rem;">Venture 03 &mdash; Endurance exercise coaching</p>
-        <h1 class="lowercase" style="font-size:var(--step-4); line-height:1.08;">run2live</h1>
-        <p class="lede" style="max-width:30ch;">Coaching that starts from the gait up.</p>
-        <ul class="meta" style="margin-top:1.5rem;">
-          <li>Sai Brazier</li>
-          <li><span class="todo" id="todo-r2l-founded">[[TODO: founding date]]</span></li>
-        </ul>
-      </div>
-      <figure style="grid-column: 9 / 13; margin:0;">
-        <div class="plate plate--r2l">
-          <img src="assets/img/run2live-mark.png" width="480" height="480"
-               loading="lazy" decoding="async" alt="run2live logo.">
-        </div>
-        <figcaption class="caption">Fig. 01 &mdash; run2live, mark</figcaption>
-      </figure>
-    </div>
-  </div>
-
-  <section class="wrap" aria-labelledby="one-of-three">
-    <h2 class="eyebrow" id="one-of-three">One of three businesses</h2>
-    <div class="grid">
-      <div style="grid-column: 1 / 6;">
-        <p class="lede">Coaching is not a side interest borrowed from somewhere else.</p>
-      </div>
-      <div style="grid-column: 7 / 13;">
-        <p>run2live is Sai Brazier&rsquo;s endurance exercise coaching work. It sits alongside BeLingo in EdTech and Eye of Faith in media publication as the third of the three businesses he builds.</p>
-        <p>Sai is an athlete himself. He counts it among the handful of words he uses to describe his own life, next to student, entrepreneur, podcaster, writer, and man of faith. It is the same conviction, applied to the body.</p>
-        <p><span class="todo" id="todo-r2l-mission">[[TODO: run2live&rsquo;s own one-line mission, in Sai&rsquo;s words]]</span></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap" aria-labelledby="watching">
-    <h2 class="eyebrow" id="watching">It starts with watching how you move</h2>
-    <div class="grid">
-      <div style="grid-column: 1 / 7;">
-        <p>Before any of this was a business, it was a job on a shop floor.</p>
-        <p>At Columbus Running Company in Ohio, Sai fit customers for running shoes. The process began with observation: watching a person&rsquo;s walking mechanics, reading what their body was actually doing, and then offering shoe options tailored to their anatomical needs. Not the newest model. Not the one in their size. The one their mechanics asked for.</p>
-      </div>
-      <div style="grid-column: 7 / 13;">
-        <p>He handled the unglamorous half too, tracking purchases through the store system, pulling inventory from other Columbus locations, placing special orders, and ordering from vendors when what a runner needed was not on the wall.</p>
-        <p>That sequence still governs the coaching. Observation before prescription. Mechanics before mileage. And if the right answer takes an extra step to find, go find it.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap" aria-labelledby="how">
-    <h2 class="eyebrow" id="how">How Sai coaches</h2>
-    <ol class="ledger">
-      <li><span class="n">01</span><span class="t">Curiosity first. Your history, your injuries, your schedule, your reasons &mdash; asked before anything is written down.</span></li>
-      <li><span class="n">02</span><span class="t">Limits are a starting point, not a verdict. The ceiling you assume you have is the first thing worth testing.</span></li>
-      <li><span class="n">03</span><span class="t">Learn from the people who have gone further. Their successes, their adversities, and the wisdom they acquired along the way.</span></li>
-      <li><span class="n">04</span><span class="t">Purpose before performance. Training is one more place to spend a life well, not a number to chase for its own sake.</span></li>
-    </ol>
-  </section>
-
-  <div class="band-quote full-bleed">
-    <div class="wrap">
-      <blockquote>&ldquo;Embracing the impossible and pushing the limits is my natural response to any challenge.&rdquo;</blockquote>
-      <p class="attrib">&mdash; Sai Brazier</p>
-    </div>
-  </div>
-
-  <section class="wrap" aria-labelledby="working">
-    <h2 class="eyebrow" id="working">Working together</h2>
-    <ul class="cards">
-      <li>
-        <h3>Gait &amp; footwear</h3>
-        <p>A read on how you move and what you should be running in, built on the fitting process Sai learned at Columbus Running Company.</p>
-        <p><span class="todo">[[TODO: what a consultation includes, how long, and whether in person, over video, or from submitted footage]]</span></p>
-      </li>
-      <li>
-        <h3>Training plans</h3>
-        <p>A structured block written around your current fitness, your schedule, and the event or standard you are training toward.</p>
-        <p><span class="todo">[[TODO: block length, what the athlete receives, how it is delivered]]</span></p>
-      </li>
-      <li>
-        <h3>Ongoing coaching</h3>
-        <p>Regular contact so the plan keeps up with the athlete rather than the other way around.</p>
-        <p><span class="todo">[[TODO: check-in frequency, channel, and whether offered on its own]]</span></p>
-      </li>
-    </ul>
-    <p style="margin-top:2rem;">
-      <span class="todo">[[TODO: who run2live is for]]</span>
-      <span class="todo">[[TODO: remote or local to Rexburg]]</span>
-      <span class="todo">[[TODO: pricing]]</span>
-      <span class="todo" id="todo-r2l-taking">[[TODO: currently accepting athletes?]]</span>
-    </p>
-  </section>
-
-  <section class="wrap" aria-labelledby="other">
-    <h2 class="eyebrow" id="other">Other ventures</h2>
-    <div class="cross">
-      <a href="belingo.html"><span class="n">01</span><span class="name">BeLingo</span></a>
-      <a href="eye-of-faith.html"><span class="n">02</span><span class="name">Eye of Faith</span></a>
-    </div>
-  </section>
-
-  <div class="band-quiet full-bleed">
-    <div class="wrap">
-      <p>The first step is not a payment or a plan. It is a conversation about what you are training for and what has gotten in the way so far.</p>
-      <p style="font-size:var(--step-0); font-family:var(--font-body); margin-top:1.5rem; line-height:1.62;"><a href="contact.html">Start with a conversation &rarr;</a></p>
-    </div>
-  </div>
-
+<div class="wrap masthead">
+<div class="grid">
+<div style="grid-column: 1 / 8;">
+<p class="meta" data-cms="main.p1" data-cms-label="Main — Paragraph" style="margin-bottom:1.25rem;">Venture 03 — Endurance exercise coaching</p>
+<h1 class="lowercase" data-cms="main.h11" data-cms-label="Main — Heading" style="font-size:var(--step-4); line-height:1.08;">run2live</h1>
+<p class="lede" data-cms="main.p2" data-cms-label="Main — Paragraph 2" style="max-width:30ch;">Coaching that starts from the gait up.</p>
+<ul class="meta" style="margin-top:1.5rem;">
+<li data-cms="main.li1" data-cms-label="Main — List item">Sai Brazier</li>
+<li><span class="todo" id="todo-r2l-founded">[[TODO: founding date]]</span></li>
+</ul>
+</div>
+<figure style="grid-column: 9 / 13; margin:0;">
+<div class="plate plate--r2l">
+<img alt="run2live logo." decoding="async" height="480" loading="lazy" src="assets/img/run2live-mark.png" width="480"/>
+</div>
+<figcaption class="caption" data-cms="main.figcaption1" data-cms-label="Main — Caption">Fig. 01 — run2live, mark</figcaption>
+</figure>
+</div>
+</div>
+<section aria-labelledby="one-of-three" class="wrap">
+<h2 class="eyebrow" data-cms="one-of-three-businesses.h21" data-cms-label="One of three businesses — Section title" id="one-of-three">One of three businesses</h2>
+<div class="grid">
+<div style="grid-column: 1 / 6;">
+<p class="lede" data-cms="one-of-three-businesses.p1" data-cms-label="One of three businesses — Paragraph">Coaching is not a side interest borrowed from somewhere else.</p>
+</div>
+<div style="grid-column: 7 / 13;">
+<p data-cms="one-of-three-businesses.p2" data-cms-label="One of three businesses — Paragraph 2">run2live is Sai Brazier’s endurance exercise coaching work. It sits alongside BeLingo in EdTech and Eye of Faith in media publication as the third of the three businesses he builds.</p>
+<p data-cms="one-of-three-businesses.p3" data-cms-label="One of three businesses — Paragraph 3">Sai is an athlete himself. He counts it among the handful of words he uses to describe his own life, next to student, entrepreneur, podcaster, writer, and man of faith. It is the same conviction, applied to the body.</p>
+<p><span class="todo" id="todo-r2l-mission">[[TODO: run2live’s own one-line mission, in Sai’s words]]</span></p>
+</div>
+</div>
+</section>
+<section aria-labelledby="watching" class="wrap">
+<h2 class="eyebrow" data-cms="it-starts-with-watching-how-.h21" data-cms-label="It starts with watching how  — Section title" id="watching">It starts with watching how you move</h2>
+<div class="grid">
+<div style="grid-column: 1 / 7;">
+<p data-cms="it-starts-with-watching-how-.p1" data-cms-label="It starts with watching how  — Paragraph">Before any of this was a business, it was a job on a shop floor.</p>
+<p data-cms="it-starts-with-watching-how-.p2" data-cms-label="It starts with watching how  — Paragraph 2">At Columbus Running Company in Ohio, Sai fit customers for running shoes. The process began with observation: watching a person’s walking mechanics, reading what their body was actually doing, and then offering shoe options tailored to their anatomical needs. Not the newest model. Not the one in their size. The one their mechanics asked for.</p>
+</div>
+<div style="grid-column: 7 / 13;">
+<p data-cms="it-starts-with-watching-how-.p3" data-cms-label="It starts with watching how  — Paragraph 3">He handled the unglamorous half too, tracking purchases through the store system, pulling inventory from other Columbus locations, placing special orders, and ordering from vendors when what a runner needed was not on the wall.</p>
+<p data-cms="it-starts-with-watching-how-.p4" data-cms-label="It starts with watching how  — Paragraph 4">That sequence still governs the coaching. Observation before prescription. Mechanics before mileage. And if the right answer takes an extra step to find, go find it.</p>
+</div>
+</div>
+</section>
+<section aria-labelledby="how" class="wrap">
+<h2 class="eyebrow" data-cms="how-sai-coaches.h21" data-cms-label="How sai coaches — Section title" id="how">How Sai coaches</h2>
+<ol class="ledger">
+<li data-cms="how-sai-coaches.li1" data-cms-label="How sai coaches — List item"><span class="n">01</span><span class="t">Curiosity first. Your history, your injuries, your schedule, your reasons — asked before anything is written down.</span></li>
+<li data-cms="how-sai-coaches.li2" data-cms-label="How sai coaches — List item 2"><span class="n">02</span><span class="t">Limits are a starting point, not a verdict. The ceiling you assume you have is the first thing worth testing.</span></li>
+<li data-cms="how-sai-coaches.li3" data-cms-label="How sai coaches — List item 3"><span class="n">03</span><span class="t">Learn from the people who have gone further. Their successes, their adversities, and the wisdom they acquired along the way.</span></li>
+<li data-cms="how-sai-coaches.li4" data-cms-label="How sai coaches — List item 4"><span class="n">04</span><span class="t">Purpose before performance. Training is one more place to spend a life well, not a number to chase for its own sake.</span></li>
+</ol>
+</section>
+<div class="band-quote full-bleed">
+<div class="wrap">
+<blockquote data-cms="main.blockquote1" data-cms-label="Main — Quote">“Embracing the impossible and pushing the limits is my natural response to any challenge.”</blockquote>
+<p class="attrib" data-cms="main.p3" data-cms-label="Main — Paragraph 3">— Sai Brazier</p>
+</div>
+</div>
+<section aria-labelledby="working" class="wrap">
+<h2 class="eyebrow" data-cms="working-together.h21" data-cms-label="Working together — Section title" id="working">Working together</h2>
+<ul class="cards">
+<li>
+<h3 data-cms="working-together.h31" data-cms-label="Working together — Subheading">Gait &amp; footwear</h3>
+<p data-cms="working-together.p1" data-cms-label="Working together — Paragraph">A read on how you move and what you should be running in, built on the fitting process Sai learned at Columbus Running Company.</p>
+<p><span class="todo">[[TODO: what a consultation includes, how long, and whether in person, over video, or from submitted footage]]</span></p>
+</li>
+<li>
+<h3 data-cms="working-together.h32" data-cms-label="Working together — Subheading 2">Training plans</h3>
+<p data-cms="working-together.p2" data-cms-label="Working together — Paragraph 2">A structured block written around your current fitness, your schedule, and the event or standard you are training toward.</p>
+<p><span class="todo">[[TODO: block length, what the athlete receives, how it is delivered]]</span></p>
+</li>
+<li>
+<h3 data-cms="working-together.h33" data-cms-label="Working together — Subheading 3">Ongoing coaching</h3>
+<p data-cms="working-together.p3" data-cms-label="Working together — Paragraph 3">Regular contact so the plan keeps up with the athlete rather than the other way around.</p>
+<p><span class="todo">[[TODO: check-in frequency, channel, and whether offered on its own]]</span></p>
+</li>
+</ul>
+<p style="margin-top:2rem;">
+<span class="todo">[[TODO: who run2live is for]]</span>
+<span class="todo">[[TODO: remote or local to Rexburg]]</span>
+<span class="todo">[[TODO: pricing]]</span>
+<span class="todo" id="todo-r2l-taking">[[TODO: currently accepting athletes?]]</span>
+</p>
+</section>
+<section aria-labelledby="other" class="wrap">
+<h2 class="eyebrow" data-cms="other-ventures.h21" data-cms-label="Other ventures — Section title" id="other">Other ventures</h2>
+<div class="cross">
+<a href="belingo.html"><span class="n">01</span><span class="name">BeLingo</span></a>
+<a href="eye-of-faith.html"><span class="n">02</span><span class="name">Eye of Faith</span></a>
+</div>
+</section>
+<div class="band-quiet full-bleed">
+<div class="wrap">
+<p data-cms="main.p4" data-cms-label="Main — Paragraph 4">The first step is not a payment or a plan. It is a conversation about what you are training for and what has gotten in the way so far.</p>
+<p style="font-size:var(--step-0); font-family:var(--font-body); margin-top:1.5rem; line-height:1.62;"><a href="contact.html">Start with a conversation →</a></p>
+</div>
+</div>
 </main>
-
 <footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <h2>Sai Brazier</h2>
-        <p class="meta">Rexburg, Idaho</p>
-      </div>
-      <div>
-        <ul>
-          <li><a href="belingo.html"><span class="swatch sw-belingo"></span>BeLingo</a></li>
-          <li><a href="eye-of-faith.html"><span class="swatch sw-eof"></span>Eye of Faith</a></li>
-          <li><a href="run2live.html"><span class="swatch sw-r2l"></span>run2live</a></li>
-        </ul>
-      </div>
-      <div>
-        <ul>
-          <li><a href="mailto:sai@saibrazier.com">sai@saibrazier.com</a></li>
-          <li><a href="https://www.instagram.com/saibrazier/" rel="me noopener">Instagram &#8599;</a></li>
-          <li><a href="https://www.linkedin.com/in/sai-brazier-091ba2398/" rel="me noopener">LinkedIn &#8599;</a></li>
-        </ul>
-      </div>
-    </div>
-    <p class="colophon">&copy; 2026 Sai Brazier</p>
-  </div>
+<div class="wrap">
+<div class="footer-grid">
+<div>
+<h2>Sai Brazier</h2>
+<p class="meta">Rexburg, Idaho</p>
+</div>
+<div>
+<ul>
+<li><a href="belingo.html"><span class="swatch sw-belingo"></span>BeLingo</a></li>
+<li><a href="eye-of-faith.html"><span class="swatch sw-eof"></span>Eye of Faith</a></li>
+<li><a href="run2live.html"><span class="swatch sw-r2l"></span>run2live</a></li>
+</ul>
+</div>
+<div>
+<ul>
+<li><a href="mailto:sai@saibrazier.com">sai@saibrazier.com</a></li>
+<li><a href="https://www.instagram.com/saibrazier/" rel="me noopener">Instagram ↗</a></li>
+<li><a href="https://www.linkedin.com/in/sai-brazier-091ba2398/" rel="me noopener">LinkedIn ↗</a></li>
+</ul>
+</div>
+</div>
+<p class="colophon">© 2026 Sai Brazier</p>
+</div>
 </footer>
-
 </body>
 </html>

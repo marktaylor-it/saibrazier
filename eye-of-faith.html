@@ -1,311 +1,281 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Eye of Faith | Sai Brazier</title>
-<meta name="description" content="Understanding life through an eye of faith. A podcast produced and hosted by Sai Brazier, and the poem that shares its name.">
-<link rel="stylesheet" href="assets/css/site.css">
+<meta content="Understanding life through an eye of faith. A podcast produced and hosted by Sai Brazier, and the poem that shares its name." name="description"/>
+<link href="assets/css/site.css" rel="stylesheet"/>
 <script>
 /* Applies a saved theme before first paint. Must stay inline and synchronous —
    an external file would let the page paint the wrong theme for a frame. */
 try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}
 </script>
-<script src="assets/js/theme.js" defer></script>
+<script defer="" src="assets/js/theme.js"></script>
 <script>
 /* Re-applies the last known colours synchronously, before paint, so an edit does
    not flash on repeat visits. Falls through harmlessly on a first visit. */
 try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElement('style');s.id='cms-theme';s.textContent=c;document.head.appendChild(s);}}catch(e){}
 </script>
-<script src="assets/js/cms-map.js" defer></script>
-<script src="assets/js/cms.js" defer></script>
-<script src="assets/js/nav.js" defer></script>
+<script defer="" src="assets/js/cms-map.js"></script>
+<script defer="" src="assets/js/cms.js"></script>
+<script defer="" src="assets/js/nav.js"></script>
 </head>
 <body class="v-eof" data-page="eye-of-faith">
 <a class="skip" href="#main">Skip to content</a>
-
 <header class="site-header">
-  <div class="wrap nav-inner">
-    <a class="brand" href="index.html">Sai Brazier</a>
-    <div class="nav-right">
-      <nav aria-label="Primary">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li class="has-sub">
-            <a href="business-ventures.html">Business ventures</a>
-            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-bv"><span class="sr-only">Open Business ventures menu</span></button>
-            <ul class="submenu" id="sm-bv">
-              <li><a href="belingo.html">BeLingo</a></li>
-              <li><a href="run2live.html">Run 2 Live</a></li>
-              <li><a href="eye-of-faith.html" aria-current="page">Eye of Faith</a></li>
-            </ul>
-          </li>
-          <li class="has-sub">
-            <a href="publications.html">Publications</a>
-            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-pub"><span class="sr-only">Open Publications menu</span></button>
-            <ul class="submenu" id="sm-pub">
-              <li><a href="publications.html#books">Books</a></li>
-              <li><a href="publications.html#articles">Articles</a></li>
-            </ul>
-          </li>
-          <li class="has-sub">
-            <a href="podcasts.html">Podcasts</a>
-            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-pod"><span class="sr-only">Open Podcasts menu</span></button>
-            <ul class="submenu" id="sm-pod">
-              <li><a href="podcasts.html#eye-of-faith">Eye of Faith</a></li>
-              <li><a href="podcasts.html#run2live">Run 2 Live</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <button id="theme-toggle" class="theme-toggle" type="button" hidden
-              aria-label="Colour theme: Auto. Activate to change.">
-        <span class="theme-dot" aria-hidden="true"></span><span class="theme-name">Auto</span>
-      </button>
-    </div>
-  </div>
+<div class="wrap nav-inner">
+<a class="brand" href="index.html">Sai Brazier</a>
+<div class="nav-right">
+<nav aria-label="Primary">
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li class="has-sub">
+<a href="business-ventures.html">Business ventures</a>
+<button aria-controls="sm-bv" aria-expanded="false" class="navbtn" type="button"><span class="sr-only">Open Business ventures menu</span></button>
+<ul class="submenu" id="sm-bv">
+<li><a href="belingo.html">BeLingo</a></li>
+<li><a href="run2live.html">Run 2 Live</a></li>
+<li><a aria-current="page" href="eye-of-faith.html">Eye of Faith</a></li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="publications.html">Publications</a>
+<button aria-controls="sm-pub" aria-expanded="false" class="navbtn" type="button"><span class="sr-only">Open Publications menu</span></button>
+<ul class="submenu" id="sm-pub">
+<li><a href="publications.html#books">Books</a></li>
+<li><a href="publications.html#articles">Articles</a></li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="podcasts.html">Podcasts</a>
+<button aria-controls="sm-pod" aria-expanded="false" class="navbtn" type="button"><span class="sr-only">Open Podcasts menu</span></button>
+<ul class="submenu" id="sm-pod">
+<li><a href="podcasts.html#eye-of-faith">Eye of Faith</a></li>
+<li><a href="podcasts.html#run2live">Run 2 Live</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+<button aria-label="Colour theme: Auto. Activate to change." class="theme-toggle" hidden="" id="theme-toggle" type="button">
+<span aria-hidden="true" class="theme-dot"></span><span class="theme-name">Auto</span>
+</button>
+</div>
+</div>
 </header>
-
 <main id="main">
-
-  <div class="wrap masthead">
-    <div class="grid">
-      <div style="grid-column: 1 / 8;">
-        <p class="meta" style="margin-bottom:1.25rem;">Venture 02 &mdash; Media publication</p>
-        <h1 class="eof-caps" style="font-size:var(--step-3); line-height:1.2;">Eye of Faith</h1>
-        <p class="lede" style="max-width:28ch; margin-top:1.25rem;">Understanding life through an eye of faith.</p>
-        <ul class="meta" style="margin-top:1.5rem;">
-          <li>Producer &amp; Host</li>
-          <li><span class="todo" id="todo-eof-launch">[[TODO: launch date]]</span></li>
-        </ul>
-      </div>
-      <figure style="grid-column: 9 / 13; margin:0;">
-        <div class="plate plate--eof">
-          <img src="assets/img/eof-logo.png" width="480" height="480"
-               loading="lazy" decoding="async" alt="Eye of Faith logo.">
-        </div>
-        <figcaption class="caption">Fig. 01 &mdash; Eye of Faith, mark</figcaption>
-      </figure>
-    </div>
-  </div>
-
-  <section class="wrap" aria-labelledby="show">
-    <h2 class="eyebrow" id="show">The show</h2>
-    <div class="grid">
-      <div style="grid-column: 1 / 6;">
-        <p class="lede">A podcast about belief and what it costs to keep it.</p>
-      </div>
-      <div style="grid-column: 7 / 13;">
-        <p>Sai Brazier produces and hosts it. The work is straightforward: sit with people who have lived something worth learning from, and ask how faith figured into it.</p>
-        <p>The title is also the standard. Every conversation is an attempt to look at an ordinary life and find more in it than the surface reports.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap" aria-labelledby="guests">
-    <h2 class="eyebrow" id="guests">Who sits down for it</h2>
-    <p style="margin-bottom:2rem;">In his own words, Sai has been blessed with several opportunities to interview and associate with well accomplished men and women of faith across the world. Those conversations are the spine of the show. He listens for three things in every one of them.</p>
-    <ol class="ledger">
-      <li><span class="n">01</span><span class="t">Their successes. What they built, and what it actually took.</span></li>
-      <li><span class="n">02</span><span class="t">Their adversities. The parts that did not resolve neatly, and what held while they waited.</span></li>
-      <li><span class="n">03</span><span class="t">The wisdom they acquired along the way. The thing they would hand to someone starting out.</span></li>
-    </ol>
-    <p style="margin-top:2rem;">Studying those lives turned up a pattern Sai keeps returning to. Every one of them carried a genuine zeal for life and a desire to fulfill their life&rsquo;s mission. Recording that, before it goes unrecorded, is the point of the show.</p>
-  </section>
-
-  <section class="wrap" aria-labelledby="produced">
-    <h2 class="eyebrow" id="produced">Produced, hosted, managed</h2>
-    <div class="grid">
-      <div style="grid-column: 1 / 7;">
-        <p>Sai carries the show end to end. He produces it, hosts it, and manages it.</p>
-        <p>That is not new work for him. From May 2024 to February 2026 he served a mission for The Church of Jesus Christ of Latter-day Saints in a role that included producing, hosting, and general managing a podcast run by a sub-team of service volunteers.</p>
-      </div>
-      <div style="grid-column: 7 / 13;">
-        <p>The same role had him leading a team of volunteer social media content creators from across the United States, mentoring Latin American students in higher education and English literacy, joining humanitarian efforts, and doing community service.</p>
-        <p>Two years of running a show with volunteers, on a volunteer schedule, is a specific kind of training. It teaches you that the interview is the easy part.</p>
-        <p><span class="todo" id="todo-eof-same">[[TODO: is Eye of Faith that volunteer podcast, or a separate show?]]</span></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap" aria-labelledby="poem">
-    <h2 class="eyebrow" id="poem">The poem</h2>
-    <p class="lede" style="max-width:44ch; margin-bottom:2.5rem;">Sai writes as well as hosts. These lines carry the show&rsquo;s name and its argument: the trouble you are already carrying is what qualifies you to help someone else carry theirs.</p>
-
-    <!-- The poem is real, selectable HTML — searchable, translatable, screen-readable.
+<div class="wrap masthead">
+<div class="grid">
+<div style="grid-column: 1 / 8;">
+<p class="meta" data-cms="main.p1" data-cms-label="Main — Paragraph" style="margin-bottom:1.25rem;">Venture 02 — Media publication</p>
+<h1 class="eof-caps" data-cms="main.h11" data-cms-label="Main — Heading" style="font-size:var(--step-3); line-height:1.2;">Eye of Faith</h1>
+<p class="lede" data-cms="main.p2" data-cms-label="Main — Paragraph 2" style="max-width:28ch; margin-top:1.25rem;">Understanding life through an eye of faith.</p>
+<ul class="meta" style="margin-top:1.5rem;">
+<li data-cms="main.li1" data-cms-label="Main — List item">Producer &amp; Host</li>
+<li><span class="todo" id="todo-eof-launch">[[TODO: launch date]]</span></li>
+</ul>
+</div>
+<figure style="grid-column: 9 / 13; margin:0;">
+<div class="plate plate--eof">
+<img alt="Eye of Faith logo." decoding="async" height="480" loading="lazy" src="assets/img/eof-logo.png" width="480"/>
+</div>
+<figcaption class="caption" data-cms="main.figcaption1" data-cms-label="Main — Caption">Fig. 01 — Eye of Faith, mark</figcaption>
+</figure>
+</div>
+</div>
+<section aria-labelledby="show" class="wrap">
+<h2 class="eyebrow" data-cms="the-show.h21" data-cms-label="The show — Section title" id="show">The show</h2>
+<div class="grid">
+<div style="grid-column: 1 / 6;">
+<p class="lede" data-cms="the-show.p1" data-cms-label="The show — Paragraph">A podcast about belief and what it costs to keep it.</p>
+</div>
+<div style="grid-column: 7 / 13;">
+<p data-cms="the-show.p2" data-cms-label="The show — Paragraph 2">Sai Brazier produces and hosts it. The work is straightforward: sit with people who have lived something worth learning from, and ask how faith figured into it.</p>
+<p data-cms="the-show.p3" data-cms-label="The show — Paragraph 3">The title is also the standard. Every conversation is an attempt to look at an ordinary life and find more in it than the surface reports.</p>
+</div>
+</div>
+</section>
+<section aria-labelledby="guests" class="wrap">
+<h2 class="eyebrow" data-cms="who-sits-down-for-it.h21" data-cms-label="Who sits down for it — Section title" id="guests">Who sits down for it</h2>
+<p data-cms="who-sits-down-for-it.p1" data-cms-label="Who sits down for it — Paragraph" style="margin-bottom:2rem;">In his own words, Sai has been blessed with several opportunities to interview and associate with well accomplished men and women of faith across the world. Those conversations are the spine of the show. He listens for three things in every one of them.</p>
+<ol class="ledger">
+<li data-cms="who-sits-down-for-it.li1" data-cms-label="Who sits down for it — List item"><span class="n">01</span><span class="t">Their successes. What they built, and what it actually took.</span></li>
+<li data-cms="who-sits-down-for-it.li2" data-cms-label="Who sits down for it — List item 2"><span class="n">02</span><span class="t">Their adversities. The parts that did not resolve neatly, and what held while they waited.</span></li>
+<li data-cms="who-sits-down-for-it.li3" data-cms-label="Who sits down for it — List item 3"><span class="n">03</span><span class="t">The wisdom they acquired along the way. The thing they would hand to someone starting out.</span></li>
+</ol>
+<p data-cms="who-sits-down-for-it.p2" data-cms-label="Who sits down for it — Paragraph 2" style="margin-top:2rem;">Studying those lives turned up a pattern Sai keeps returning to. Every one of them carried a genuine zeal for life and a desire to fulfill their life’s mission. Recording that, before it goes unrecorded, is the point of the show.</p>
+</section>
+<section aria-labelledby="produced" class="wrap">
+<h2 class="eyebrow" data-cms="produced-hosted-managed.h21" data-cms-label="Produced hosted managed — Section title" id="produced">Produced, hosted, managed</h2>
+<div class="grid">
+<div style="grid-column: 1 / 7;">
+<p data-cms="produced-hosted-managed.p1" data-cms-label="Produced hosted managed — Paragraph">Sai carries the show end to end. He produces it, hosts it, and manages it.</p>
+<p data-cms="produced-hosted-managed.p2" data-cms-label="Produced hosted managed — Paragraph 2">That is not new work for him. From May 2024 to February 2026 he served a mission for The Church of Jesus Christ of Latter-day Saints in a role that included producing, hosting, and general managing a podcast run by a sub-team of service volunteers.</p>
+</div>
+<div style="grid-column: 7 / 13;">
+<p data-cms="produced-hosted-managed.p3" data-cms-label="Produced hosted managed — Paragraph 3">The same role had him leading a team of volunteer social media content creators from across the United States, mentoring Latin American students in higher education and English literacy, joining humanitarian efforts, and doing community service.</p>
+<p data-cms="produced-hosted-managed.p4" data-cms-label="Produced hosted managed — Paragraph 4">Two years of running a show with volunteers, on a volunteer schedule, is a specific kind of training. It teaches you that the interview is the easy part.</p>
+<p><span class="todo" id="todo-eof-same">[[TODO: is Eye of Faith that volunteer podcast, or a separate show?]]</span></p>
+</div>
+</div>
+</section>
+<section aria-labelledby="poem" class="wrap">
+<h2 class="eyebrow" data-cms="the-poem.h21" data-cms-label="The poem — Section title" id="poem">The poem</h2>
+<p class="lede" data-cms="the-poem.p1" data-cms-label="The poem — Paragraph" style="max-width:44ch; margin-bottom:2.5rem;">Sai writes as well as hosts. These lines carry the show’s name and its argument: the trouble you are already carrying is what qualifies you to help someone else carry theirs.</p>
+<!-- The poem is real, selectable HTML — searchable, translatable, screen-readable.
          The artwork below it is the artifact, not the text.
          THE TURN: stanzas 1-7 each name your own affliction (half A), then relieve
          that same affliction in another (half B). Stanza 8 alone turns inward and
          is set full measure with no rule and no indent. -->
-    <div class="poem-panel">
-      <h2 class="eof-caps" style="font-size:var(--step-2);">Eye of Faith</h2>
-      <div class="poem">
-
-        <div class="stanza">
-          <p class="half-a">
-            <span class="line">As you manage to drag your weary soul</span>
-            <span class="line">Which stands in need of desperate rest,</span>
-          </p>
-          <p class="half-b">
-            <span class="line">Assist the fatigued who long to be whole.</span>
-            <span class="line">Bring relief to those of hearts depressed.</span>
-          </p>
-        </div>
-
-        <div class="stanza">
-          <p class="half-a">
-            <span class="line">If as you walk, your health does fail</span>
-            <span class="line">As you hope and seek to fully heal,</span>
-          </p>
-          <p class="half-b">
-            <span class="line">Minister to those who have grown frail,</span>
-            <span class="line">Who plead for healing as they kneel.</span>
-          </p>
-        </div>
-
-        <div class="stanza">
-          <p class="half-a">
-            <span class="line">When heavy burdens weigh you down</span>
-            <span class="line">With a force exceeding your strength to bear,</span>
-          </p>
-          <p class="half-b">
-            <span class="line">Lighten the loads of those around,</span>
-            <span class="line">Ministering toward their welfare.</span>
-          </p>
-        </div>
-
-        <div class="stanza">
-          <p class="half-a">
-            <span class="line">When your fallen nature does prevail</span>
-            <span class="line">To inflict your conscience of imperfection,</span>
-          </p>
-          <p class="half-b">
-            <span class="line">Seek to build confidence in those who fail</span>
-            <span class="line">To see themselves from divine perception.</span>
-          </p>
-        </div>
-
-        <div class="stanza">
-          <p class="half-a">
-            <span class="line">As you stumble in the journey to overcome</span>
-            <span class="line">Your own wavering flesh which sins at will,</span>
-          </p>
-          <p class="half-b">
-            <span class="line">Willingly forgive those who succumb</span>
-            <span class="line">To temptation&rsquo;s power, that their peace may be still.</span>
-          </p>
-        </div>
-
-        <div class="stanza">
-          <p class="half-a">
-            <span class="line">When you feel confused, doubtful or swayed,</span>
-            <span class="line">Be a defender of truth. Avoid sinful snares.</span>
-          </p>
-          <p class="half-b">
-            <span class="line">When desired blessings seem long delayed,</span>
-            <span class="line">Seek to be an answer to others&rsquo; prayers.</span>
-          </p>
-        </div>
-
-        <div class="stanza">
-          <p class="half-a">
-            <span class="line">As mists of darkness now arise;</span>
-            <span class="line">You stand in paralyzing need of clear direction,</span>
-          </p>
-          <p class="half-b">
-            <span class="line">Keep your eyes fixed upon the prize</span>
-            <span class="line">While lifting the torch of emulation.</span>
-          </p>
-        </div>
-
-        <div class="stanza stanza--turn">
-          <p class="half-a">
-            <span class="line">And when feeling distant from heaven&rsquo;s view</span>
-            <span class="line">As if God has forsaken you,</span>
-            <span class="line">Triple your faith and integrity</span>
-            <span class="line">Despite life&rsquo;s unresolved complexity.</span>
-          </p>
-        </div>
-
-        <p class="sig">&mdash; Sai Brazier</p>
-      </div>
-    </div>
-
-    <figure style="margin:3rem 0 0; max-width:560px;">
-      <img src="assets/img/eof-poem.png" width="900" height="993"
-           loading="lazy" decoding="async"
-           alt="The Eye of Faith poem set as artwork: two columns of cream serif verse on a slate-blue panel inside a sand frame, signed Sai Brazier. The full text appears above.">
-      <figcaption class="caption">Fig. 02 &mdash; The poem as printed artwork</figcaption>
-    </figure>
-  </section>
-
-  <section class="wrap" aria-labelledby="listen">
-    <h2 class="eyebrow" id="listen">Listen and follow</h2>
-    <div class="grid">
-      <div style="grid-column: 1 / 7;">
-        <figure style="margin:0;">
-          <img id="eof-banner" src="assets/img/eof-banner.png" width="1600" height="900"
-               loading="lazy" decoding="async"
-               style="border:1px solid var(--border); border-radius:var(--radius);"
-               alt="Eye of Faith banner: the logo beside the words Eye of Faith and the line Understanding life through an eye of faith.">
-          <figcaption class="caption">Fig. 03 &mdash; Eye of Faith, banner</figcaption>
-        </figure>
-      </div>
-      <div style="grid-column: 7 / 13;">
-        <p>Streaming links are not published here yet.</p>
-        <p><span class="todo" id="todo-eof-stream">[[TODO: streaming links &mdash; Spotify, Apple Podcasts, YouTube, RSS]]</span></p>
-        <p>Until they are, Instagram is the place to find Sai, and the contact page is open for guest inquiries and interview requests.</p>
-        <ul class="linkrow" style="margin-top:1.5rem;">
-          <li><a href="https://www.instagram.com/saibrazier/" rel="me noopener">Instagram &#8599;</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap" aria-labelledby="other">
-    <h2 class="eyebrow" id="other">Other ventures</h2>
-    <div class="cross">
-      <a href="belingo.html"><span class="n">01</span><span class="name">BeLingo</span></a>
-      <a href="run2live.html"><span class="n">03</span><span class="name lowercase">run2live</span></a>
-    </div>
-  </section>
-
-  <div class="band-quiet full-bleed">
-    <div class="wrap">
-      <p>If you know someone whose life would make a good conversation, say so. That is usually how the next episode starts.</p>
-    </div>
-  </div>
-
+<div class="poem-panel">
+<h2 class="eof-caps" data-cms="the-poem.h22" data-cms-label="The poem — Section title 2" style="font-size:var(--step-2);">Eye of Faith</h2>
+<div class="poem">
+<div class="stanza">
+<p class="half-a" data-cms="the-poem.p2" data-cms-label="The poem — Paragraph 2">
+<span class="line">As you manage to drag your weary soul</span>
+<span class="line">Which stands in need of desperate rest,</span>
+</p>
+<p class="half-b" data-cms="the-poem.p3" data-cms-label="The poem — Paragraph 3">
+<span class="line">Assist the fatigued who long to be whole.</span>
+<span class="line">Bring relief to those of hearts depressed.</span>
+</p>
+</div>
+<div class="stanza">
+<p class="half-a" data-cms="the-poem.p4" data-cms-label="The poem — Paragraph 4">
+<span class="line">If as you walk, your health does fail</span>
+<span class="line">As you hope and seek to fully heal,</span>
+</p>
+<p class="half-b" data-cms="the-poem.p5" data-cms-label="The poem — Paragraph 5">
+<span class="line">Minister to those who have grown frail,</span>
+<span class="line">Who plead for healing as they kneel.</span>
+</p>
+</div>
+<div class="stanza">
+<p class="half-a" data-cms="the-poem.p6" data-cms-label="The poem — Paragraph 6">
+<span class="line">When heavy burdens weigh you down</span>
+<span class="line">With a force exceeding your strength to bear,</span>
+</p>
+<p class="half-b" data-cms="the-poem.p7" data-cms-label="The poem — Paragraph 7">
+<span class="line">Lighten the loads of those around,</span>
+<span class="line">Ministering toward their welfare.</span>
+</p>
+</div>
+<div class="stanza">
+<p class="half-a" data-cms="the-poem.p8" data-cms-label="The poem — Paragraph 8">
+<span class="line">When your fallen nature does prevail</span>
+<span class="line">To inflict your conscience of imperfection,</span>
+</p>
+<p class="half-b" data-cms="the-poem.p9" data-cms-label="The poem — Paragraph 9">
+<span class="line">Seek to build confidence in those who fail</span>
+<span class="line">To see themselves from divine perception.</span>
+</p>
+</div>
+<div class="stanza">
+<p class="half-a" data-cms="the-poem.p10" data-cms-label="The poem — Paragraph 10">
+<span class="line">As you stumble in the journey to overcome</span>
+<span class="line">Your own wavering flesh which sins at will,</span>
+</p>
+<p class="half-b" data-cms="the-poem.p11" data-cms-label="The poem — Paragraph 11">
+<span class="line">Willingly forgive those who succumb</span>
+<span class="line">To temptation’s power, that their peace may be still.</span>
+</p>
+</div>
+<div class="stanza">
+<p class="half-a" data-cms="the-poem.p12" data-cms-label="The poem — Paragraph 12">
+<span class="line">When you feel confused, doubtful or swayed,</span>
+<span class="line">Be a defender of truth. Avoid sinful snares.</span>
+</p>
+<p class="half-b" data-cms="the-poem.p13" data-cms-label="The poem — Paragraph 13">
+<span class="line">When desired blessings seem long delayed,</span>
+<span class="line">Seek to be an answer to others’ prayers.</span>
+</p>
+</div>
+<div class="stanza">
+<p class="half-a" data-cms="the-poem.p14" data-cms-label="The poem — Paragraph 14">
+<span class="line">As mists of darkness now arise;</span>
+<span class="line">You stand in paralyzing need of clear direction,</span>
+</p>
+<p class="half-b" data-cms="the-poem.p15" data-cms-label="The poem — Paragraph 15">
+<span class="line">Keep your eyes fixed upon the prize</span>
+<span class="line">While lifting the torch of emulation.</span>
+</p>
+</div>
+<div class="stanza stanza--turn">
+<p class="half-a" data-cms="the-poem.p16" data-cms-label="The poem — Paragraph 16">
+<span class="line">And when feeling distant from heaven’s view</span>
+<span class="line">As if God has forsaken you,</span>
+<span class="line">Triple your faith and integrity</span>
+<span class="line">Despite life’s unresolved complexity.</span>
+</p>
+</div>
+<p class="sig" data-cms="the-poem.p17" data-cms-label="The poem — Paragraph 17">— Sai Brazier</p>
+</div>
+</div>
+<figure style="margin:3rem 0 0; max-width:560px;">
+<img alt="The Eye of Faith poem set as artwork: two columns of cream serif verse on a slate-blue panel inside a sand frame, signed Sai Brazier. The full text appears above." decoding="async" height="993" loading="lazy" src="assets/img/eof-poem.png" width="900"/>
+<figcaption class="caption" data-cms="the-poem.figcaption1" data-cms-label="The poem — Caption">Fig. 02 — The poem as printed artwork</figcaption>
+</figure>
+</section>
+<section aria-labelledby="listen" class="wrap">
+<h2 class="eyebrow" data-cms="listen-and-follow.h21" data-cms-label="Listen and follow — Section title" id="listen">Listen and follow</h2>
+<div class="grid">
+<div style="grid-column: 1 / 7;">
+<figure style="margin:0;">
+<img alt="Eye of Faith banner: the logo beside the words Eye of Faith and the line Understanding life through an eye of faith." decoding="async" height="900" id="eof-banner" loading="lazy" src="assets/img/eof-banner.png" style="border:1px solid var(--border); border-radius:var(--radius);" width="1600"/>
+<figcaption class="caption" data-cms="listen-and-follow.figcaption1" data-cms-label="Listen and follow — Caption">Fig. 03 — Eye of Faith, banner</figcaption>
+</figure>
+</div>
+<div style="grid-column: 7 / 13;">
+<p data-cms="listen-and-follow.p1" data-cms-label="Listen and follow — Paragraph">Streaming links are not published here yet.</p>
+<p><span class="todo" id="todo-eof-stream">[[TODO: streaming links — Spotify, Apple Podcasts, YouTube, RSS]]</span></p>
+<p data-cms="listen-and-follow.p2" data-cms-label="Listen and follow — Paragraph 2">Until they are, Instagram is the place to find Sai, and the contact page is open for guest inquiries and interview requests.</p>
+<ul class="linkrow" style="margin-top:1.5rem;">
+<li><a href="https://www.instagram.com/saibrazier/" rel="me noopener">Instagram ↗</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+</div>
+</section>
+<section aria-labelledby="other" class="wrap">
+<h2 class="eyebrow" data-cms="other-ventures.h21" data-cms-label="Other ventures — Section title" id="other">Other ventures</h2>
+<div class="cross">
+<a href="belingo.html"><span class="n">01</span><span class="name">BeLingo</span></a>
+<a href="run2live.html"><span class="n">03</span><span class="name lowercase">run2live</span></a>
+</div>
+</section>
+<div class="band-quiet full-bleed">
+<div class="wrap">
+<p data-cms="main.p3" data-cms-label="Main — Paragraph 3">If you know someone whose life would make a good conversation, say so. That is usually how the next episode starts.</p>
+</div>
+</div>
 </main>
-
 <footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <h2>Sai Brazier</h2>
-        <p class="meta">Rexburg, Idaho</p>
-      </div>
-      <div>
-        <ul>
-          <li><a href="belingo.html"><span class="swatch sw-belingo"></span>BeLingo</a></li>
-          <li><a href="eye-of-faith.html"><span class="swatch sw-eof"></span>Eye of Faith</a></li>
-          <li><a href="run2live.html"><span class="swatch sw-r2l"></span>run2live</a></li>
-        </ul>
-      </div>
-      <div>
-        <ul>
-          <li><a href="mailto:sai@saibrazier.com">sai@saibrazier.com</a></li>
-          <li><a href="https://www.instagram.com/saibrazier/" rel="me noopener">Instagram &#8599;</a></li>
-          <li><a href="https://www.linkedin.com/in/sai-brazier-091ba2398/" rel="me noopener">LinkedIn &#8599;</a></li>
-        </ul>
-      </div>
-    </div>
-    <p class="colophon">&copy; 2026 Sai Brazier</p>
-  </div>
+<div class="wrap">
+<div class="footer-grid">
+<div>
+<h2>Sai Brazier</h2>
+<p class="meta">Rexburg, Idaho</p>
+</div>
+<div>
+<ul>
+<li><a href="belingo.html"><span class="swatch sw-belingo"></span>BeLingo</a></li>
+<li><a href="eye-of-faith.html"><span class="swatch sw-eof"></span>Eye of Faith</a></li>
+<li><a href="run2live.html"><span class="swatch sw-r2l"></span>run2live</a></li>
+</ul>
+</div>
+<div>
+<ul>
+<li><a href="mailto:sai@saibrazier.com">sai@saibrazier.com</a></li>
+<li><a href="https://www.instagram.com/saibrazier/" rel="me noopener">Instagram ↗</a></li>
+<li><a href="https://www.linkedin.com/in/sai-brazier-091ba2398/" rel="me noopener">LinkedIn ↗</a></li>
+</ul>
+</div>
+</div>
+<p class="colophon">© 2026 Sai Brazier</p>
+</div>
 </footer>
-
 </body>
 </html>

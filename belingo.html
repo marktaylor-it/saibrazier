@@ -1,217 +1,203 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>BeLingo | Sai Brazier</title>
-<meta name="description" content="BeLingo is an EdTech venture built on the belief that people become fluent in English by speaking it with other people. Sai Brazier serves as CFO and Director of International and Public Relations.">
-<link rel="stylesheet" href="assets/css/site.css">
+<meta content="BeLingo is an EdTech venture built on the belief that people become fluent in English by speaking it with other people. Sai Brazier serves as CFO and Director of International and Public Relations." name="description"/>
+<link href="assets/css/site.css" rel="stylesheet"/>
 <script>
 /* Applies a saved theme before first paint. Must stay inline and synchronous —
    an external file would let the page paint the wrong theme for a frame. */
 try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}
 </script>
-<script src="assets/js/theme.js" defer></script>
+<script defer="" src="assets/js/theme.js"></script>
 <script>
 /* Re-applies the last known colours synchronously, before paint, so an edit does
    not flash on repeat visits. Falls through harmlessly on a first visit. */
 try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElement('style');s.id='cms-theme';s.textContent=c;document.head.appendChild(s);}}catch(e){}
 </script>
-<script src="assets/js/cms-map.js" defer></script>
-<script src="assets/js/cms.js" defer></script>
-<script src="assets/js/nav.js" defer></script>
+<script defer="" src="assets/js/cms-map.js"></script>
+<script defer="" src="assets/js/cms.js"></script>
+<script defer="" src="assets/js/nav.js"></script>
 </head>
 <body class="v-belingo" data-page="belingo">
 <a class="skip" href="#main">Skip to content</a>
-
 <header class="site-header">
-  <div class="wrap nav-inner">
-    <a class="brand" href="index.html">Sai Brazier</a>
-    <div class="nav-right">
-      <nav aria-label="Primary">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li class="has-sub">
-            <a href="business-ventures.html">Business ventures</a>
-            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-bv"><span class="sr-only">Open Business ventures menu</span></button>
-            <ul class="submenu" id="sm-bv">
-              <li><a href="belingo.html" aria-current="page">BeLingo</a></li>
-              <li><a href="run2live.html">Run 2 Live</a></li>
-              <li><a href="eye-of-faith.html">Eye of Faith</a></li>
-            </ul>
-          </li>
-          <li class="has-sub">
-            <a href="publications.html">Publications</a>
-            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-pub"><span class="sr-only">Open Publications menu</span></button>
-            <ul class="submenu" id="sm-pub">
-              <li><a href="publications.html#books">Books</a></li>
-              <li><a href="publications.html#articles">Articles</a></li>
-            </ul>
-          </li>
-          <li class="has-sub">
-            <a href="podcasts.html">Podcasts</a>
-            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-pod"><span class="sr-only">Open Podcasts menu</span></button>
-            <ul class="submenu" id="sm-pod">
-              <li><a href="podcasts.html#eye-of-faith">Eye of Faith</a></li>
-              <li><a href="podcasts.html#run2live">Run 2 Live</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <button id="theme-toggle" class="theme-toggle" type="button" hidden
-              aria-label="Colour theme: Auto. Activate to change.">
-        <span class="theme-dot" aria-hidden="true"></span><span class="theme-name">Auto</span>
-      </button>
-    </div>
-  </div>
+<div class="wrap nav-inner">
+<a class="brand" href="index.html">Sai Brazier</a>
+<div class="nav-right">
+<nav aria-label="Primary">
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li class="has-sub">
+<a href="business-ventures.html">Business ventures</a>
+<button aria-controls="sm-bv" aria-expanded="false" class="navbtn" type="button"><span class="sr-only">Open Business ventures menu</span></button>
+<ul class="submenu" id="sm-bv">
+<li><a aria-current="page" href="belingo.html">BeLingo</a></li>
+<li><a href="run2live.html">Run 2 Live</a></li>
+<li><a href="eye-of-faith.html">Eye of Faith</a></li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="publications.html">Publications</a>
+<button aria-controls="sm-pub" aria-expanded="false" class="navbtn" type="button"><span class="sr-only">Open Publications menu</span></button>
+<ul class="submenu" id="sm-pub">
+<li><a href="publications.html#books">Books</a></li>
+<li><a href="publications.html#articles">Articles</a></li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="podcasts.html">Podcasts</a>
+<button aria-controls="sm-pod" aria-expanded="false" class="navbtn" type="button"><span class="sr-only">Open Podcasts menu</span></button>
+<ul class="submenu" id="sm-pod">
+<li><a href="podcasts.html#eye-of-faith">Eye of Faith</a></li>
+<li><a href="podcasts.html#run2live">Run 2 Live</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+<button aria-label="Colour theme: Auto. Activate to change." class="theme-toggle" hidden="" id="theme-toggle" type="button">
+<span aria-hidden="true" class="theme-dot"></span><span class="theme-name">Auto</span>
+</button>
+</div>
+</div>
 </header>
-
 <main id="main">
-
-  <div class="wrap masthead">
-    <div class="grid">
-      <div style="grid-column: 1 / 8;">
-        <p class="meta" style="margin-bottom:1.25rem;">Venture 01 &mdash; EdTech</p>
-        <h1 style="font-size:var(--step-4); line-height:1.08;">BeLingo</h1>
-        <p class="lede" style="max-width:26ch;">English fluency, built in conversation.</p>
-        <ul class="meta" style="margin-top:1.5rem;">
-          <li>CFO | Director of International and Public Relations</li>
-          <li>Oct 2025 &ndash; Present</li>
-          <li>Self-employed</li>
-        </ul>
-      </div>
-      <figure style="grid-column: 9 / 13; margin:0;">
-        <div class="plate plate--belingo">
-          <img src="assets/img/belingo-wordmark.jpg" width="960" height="400"
-               loading="lazy" decoding="async" alt="BeLingo logo.">
-        </div>
-        <figcaption class="caption">Fig. 01 &mdash; BeLingo, wordmark</figcaption>
-      </figure>
-    </div>
-  </div>
-
-  <section class="wrap" aria-labelledby="overview">
-    <h2 class="eyebrow" id="overview">Overview</h2>
-    <div class="grid">
-      <div style="grid-column: 1 / 6;">
-        <p class="lede">Most language learning stalls in the same place.</p>
-      </div>
-      <div style="grid-column: 7 / 13;">
-        <p>A student can read English, pass a written test, and still freeze in a live conversation. BeLingo works on that gap directly. Its central program is the English conversation club, where students practice spoken English with other people instead of studying alone.</p>
-        <p>The clubs are not treated as a finished product. Part of Sai&rsquo;s work is innovating the conversation clubs themselves to improve student fluency, which means the format is the thing being built, tested, and improved.</p>
-        <p><span class="todo">[[TODO: one approved sentence from Sai describing exactly what BeLingo offers, and to whom]]</span></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap" aria-labelledby="scope">
-    <h2 class="eyebrow" id="scope">Scope</h2>
-    <p class="lede" style="max-width:34ch; margin-bottom:2rem;">Two titles, one job.</p>
-    <ol class="ledger">
-      <li><span class="n">01</span><span class="t">Leading academic partnerships</span></li>
-      <li><span class="n">02</span><span class="t">Coordinating with U.S. partners</span></li>
-      <li><span class="n">03</span><span class="t">B2B marketing</span></li>
-      <li><span class="n">04</span><span class="t">Management accounting</span></li>
-      <li><span class="n">05</span><span class="t">Innovating English conversation clubs to improve student fluency</span></li>
-    </ol>
-    <p style="margin-top:2rem;">The CFO half keeps the numbers honest. The international and public relations half keeps the venture connected. In a venture this young, those are the same work approached from opposite ends.</p>
-  </section>
-
-  <section class="wrap" aria-labelledby="clubs">
-    <h2 class="eyebrow" id="clubs">The conversation club</h2>
-    <p class="lede" style="max-width:40ch; margin-bottom:2rem;">Fluency is a performance skill. It improves fastest under the conditions it will actually be used in.</p>
-    <ul class="cards">
-      <li>
-        <h3>Format</h3>
-        <p>Students speak in real time with another person who is listening. That is the whole premise.</p>
-        <p><span class="todo">[[TODO: online, in person, or both]]</span></p>
-      </li>
-      <li>
-        <h3>Session</h3>
-        <p><span class="todo">[[TODO: length, frequency, group size]]</span></p>
-      </li>
-      <li>
-        <h3>Level</h3>
-        <p><span class="todo">[[TODO: minimum English level to join]]</span></p>
-      </li>
-      <li>
-        <h3>Measurement</h3>
-        <p><span class="todo">[[TODO: how fluency improvement is measured]]</span></p>
-      </li>
-    </ul>
-  </section>
-
-  <section class="wrap" aria-labelledby="partnerships">
-    <h2 class="eyebrow" id="partnerships">Partnerships</h2>
-    <div class="grid">
-      <div style="grid-column: 1 / 7;">
-        <p>Sai leads BeLingo&rsquo;s academic partnerships and coordinates with the venture&rsquo;s partners in the United States. This is the bridge role: academic institutions on one side, U.S. counterparts on the other, and a program that has to run consistently between them across borders and time zones.</p>
-        <p>It is also the reason the title reads <em>international</em>. Partnerships of this kind are built one relationship at a time.</p>
-      </div>
-      <div style="grid-column: 7 / 13;">
-        <p>On the commercial side, Sai handles B2B marketing and management accounting. B2B marketing means the pitch is aimed at institutions rather than individual students. Management accounting means the internal numbers, the ones used to decide what the venture does next.</p>
-        <p class="meta" style="margin-top:1.5rem;">Open questions</p>
-        <p style="margin-top:.75rem;">
-          <span class="todo" id="todo-belingo-partners">[[TODO: current academic partner institutions]]</span>
-          <span class="todo">[[TODO: U.S. partners and their contribution]]</span>
-          <span class="todo">[[TODO: student regions]]</span>
-          <span class="todo">[[TODO: funding model]]</span>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <div class="band-quote full-bleed">
-    <div class="wrap">
-      <blockquote>&ldquo;Embracing the impossible and pushing the limits is my natural response to any challenge or business endeavor.&rdquo;</blockquote>
-      <p class="attrib">&mdash; Sai Brazier</p>
-    </div>
-  </div>
-
-  <section class="wrap" aria-labelledby="other">
-    <h2 class="eyebrow" id="other">Other ventures</h2>
-    <div class="cross">
-      <a href="eye-of-faith.html"><span class="n">02</span><span class="name">Eye of Faith</span></a>
-      <a href="run2live.html"><span class="n">03</span><span class="name lowercase">run2live</span></a>
-    </div>
-  </section>
-
-  <div class="band-quiet full-bleed">
-    <div class="wrap">
-      <p>If you run a school, a language program, or a department that wants its students speaking English rather than only studying it, Sai is the person to talk to.</p>
-      <p style="font-size:var(--step-0); font-family:var(--font-body); margin-top:1.5rem; line-height:1.62;"><a href="contact.html">Get in touch &rarr;</a></p>
-    </div>
-  </div>
-
+<div class="wrap masthead">
+<div class="grid">
+<div style="grid-column: 1 / 8;">
+<p class="meta" data-cms="main.p1" data-cms-label="Main — Paragraph" style="margin-bottom:1.25rem;">Venture 01 — EdTech</p>
+<h1 data-cms="main.h11" data-cms-label="Main — Heading" style="font-size:var(--step-4); line-height:1.08;">BeLingo</h1>
+<p class="lede" data-cms="main.p2" data-cms-label="Main — Paragraph 2" style="max-width:26ch;">English fluency, built in conversation.</p>
+<ul class="meta" style="margin-top:1.5rem;">
+<li data-cms="main.li1" data-cms-label="Main — List item">CFO | Director of International and Public Relations</li>
+<li data-cms="main.li2" data-cms-label="Main — List item 2">Oct 2025 – Present</li>
+<li data-cms="main.li3" data-cms-label="Main — List item 3">Self-employed</li>
+</ul>
+</div>
+<figure style="grid-column: 9 / 13; margin:0;">
+<div class="plate plate--belingo">
+<img alt="BeLingo logo." decoding="async" height="400" loading="lazy" src="assets/img/belingo-wordmark.jpg" width="960"/>
+</div>
+<figcaption class="caption" data-cms="main.figcaption1" data-cms-label="Main — Caption">Fig. 01 — BeLingo, wordmark</figcaption>
+</figure>
+</div>
+</div>
+<section aria-labelledby="overview" class="wrap">
+<h2 class="eyebrow" data-cms="overview.h21" data-cms-label="Overview — Section title" id="overview">Overview</h2>
+<div class="grid">
+<div style="grid-column: 1 / 6;">
+<p class="lede" data-cms="overview.p1" data-cms-label="Overview — Paragraph">Most language learning stalls in the same place.</p>
+</div>
+<div style="grid-column: 7 / 13;">
+<p data-cms="overview.p2" data-cms-label="Overview — Paragraph 2">A student can read English, pass a written test, and still freeze in a live conversation. BeLingo works on that gap directly. Its central program is the English conversation club, where students practice spoken English with other people instead of studying alone.</p>
+<p data-cms="overview.p3" data-cms-label="Overview — Paragraph 3">The clubs are not treated as a finished product. Part of Sai’s work is innovating the conversation clubs themselves to improve student fluency, which means the format is the thing being built, tested, and improved.</p>
+<p><span class="todo">[[TODO: one approved sentence from Sai describing exactly what BeLingo offers, and to whom]]</span></p>
+</div>
+</div>
+</section>
+<section aria-labelledby="scope" class="wrap">
+<h2 class="eyebrow" data-cms="scope.h21" data-cms-label="Scope — Section title" id="scope">Scope</h2>
+<p class="lede" data-cms="scope.p1" data-cms-label="Scope — Paragraph" style="max-width:34ch; margin-bottom:2rem;">Two titles, one job.</p>
+<ol class="ledger">
+<li data-cms="scope.li1" data-cms-label="Scope — List item"><span class="n">01</span><span class="t">Leading academic partnerships</span></li>
+<li data-cms="scope.li2" data-cms-label="Scope — List item 2"><span class="n">02</span><span class="t">Coordinating with U.S. partners</span></li>
+<li data-cms="scope.li3" data-cms-label="Scope — List item 3"><span class="n">03</span><span class="t">B2B marketing</span></li>
+<li data-cms="scope.li4" data-cms-label="Scope — List item 4"><span class="n">04</span><span class="t">Management accounting</span></li>
+<li data-cms="scope.li5" data-cms-label="Scope — List item 5"><span class="n">05</span><span class="t">Innovating English conversation clubs to improve student fluency</span></li>
+</ol>
+<p data-cms="scope.p2" data-cms-label="Scope — Paragraph 2" style="margin-top:2rem;">The CFO half keeps the numbers honest. The international and public relations half keeps the venture connected. In a venture this young, those are the same work approached from opposite ends.</p>
+</section>
+<section aria-labelledby="clubs" class="wrap">
+<h2 class="eyebrow" data-cms="the-conversation-club.h21" data-cms-label="The conversation club — Section title" id="clubs">The conversation club</h2>
+<p class="lede" data-cms="the-conversation-club.p1" data-cms-label="The conversation club — Paragraph" style="max-width:40ch; margin-bottom:2rem;">Fluency is a performance skill. It improves fastest under the conditions it will actually be used in.</p>
+<ul class="cards">
+<li>
+<h3 data-cms="the-conversation-club.h31" data-cms-label="The conversation club — Subheading">Format</h3>
+<p data-cms="the-conversation-club.p2" data-cms-label="The conversation club — Paragraph 2">Students speak in real time with another person who is listening. That is the whole premise.</p>
+<p><span class="todo">[[TODO: online, in person, or both]]</span></p>
+</li>
+<li>
+<h3 data-cms="the-conversation-club.h32" data-cms-label="The conversation club — Subheading 2">Session</h3>
+<p><span class="todo">[[TODO: length, frequency, group size]]</span></p>
+</li>
+<li>
+<h3 data-cms="the-conversation-club.h33" data-cms-label="The conversation club — Subheading 3">Level</h3>
+<p><span class="todo">[[TODO: minimum English level to join]]</span></p>
+</li>
+<li>
+<h3 data-cms="the-conversation-club.h34" data-cms-label="The conversation club — Subheading 4">Measurement</h3>
+<p><span class="todo">[[TODO: how fluency improvement is measured]]</span></p>
+</li>
+</ul>
+</section>
+<section aria-labelledby="partnerships" class="wrap">
+<h2 class="eyebrow" data-cms="partnerships.h21" data-cms-label="Partnerships — Section title" id="partnerships">Partnerships</h2>
+<div class="grid">
+<div style="grid-column: 1 / 7;">
+<p data-cms="partnerships.p1" data-cms-label="Partnerships — Paragraph">Sai leads BeLingo’s academic partnerships and coordinates with the venture’s partners in the United States. This is the bridge role: academic institutions on one side, U.S. counterparts on the other, and a program that has to run consistently between them across borders and time zones.</p>
+<p data-cms="partnerships.p2" data-cms-label="Partnerships — Paragraph 2">It is also the reason the title reads <em>international</em>. Partnerships of this kind are built one relationship at a time.</p>
+</div>
+<div style="grid-column: 7 / 13;">
+<p data-cms="partnerships.p3" data-cms-label="Partnerships — Paragraph 3">On the commercial side, Sai handles B2B marketing and management accounting. B2B marketing means the pitch is aimed at institutions rather than individual students. Management accounting means the internal numbers, the ones used to decide what the venture does next.</p>
+<p class="meta" data-cms="partnerships.p4" data-cms-label="Partnerships — Paragraph 4" style="margin-top:1.5rem;">Open questions</p>
+<p style="margin-top:.75rem;">
+<span class="todo" id="todo-belingo-partners">[[TODO: current academic partner institutions]]</span>
+<span class="todo">[[TODO: U.S. partners and their contribution]]</span>
+<span class="todo">[[TODO: student regions]]</span>
+<span class="todo">[[TODO: funding model]]</span>
+</p>
+</div>
+</div>
+</section>
+<div class="band-quote full-bleed">
+<div class="wrap">
+<blockquote data-cms="main.blockquote1" data-cms-label="Main — Quote">“Embracing the impossible and pushing the limits is my natural response to any challenge or business endeavor.”</blockquote>
+<p class="attrib" data-cms="main.p3" data-cms-label="Main — Paragraph 3">— Sai Brazier</p>
+</div>
+</div>
+<section aria-labelledby="other" class="wrap">
+<h2 class="eyebrow" data-cms="other-ventures.h21" data-cms-label="Other ventures — Section title" id="other">Other ventures</h2>
+<div class="cross">
+<a href="eye-of-faith.html"><span class="n">02</span><span class="name">Eye of Faith</span></a>
+<a href="run2live.html"><span class="n">03</span><span class="name lowercase">run2live</span></a>
+</div>
+</section>
+<div class="band-quiet full-bleed">
+<div class="wrap">
+<p data-cms="main.p4" data-cms-label="Main — Paragraph 4">If you run a school, a language program, or a department that wants its students speaking English rather than only studying it, Sai is the person to talk to.</p>
+<p style="font-size:var(--step-0); font-family:var(--font-body); margin-top:1.5rem; line-height:1.62;"><a href="contact.html">Get in touch →</a></p>
+</div>
+</div>
 </main>
-
 <footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <h2>Sai Brazier</h2>
-        <p class="meta">Rexburg, Idaho</p>
-      </div>
-      <div>
-        <ul>
-          <li><a href="belingo.html"><span class="swatch sw-belingo"></span>BeLingo</a></li>
-          <li><a href="eye-of-faith.html"><span class="swatch sw-eof"></span>Eye of Faith</a></li>
-          <li><a href="run2live.html"><span class="swatch sw-r2l"></span>run2live</a></li>
-        </ul>
-      </div>
-      <div>
-        <ul>
-          <li><a href="mailto:sai@saibrazier.com">sai@saibrazier.com</a></li>
-          <li><a href="https://www.instagram.com/saibrazier/" rel="me noopener">Instagram &#8599;</a></li>
-          <li><a href="https://www.linkedin.com/in/sai-brazier-091ba2398/" rel="me noopener">LinkedIn &#8599;</a></li>
-        </ul>
-      </div>
-    </div>
-    <p class="colophon">&copy; 2026 Sai Brazier</p>
-  </div>
+<div class="wrap">
+<div class="footer-grid">
+<div>
+<h2>Sai Brazier</h2>
+<p class="meta">Rexburg, Idaho</p>
+</div>
+<div>
+<ul>
+<li><a href="belingo.html"><span class="swatch sw-belingo"></span>BeLingo</a></li>
+<li><a href="eye-of-faith.html"><span class="swatch sw-eof"></span>Eye of Faith</a></li>
+<li><a href="run2live.html"><span class="swatch sw-r2l"></span>run2live</a></li>
+</ul>
+</div>
+<div>
+<ul>
+<li><a href="mailto:sai@saibrazier.com">sai@saibrazier.com</a></li>
+<li><a href="https://www.instagram.com/saibrazier/" rel="me noopener">Instagram ↗</a></li>
+<li><a href="https://www.linkedin.com/in/sai-brazier-091ba2398/" rel="me noopener">LinkedIn ↗</a></li>
+</ul>
+</div>
+</div>
+<p class="colophon">© 2026 Sai Brazier</p>
+</div>
 </footer>
-
 </body>
 </html>

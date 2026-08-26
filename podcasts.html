@@ -1,240 +1,229 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Podcasts | Sai Brazier</title>
-<meta name="description" content="Eye of Faith and Run 2 Live — podcasts produced and hosted by Sai Brazier.">
-<link rel="stylesheet" href="assets/css/site.css">
+<meta content="Eye of Faith and Run 2 Live — podcasts produced and hosted by Sai Brazier." name="description"/>
+<link href="assets/css/site.css" rel="stylesheet"/>
 <script>
 /* Applies a saved theme before first paint. Must stay inline and synchronous —
    an external file would let the page paint the wrong theme for a frame. */
 try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}
 </script>
-<script src="assets/js/theme.js" defer></script>
+<script defer="" src="assets/js/theme.js"></script>
 <script>
 /* Re-applies the last known colours synchronously, before paint, so an edit does
    not flash on repeat visits. Falls through harmlessly on a first visit. */
 try{var c=localStorage.getItem('cms:themecss');if(c){var s=document.createElement('style');s.id='cms-theme';s.textContent=c;document.head.appendChild(s);}}catch(e){}
 </script>
-<script src="assets/js/cms-map.js" defer></script>
-<script src="assets/js/cms.js" defer></script>
-<script src="assets/js/nav.js" defer></script>
+<script defer="" src="assets/js/cms-map.js"></script>
+<script defer="" src="assets/js/cms.js"></script>
+<script defer="" src="assets/js/nav.js"></script>
 </head>
 <body data-page="podcasts">
 <a class="skip" href="#main">Skip to content</a>
-
 <header class="site-header">
-  <div class="wrap nav-inner">
-    <a class="brand" href="index.html">Sai Brazier</a>
-    <div class="nav-right">
-      <nav aria-label="Primary">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li class="has-sub">
-            <a href="business-ventures.html">Business ventures</a>
-            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-bv"><span class="sr-only">Open Business ventures menu</span></button>
-            <ul class="submenu" id="sm-bv">
-              <li><a href="belingo.html">BeLingo</a></li>
-              <li><a href="run2live.html">Run 2 Live</a></li>
-              <li><a href="eye-of-faith.html">Eye of Faith</a></li>
-            </ul>
-          </li>
-          <li class="has-sub">
-            <a href="publications.html">Publications</a>
-            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-pub"><span class="sr-only">Open Publications menu</span></button>
-            <ul class="submenu" id="sm-pub">
-              <li><a href="publications.html#books">Books</a></li>
-              <li><a href="publications.html#articles">Articles</a></li>
-            </ul>
-          </li>
-          <li class="has-sub">
-            <a href="podcasts.html" aria-current="page">Podcasts</a>
-            <button class="navbtn" type="button" aria-expanded="false" aria-controls="sm-pod"><span class="sr-only">Open Podcasts menu</span></button>
-            <ul class="submenu" id="sm-pod">
-              <li><a href="podcasts.html#eye-of-faith">Eye of Faith</a></li>
-              <li><a href="podcasts.html#run2live">Run 2 Live</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <button id="theme-toggle" class="theme-toggle" type="button" hidden
-              aria-label="Colour theme: Auto. Activate to change.">
-        <span class="theme-dot" aria-hidden="true"></span><span class="theme-name">Auto</span>
-      </button>
-    </div>
-  </div>
+<div class="wrap nav-inner">
+<a class="brand" href="index.html">Sai Brazier</a>
+<div class="nav-right">
+<nav aria-label="Primary">
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li class="has-sub">
+<a href="business-ventures.html">Business ventures</a>
+<button aria-controls="sm-bv" aria-expanded="false" class="navbtn" type="button"><span class="sr-only">Open Business ventures menu</span></button>
+<ul class="submenu" id="sm-bv">
+<li><a href="belingo.html">BeLingo</a></li>
+<li><a href="run2live.html">Run 2 Live</a></li>
+<li><a href="eye-of-faith.html">Eye of Faith</a></li>
+</ul>
+</li>
+<li class="has-sub">
+<a href="publications.html">Publications</a>
+<button aria-controls="sm-pub" aria-expanded="false" class="navbtn" type="button"><span class="sr-only">Open Publications menu</span></button>
+<ul class="submenu" id="sm-pub">
+<li><a href="publications.html#books">Books</a></li>
+<li><a href="publications.html#articles">Articles</a></li>
+</ul>
+</li>
+<li class="has-sub">
+<a aria-current="page" href="podcasts.html">Podcasts</a>
+<button aria-controls="sm-pod" aria-expanded="false" class="navbtn" type="button"><span class="sr-only">Open Podcasts menu</span></button>
+<ul class="submenu" id="sm-pod">
+<li><a href="podcasts.html#eye-of-faith">Eye of Faith</a></li>
+<li><a href="podcasts.html#run2live">Run 2 Live</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+<button aria-label="Colour theme: Auto. Activate to change." class="theme-toggle" hidden="" id="theme-toggle" type="button">
+<span aria-hidden="true" class="theme-dot"></span><span class="theme-name">Auto</span>
+</button>
+</div>
+</div>
 </header>
-
 <main id="main">
-
-  <div class="wrap masthead">
-    <p class="meta" style="margin-bottom:1.25rem;">Podcasts</p>
-    <h1 style="font-size:var(--step-4); line-height:1.08;">Two shows</h1>
-    <p class="lede" style="max-width:38ch;">Sai produces, hosts and manages both. Sitting down with people who have lived something worth learning from.</p>
-  </div>
-
-  <section class="wrap" aria-labelledby="eye-of-faith">
-    <h2 class="eyebrow" id="eye-of-faith">Eye of Faith</h2>
-    <div class="entry v-eof" style="border-top:0;padding-top:0;">
-      <figure class="entry-mark" style="margin:0;background:#D5CCA3;">
-        <img src="assets/img/eof-logo.png" width="480" height="480" loading="lazy" decoding="async" alt="Eye of Faith logo." style="max-width:150px;">
-      </figure>
-      <div>
-        <h3 class="eof-caps">Eye of Faith</h3>
-        <p class="lede" style="font-size:var(--step-1);max-width:32ch;">Understanding life through an eye of faith.</p>
-        <p>Interviews with accomplished men and women of faith from across the world, and what held while they waited.</p>
-        <ul class="platforms">
-          <li><a href="eye-of-faith.html">Apple Podcasts &mdash; <span class="todo">[[TODO: link]]</span></a></li>
-          <li><a href="eye-of-faith.html">Spotify &mdash; <span class="todo">[[TODO: link]]</span></a></li>
-          <li><a href="eye-of-faith.html">YouTube &mdash; <span class="todo">[[TODO: link]]</span></a></li>
-        </ul>
-      </div>
-    </div>
-    <h3 class="meta" style="margin:2.5rem 0 1rem;">Recent releases</h3>
-    <div class="rail">
-        <article class="card">
-          <div class="card-cover square">Episode art</div>
-          <h3><span class="todo">[[TODO: episode 1 title]]</span></h3>
-          <ul class="platforms">
-            <li><a href="#">Apple</a></li><li><a href="#">Spotify</a></li><li><a href="#">YouTube</a></li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="card-cover square">Episode art</div>
-          <h3><span class="todo">[[TODO: episode 2 title]]</span></h3>
-          <ul class="platforms">
-            <li><a href="#">Apple</a></li><li><a href="#">Spotify</a></li><li><a href="#">YouTube</a></li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="card-cover square">Episode art</div>
-          <h3><span class="todo">[[TODO: episode 3 title]]</span></h3>
-          <ul class="platforms">
-            <li><a href="#">Apple</a></li><li><a href="#">Spotify</a></li><li><a href="#">YouTube</a></li>
-          </ul>
-        </article>
-    </div>
-  </section>
-
-  <section class="wrap" aria-labelledby="run2live">
-    <h2 class="eyebrow" id="run2live">Run 2 Live</h2>
-    <div class="entry v-r2l" style="border-top:0;padding-top:0;">
-      <figure class="entry-mark" style="margin:0;background:#000;">
-        <img src="assets/img/run2live-mark.png" width="480" height="480" loading="lazy" decoding="async" alt="run2live logo." style="max-width:150px;">
-      </figure>
-      <div>
-        <h3 class="lowercase">run2live</h3>
-        <p class="lede" style="font-size:var(--step-1);max-width:32ch;"><span class="todo">[[TODO: Run 2 Live podcast tagline]]</span></p>
-        <p><span class="todo">[[TODO: what the Run 2 Live podcast is about]]</span></p>
-        <ul class="platforms">
-          <li><a href="run2live.html">Apple Podcasts &mdash; <span class="todo">[[TODO: link]]</span></a></li>
-          <li><a href="run2live.html">Spotify &mdash; <span class="todo">[[TODO: link]]</span></a></li>
-          <li><a href="run2live.html">YouTube &mdash; <span class="todo">[[TODO: link]]</span></a></li>
-        </ul>
-      </div>
-    </div>
-    <h3 class="meta" style="margin:2.5rem 0 1rem;">Recent releases</h3>
-    <div class="rail">
-        <article class="card">
-          <div class="card-cover square">Episode art</div>
-          <h3><span class="todo">[[TODO: episode 4 title]]</span></h3>
-          <ul class="platforms">
-            <li><a href="#">Apple</a></li><li><a href="#">Spotify</a></li><li><a href="#">YouTube</a></li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="card-cover square">Episode art</div>
-          <h3><span class="todo">[[TODO: episode 5 title]]</span></h3>
-          <ul class="platforms">
-            <li><a href="#">Apple</a></li><li><a href="#">Spotify</a></li><li><a href="#">YouTube</a></li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="card-cover square">Episode art</div>
-          <h3><span class="todo">[[TODO: episode 6 title]]</span></h3>
-          <ul class="platforms">
-            <li><a href="#">Apple</a></li><li><a href="#">Spotify</a></li><li><a href="#">YouTube</a></li>
-          </ul>
-        </article>
-    </div>
-  </section>
-
-  <section class="wrap" aria-labelledby="notable">
-    <h2 class="eyebrow" id="notable">Notable episodes</h2>
-    <div class="rail">
-        <article class="card">
-          <div class="card-cover square">Episode art</div>
-          <h3><span class="todo">[[TODO: episode 7 title]]</span></h3>
-          <ul class="platforms">
-            <li><a href="#">Apple</a></li><li><a href="#">Spotify</a></li><li><a href="#">YouTube</a></li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="card-cover square">Episode art</div>
-          <h3><span class="todo">[[TODO: episode 8 title]]</span></h3>
-          <ul class="platforms">
-            <li><a href="#">Apple</a></li><li><a href="#">Spotify</a></li><li><a href="#">YouTube</a></li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="card-cover square">Episode art</div>
-          <h3><span class="todo">[[TODO: episode 9 title]]</span></h3>
-          <ul class="platforms">
-            <li><a href="#">Apple</a></li><li><a href="#">Spotify</a></li><li><a href="#">YouTube</a></li>
-          </ul>
-        </article>
-    </div>
-  </section>
-
-  <section class="wrap" aria-labelledby="history">
-    <h2 class="eyebrow" id="history">My history in podcast production</h2>
-    <div class="grid">
-      <div style="grid-column: 1 / 7;">
-        <p>From May 2024 to February 2026, on a service mission for The Church of Jesus Christ of Latter-day Saints, Sai produced, hosted and general-managed a podcast run by a sub-team of service volunteers.</p>
-        <p>The same role had him leading a national team of volunteer content creators. Two years of running a show with volunteers, on a volunteer schedule, is a specific kind of training. It teaches you that the interview is the easy part.</p>
-      </div>
-      <div style="grid-column: 8 / 13;">
-        <div class="card-cover" style="aspect-ratio:4/3;">Photo</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="band-quiet full-bleed">
-    <div class="wrap">
-      <p>If you know someone whose life would make a good conversation, say so. That is usually how the next episode starts.</p>
-    </div>
-  </div>
-
+<div class="wrap masthead">
+<p class="meta" data-cms="top.p1" data-cms-label="Top — Paragraph" style="margin-bottom:1.25rem;">Podcasts</p>
+<h1 data-cms="top.h11" data-cms-label="Top — Heading" style="font-size:var(--step-4); line-height:1.08;">Two shows</h1>
+<p class="lede" data-cms="top.p2" data-cms-label="Top — Paragraph 2" style="max-width:38ch;">Sai produces, hosts and manages both. Sitting down with people who have lived something worth learning from.</p>
+</div>
+<section aria-labelledby="eye-of-faith" class="wrap">
+<h2 class="eyebrow" data-cms="eye-of-faith.h21" data-cms-label="Eye of faith — Section title" id="eye-of-faith">Eye of Faith</h2>
+<div class="entry v-eof" style="border-top:0;padding-top:0;">
+<figure class="entry-mark" style="margin:0;background:#D5CCA3;">
+<img alt="Eye of Faith logo." decoding="async" height="480" loading="lazy" src="assets/img/eof-logo.png" style="max-width:150px;" width="480"/>
+</figure>
+<div>
+<h3 class="eof-caps" data-cms="eye-of-faith.h31" data-cms-label="Eye of faith — Subheading">Eye of Faith</h3>
+<p class="lede" data-cms="eye-of-faith.p1" data-cms-label="Eye of faith — Paragraph" style="font-size:var(--step-1);max-width:32ch;">Understanding life through an eye of faith.</p>
+<p data-cms="eye-of-faith.p2" data-cms-label="Eye of faith — Paragraph 2">Interviews with accomplished men and women of faith from across the world, and what held while they waited.</p>
+<ul class="platforms">
+<li><a href="eye-of-faith.html">Apple Podcasts — <span class="todo">[[TODO: link]]</span></a></li>
+<li><a href="eye-of-faith.html">Spotify — <span class="todo">[[TODO: link]]</span></a></li>
+<li><a href="eye-of-faith.html">YouTube — <span class="todo">[[TODO: link]]</span></a></li>
+</ul>
+</div>
+</div>
+<h3 class="meta" data-cms="eye-of-faith.h32" data-cms-label="Eye of faith — Subheading 2" style="margin:2.5rem 0 1rem;">Recent releases</h3>
+<div class="rail">
+<article class="card">
+<div class="card-cover square">Episode art</div>
+<h3><span class="todo">[[TODO: episode 1 title]]</span></h3>
+<ul class="platforms">
+<li><a href="#">Apple</a></li><li><a href="#">Spotify</a></li><li><a href="#">YouTube</a></li>
+</ul>
+</article>
+<article class="card">
+<div class="card-cover square">Episode art</div>
+<h3><span class="todo">[[TODO: episode 2 title]]</span></h3>
+<ul class="platforms">
+<li><a href="#">Apple</a></li><li><a href="#">Spotify</a></li><li><a href="#">YouTube</a></li>
+</ul>
+</article>
+<article class="card">
+<div class="card-cover square">Episode art</div>
+<h3><span class="todo">[[TODO: episode 3 title]]</span></h3>
+<ul class="platforms">
+<li><a href="#">Apple</a></li><li><a href="#">Spotify</a></li><li><a href="#">YouTube</a></li>
+</ul>
+</article>
+</div>
+</section>
+<section aria-labelledby="run2live" class="wrap">
+<h2 class="eyebrow" data-cms="run-2-live.h21" data-cms-label="Run 2 live — Section title" id="run2live">Run 2 Live</h2>
+<div class="entry v-r2l" style="border-top:0;padding-top:0;">
+<figure class="entry-mark" style="margin:0;background:#000;">
+<img alt="run2live logo." decoding="async" height="480" loading="lazy" src="assets/img/run2live-mark.png" style="max-width:150px;" width="480"/>
+</figure>
+<div>
+<h3 class="lowercase" data-cms="run-2-live.h31" data-cms-label="Run 2 live — Subheading">run2live</h3>
+<p class="lede" style="font-size:var(--step-1);max-width:32ch;"><span class="todo">[[TODO: Run 2 Live podcast tagline]]</span></p>
+<p><span class="todo">[[TODO: what the Run 2 Live podcast is about]]</span></p>
+<ul class="platforms">
+<li><a href="run2live.html">Apple Podcasts — <span class="todo">[[TODO: link]]</span></a></li>
+<li><a href="run2live.html">Spotify — <span class="todo">[[TODO: link]]</span></a></li>
+<li><a href="run2live.html">YouTube — <span class="todo">[[TODO: link]]</span></a></li>
+</ul>
+</div>
+</div>
+<h3 class="meta" data-cms="run-2-live.h32" data-cms-label="Run 2 live — Subheading 2" style="margin:2.5rem 0 1rem;">Recent releases</h3>
+<div class="rail">
+<article class="card">
+<div class="card-cover square">Episode art</div>
+<h3><span class="todo">[[TODO: episode 4 title]]</span></h3>
+<ul class="platforms">
+<li><a href="#">Apple</a></li><li><a href="#">Spotify</a></li><li><a href="#">YouTube</a></li>
+</ul>
+</article>
+<article class="card">
+<div class="card-cover square">Episode art</div>
+<h3><span class="todo">[[TODO: episode 5 title]]</span></h3>
+<ul class="platforms">
+<li><a href="#">Apple</a></li><li><a href="#">Spotify</a></li><li><a href="#">YouTube</a></li>
+</ul>
+</article>
+<article class="card">
+<div class="card-cover square">Episode art</div>
+<h3><span class="todo">[[TODO: episode 6 title]]</span></h3>
+<ul class="platforms">
+<li><a href="#">Apple</a></li><li><a href="#">Spotify</a></li><li><a href="#">YouTube</a></li>
+</ul>
+</article>
+</div>
+</section>
+<section aria-labelledby="notable" class="wrap">
+<h2 class="eyebrow" data-cms="notable-episodes.h21" data-cms-label="Notable episodes — Section title" id="notable">Notable episodes</h2>
+<div class="rail">
+<article class="card">
+<div class="card-cover square">Episode art</div>
+<h3><span class="todo">[[TODO: episode 7 title]]</span></h3>
+<ul class="platforms">
+<li><a href="#">Apple</a></li><li><a href="#">Spotify</a></li><li><a href="#">YouTube</a></li>
+</ul>
+</article>
+<article class="card">
+<div class="card-cover square">Episode art</div>
+<h3><span class="todo">[[TODO: episode 8 title]]</span></h3>
+<ul class="platforms">
+<li><a href="#">Apple</a></li><li><a href="#">Spotify</a></li><li><a href="#">YouTube</a></li>
+</ul>
+</article>
+<article class="card">
+<div class="card-cover square">Episode art</div>
+<h3><span class="todo">[[TODO: episode 9 title]]</span></h3>
+<ul class="platforms">
+<li><a href="#">Apple</a></li><li><a href="#">Spotify</a></li><li><a href="#">YouTube</a></li>
+</ul>
+</article>
+</div>
+</section>
+<section aria-labelledby="history" class="wrap">
+<h2 class="eyebrow" data-cms="my-history-in-podcast-produc.h21" data-cms-label="My history in podcast produc — Section title" id="history">My history in podcast production</h2>
+<div class="grid">
+<div style="grid-column: 1 / 7;">
+<p data-cms="my-history-in-podcast-produc.p1" data-cms-label="My history in podcast produc — Paragraph">From May 2024 to February 2026, on a service mission for The Church of Jesus Christ of Latter-day Saints, Sai produced, hosted and general-managed a podcast run by a sub-team of service volunteers.</p>
+<p data-cms="my-history-in-podcast-produc.p2" data-cms-label="My history in podcast produc — Paragraph 2">The same role had him leading a national team of volunteer content creators. Two years of running a show with volunteers, on a volunteer schedule, is a specific kind of training. It teaches you that the interview is the easy part.</p>
+</div>
+<div style="grid-column: 8 / 13;">
+<div class="card-cover" style="aspect-ratio:4/3;">Photo</div>
+</div>
+</div>
+</section>
+<div class="band-quiet full-bleed">
+<div class="wrap">
+<p data-cms="main.p1" data-cms-label="Main — Paragraph">If you know someone whose life would make a good conversation, say so. That is usually how the next episode starts.</p>
+</div>
+</div>
 </main>
-
 <footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <h2>Sai Brazier</h2>
-        <p class="meta">Rexburg, Idaho</p>
-      </div>
-      <div>
-        <ul>
-          <li><a href="belingo.html"><span class="swatch sw-belingo"></span>BeLingo</a></li>
-          <li><a href="eye-of-faith.html"><span class="swatch sw-eof"></span>Eye of Faith</a></li>
-          <li><a href="run2live.html"><span class="swatch sw-r2l"></span>run2live</a></li>
-        </ul>
-      </div>
-      <div>
-        <ul>
-          <li><a href="mailto:sai@saibrazier.com">sai@saibrazier.com</a></li>
-          <li><a href="https://www.instagram.com/saibrazier/" rel="me noopener">Instagram &#8599;</a></li>
-          <li><a href="https://www.linkedin.com/in/sai-brazier-091ba2398/" rel="me noopener">LinkedIn &#8599;</a></li>
-        </ul>
-      </div>
-    </div>
-    <p class="colophon">&copy; 2026 Sai Brazier</p>
-  </div>
+<div class="wrap">
+<div class="footer-grid">
+<div>
+<h2>Sai Brazier</h2>
+<p class="meta">Rexburg, Idaho</p>
+</div>
+<div>
+<ul>
+<li><a href="belingo.html"><span class="swatch sw-belingo"></span>BeLingo</a></li>
+<li><a href="eye-of-faith.html"><span class="swatch sw-eof"></span>Eye of Faith</a></li>
+<li><a href="run2live.html"><span class="swatch sw-r2l"></span>run2live</a></li>
+</ul>
+</div>
+<div>
+<ul>
+<li><a href="mailto:sai@saibrazier.com">sai@saibrazier.com</a></li>
+<li><a href="https://www.instagram.com/saibrazier/" rel="me noopener">Instagram ↗</a></li>
+<li><a href="https://www.linkedin.com/in/sai-brazier-091ba2398/" rel="me noopener">LinkedIn ↗</a></li>
+</ul>
+</div>
+</div>
+<p class="colophon">© 2026 Sai Brazier</p>
+</div>
 </footer>
-
 </body>
 </html>

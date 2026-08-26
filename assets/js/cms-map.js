@@ -1,4 +1,14 @@
-/* cms-map.js — the single definition of what is editable on this site.
+/* cms-map.js — page titles, image slots, and the open-questions checklist.
+ *
+ * TEXT FIELDS ARE NO LONGER LISTED HERE. Every text element in each page carries
+ * a data-cms key stamped into the markup, and the admin discovers them by
+ * reading the page. A hand-written selector list covered 38 fields out of ~380
+ * and drifted every time the markup changed; this covers everything and cannot
+ * fall out of sync, because the keys live on the elements themselves.
+ *
+ * Original header follows.
+ *
+ * cms-map.js — the single definition of what is editable on this site.
  *
  * Loaded by BOTH the public pages (to apply saved text) and /admin/ (to build
  * the editing form and to read the current baked-in text as the default value).
@@ -14,18 +24,7 @@ window.CMS_MAP = {
 
   index: {
     title: 'Home',
-    fields: [
-      { key: 'hero.eyebrow',    label: 'Location line',        sel: '.masthead .meta' },
-      { key: 'hero.h1',         label: 'Name',                 sel: '.masthead h1' },
-      { key: 'hero.facets',     label: 'The five facets',      sel: '.masthead .facets' },
-      { key: 'hero.motto',      label: 'Motto',                sel: '.masthead .motto', multiline: true },
-      { key: 'ent.quote',       label: 'Entrepreneurship quote', sel: '#entrepreneurship ~ .quote-inline' },
-      { key: 'v1.desc',         label: 'BeLingo description',  sel: '#belingo .entry-desc', multiline: true },
-      { key: 'v2.desc',         label: 'Run 2 Live description', sel: '#run2live .entry-desc', multiline: true },
-      { key: 'v3.desc',         label: 'Eye of Faith description', sel: '#eye-of-faith .entry-desc', multiline: true },
-      { key: 'quote.band',      label: 'First pull quote',     sel: '#quote-1 blockquote', multiline: true },
-      { key: 'quote.band2',     label: 'Second pull quote',    sel: '#quote-2 blockquote', multiline: true }
-    ],
+    fields: [],   // discovered from data-cms in the page
     images: [
       { slot: 'portrait.home', label: 'Home portrait', sel: '.portrait img', maxW: 1600 }
     ]
@@ -33,15 +32,7 @@ window.CMS_MAP = {
 
   about: {
     title: 'About',
-    fields: [
-      { key: 'hero.h1',      label: 'Heading',       sel: '.masthead h1' },
-      { key: 'hero.facets',  label: 'The facets',    sel: '.masthead .facets' },
-      { key: 'hero.quote',   label: 'Opening quote', sel: '.masthead .quote-inline', multiline: true },
-      { key: 'story.lede',   label: 'Story opening', sel: '#story ~ .grid .lede', multiline: true },
-      { key: 'goals.lede',   label: 'Goals line',    sel: '#goals ~ .lede', multiline: true },
-      { key: 'quote.band',   label: 'Pull quote',    sel: '.band-quote blockquote', multiline: true },
-      { key: 'quiet.band',   label: 'Closing line',  sel: '.band-quiet p:first-of-type', multiline: true }
-    ],
+    fields: [],   // discovered from data-cms in the page
     images: [
       { slot: 'portrait.studio', label: 'Suit portrait', sel: '.print img', maxW: 1400 }
     ]
@@ -49,12 +40,7 @@ window.CMS_MAP = {
 
   belingo: {
     title: 'BeLingo',
-    fields: [
-      { key: 'hero.h1',   label: 'Venture name',    sel: '.masthead h1' },
-      { key: 'hero.lede', label: 'Positioning line', sel: '.masthead .lede' },
-      { key: 'quote.band', label: 'Pull quote',     sel: '.band-quote blockquote', multiline: true },
-      { key: 'quiet.band', label: 'Closing line',   sel: '.band-quiet p:first-of-type', multiline: true }
-    ],
+    fields: [],   // discovered from data-cms in the page
     images: [
       { slot: 'logo.belingo', label: 'BeLingo logo', sel: '.plate--belingo img', maxW: 960 }
     ]
@@ -62,11 +48,7 @@ window.CMS_MAP = {
 
   'eye-of-faith': {
     title: 'Eye of Faith',
-    fields: [
-      { key: 'hero.h1',    label: 'Show name',      sel: '.masthead h1' },
-      { key: 'hero.lede',  label: 'Tagline',        sel: '.masthead .lede' },
-      { key: 'quiet.band', label: 'Closing line',   sel: '.band-quiet p:first-of-type', multiline: true }
-    ],
+    fields: [],   // discovered from data-cms in the page
     images: [
       { slot: 'logo.eof',   label: 'Eye of Faith mark', sel: '.plate--eof img', maxW: 800 },
       { slot: 'banner.eof', label: 'Eye of Faith banner', sel: '#eof-banner', maxW: 1600 }
@@ -75,12 +57,7 @@ window.CMS_MAP = {
 
   run2live: {
     title: 'run2live',
-    fields: [
-      { key: 'hero.h1',    label: 'Venture name',     sel: '.masthead h1' },
-      { key: 'hero.lede',  label: 'Positioning line', sel: '.masthead .lede' },
-      { key: 'quote.band', label: 'Pull quote',       sel: '.band-quote blockquote', multiline: true },
-      { key: 'quiet.band', label: 'Closing line',     sel: '.band-quiet p:first-of-type', multiline: true }
-    ],
+    fields: [],   // discovered from data-cms in the page
     images: [
       { slot: 'logo.r2l', label: 'run2live mark', sel: '.plate--r2l img', maxW: 640 }
     ]
@@ -88,42 +65,25 @@ window.CMS_MAP = {
 
   contact: {
     title: 'Contact',
-    fields: [
-      { key: 'hero.h1',    label: 'Heading',      sel: '.masthead h1' },
-      { key: 'hero.lede',  label: 'Opening line', sel: '.masthead .lede' },
-      { key: 'quiet.band', label: 'Closing line', sel: '.band-quiet p:first-of-type', multiline: true }
-    ],
+    fields: [],   // discovered from data-cms in the page
     images: []
   },
 
   'business-ventures': {
     title: 'Business ventures',
-    fields: [
-      { key: 'hero.h1',   label: 'Heading',       sel: '.masthead h1' },
-      { key: 'hero.quote', label: 'Opening quote', sel: '.masthead .quote-inline', multiline: true },
-      { key: 'quiet.band', label: 'Closing line',  sel: '.band-quiet p:first-of-type', multiline: true }
-    ],
+    fields: [],   // discovered from data-cms in the page
     images: []
   },
 
   publications: {
     title: 'Publications',
-    fields: [
-      { key: 'hero.h1',   label: 'Heading',       sel: '.masthead h1' },
-      { key: 'hero.lede', label: 'Opening line',  sel: '.masthead .lede', multiline: true },
-      { key: 'quote.band', label: 'Pull quote',   sel: '.band-quote blockquote', multiline: true },
-      { key: 'quiet.band', label: 'Closing line', sel: '.band-quiet p:first-of-type', multiline: true }
-    ],
+    fields: [],   // discovered from data-cms in the page
     images: []
   },
 
   podcasts: {
     title: 'Podcasts',
-    fields: [
-      { key: 'hero.h1',   label: 'Heading',      sel: '.masthead h1' },
-      { key: 'hero.lede', label: 'Opening line', sel: '.masthead .lede', multiline: true },
-      { key: 'quiet.band', label: 'Closing line', sel: '.band-quiet p:first-of-type', multiline: true }
-    ],
+    fields: [],   // discovered from data-cms in the page
     images: []
   }
 };
