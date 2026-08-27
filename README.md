@@ -68,6 +68,18 @@ baked into the HTML, so if Firebase is unreachable the site renders exactly as i
 Security lives entirely in `firestore.rules`; the apiKey in the client is a public identifier, not a
 secret. Read the Security section of ADMIN-SETUP.md before changing either.
 
+### After changing any .js or .css
+
+```sh
+./scripts/stamp-assets.sh
+```
+
+It appends a content hash to every local script and stylesheet reference.
+GitHub Pages serves assets with `cache-control: max-age=600`, so without this a
+browser can hold one file for ten minutes while fetching a fresh copy of
+another — and a mismatched `admin.js` / `cms-map.js` pair renders an **empty
+editor**, which looks exactly like a broken feature rather than a stale cache.
+
 ### Two rules that will break the site if ignored
 
 1. **Every path must stay relative** (`assets/img/x.jpg`, `about.html`). The site is served from a
