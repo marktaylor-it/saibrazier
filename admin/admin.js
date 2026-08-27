@@ -93,6 +93,39 @@ function ratio(a, b) {
 
 /* ---------- reading what is currently on the site --------------------- */
 
+/* ---------- state ----------------------------------------------------- */
+
+function markDirty() {
+  dirty = true;
+  $('#savebar').hidden = false;
+  $('#save-status').textContent = 'Unpublished changes';
+}
+
+async function loadState() {
+  let snap = null;
+  try {
+    // getDoc can wait on the network indefinitely rather than reject. Without a
+    // ceiling a slow or blocked connection leaves the editor blank and silent.
+    snap = await Promise.race([
+      getDoc(doc(db, 'public', 'content')),
+      new Promise((_, rej) => setTimeout(() => rej(new Error('timed out after 8s')), 8000))
+    ]);
+  } catch (e) {
+    console.warn('[admin] could not load saved content:', e && e.message);
+    loadWarning = 'Could not reach your saved content. Showing what is currently on the site; publishing still works.';
+  }
+  state = (snap && snap.exists()) ? snap.data() : null;
+  if (!state) {
+    state = { rev: 0, theme: { ...DEFAULT_THEME }, nav: [...BASE_NAV], pages: {}, custom: {} };
+  }
+  state.theme = { ...DEFAULT_THEME, ...(state.theme || {}) };
+  state.pages = state.pages || {};
+  state.custom = state.custom || {};
+  state.nav = Array.isArray(state.nav) ? state.nav : [...BASE_NAV];
+}
+
+/* ---------- reading the page ------------------------------------------ */
+
 async function readPage(slug) {
   if (baked[slug]) return baked[slug];
   const out = [];
