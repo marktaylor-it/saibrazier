@@ -41,6 +41,37 @@ let state = null;        // the working copy
 let dirty = false;
 let baked = {};          // current text baked into the live HTML, per page
 let pendingMedia = {};   // slot -> {mime,b64,alt,w,h}
+let loadWarning = null;
+
+/* Nothing below may blank the editor. Each section renders independently and a
+   failure is reported in place, because a silent empty panel is impossible to
+   tell apart from a feature that does not exist. */
+function guard(name, fn, targetSel) {
+  try { fn(); }
+  catch (e) {
+    console.error('[admin] ' + name + ' failed:', e);
+    const t = targetSel && document.querySelector(targetSel);
+    if (t) {
+      const p = document.createElement('p');
+      p.className = 'err';
+      p.textContent = name + ' could not load: ' + (e && e.message ? e.message : 'unknown error');
+      t.appendChild(p);
+    }
+  }
+}
+async function guardAsync(name, fn, targetSel) {
+  try { await fn(); }
+  catch (e) {
+    console.error('[admin] ' + name + ' failed:', e);
+    const t = targetSel && document.querySelector(targetSel);
+    if (t) {
+      const p = document.createElement('p');
+      p.className = 'err';
+      p.textContent = name + ' could not load: ' + (e && e.message ? e.message : 'unknown error');
+      t.appendChild(p);
+    }
+  }
+}
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -98,8 +129,9 @@ async function readPage(slug) {
 /* ---------- words ----------------------------------------------------- */
 
 async function renderFields() {
-  const slug = $('#page-select').value;
-  const spec = window.CMS_MAP[slug] || { images: [] };
+  const slug = $('#page-select').value || Object.keys(window.CMS_MAP || {})[0];
+  const spec = (window.CMS_MAP || {})[slug] || { images: [] };
+  if (!state) state = { rev: 0, theme: { ...DEFAULT_THEME }, nav: [], pages: {}, custom: {} };
   const fields = await readPage(slug);
   const saved = (state.pages[slug] || {}).blocks || {};
   const wrap = $('#fields');
@@ -393,7 +425,11 @@ function previewTheme() {
 function renderTodos() {
   const wrap = $('#todos');
   wrap.textContent = '';
-  state.pages.__todos = state.pages.__todos || { blocks: {} };
+  // The published document once contained __todos WITHOUT a blocks map, in
+  // which case the old one-liner left `store` undefined and every keystroke
+  // threw. Build it defensively in two steps.
+  state.pages.__todos = state.pages.__todos || {};
+  state.pages.__todos.blocks = state.pages.__todos.blocks || {};
   const store = state.pages.__todos.blocks;
 
   window.CMS_TODOS.forEach(t => {
@@ -674,11 +710,18 @@ onAuthStateChanged(auth, async user => {
     sel.appendChild(o);
   });
 
-  await loadState();
-  await renderFields();
-  renderColors();
-  renderTodos();
-  renderCustom();
+  await guardAsync('Saved content', loadState);
+  if (!state) state = { rev: 0, theme: { ...DEFAULT_THEME }, nav: [], pages: {}, custom: {} };
+  if (loadWarning) {
+    const w = document.createElement('p');
+    w.className = 'err';
+    w.textContent = loadWarning;
+    $('#fields').appendChild(w);
+  }
+  await guardAsync('Words', renderFields, '#fields');
+  guard('Colours', renderColors, '#swatches');
+  guard('To do', renderTodos, '#todos');
+  guard('Pages', renderCustom, '#custom-list');
   dirty = false;
   $('#savebar').hidden = true;
 });
