@@ -608,6 +608,107 @@ function addCustomPage() {
   markDirty(); renderCustom();
 }
 
+/* ---------- who can get in --------------------------------------------- */
+
+const OWNER_UID = 'tIvm5pmAbWVMQ5UmSDr67Q4zHrg1';   // must match firestore.rules
+
+async function renderAccess() {
+  const status = $('#access-status');
+  const list = $('#access-list');
+  if (!status || !list) return;
+  status.textContent = '';
+  list.textContent = '';
+
+  const u = auth.currentUser;
+  const isOwner = u && u.uid === OWNER_UID;
+
+  const me = document.createElement('div');
+  me.className = 'todo-row';
+  const meName = document.createElement('div');
+  meName.className = 'swatch-name';
+  meName.textContent = (u ? u.email : '') + (isOwner ? '  (owner)' : '');
+  const meSub = document.createElement('span');
+  meSub.className = 'swatch-sub';
+  meSub.textContent = isOwner
+    ? 'Full access, permanently. Cannot be removed by anyone.'
+    : (u && u.emailVerified ? 'Email verified.' : 'Email not verified yet.');
+  me.appendChild(meName); me.appendChild(meSub);
+
+  if (u && !u.emailVerified) {
+    const v = document.createElement('button');
+    v.className = 'btn btn-quiet';
+    v.type = 'button';
+    v.style.marginTop = '.75rem';
+    v.textContent = 'Send me a verification email';
+    v.addEventListener('click', async () => {
+      v.disabled = true;
+      try { await sendEmailVerification(u); v.textContent = 'Sent \u2014 check your inbox'; }
+      catch (e) { v.textContent = 'Could not send: ' + (e.code || e.message); v.disabled = false; }
+    });
+    me.appendChild(v);
+  }
+  status.appendChild(me);
+
+  let snaps = [];
+  try { snaps = (await getDocs(collection(db, 'admins'))).docs; }
+  catch (e) {
+    const p = document.createElement('p');
+    p.className = 'err';
+    p.textContent = 'Could not read the access list: ' + (e.code || e.message);
+    list.appendChild(p);
+    return;
+  }
+
+  if (!snaps.length) {
+    const p = document.createElement('p');
+    p.className = 'hint';
+    p.textContent = 'Nobody else has access yet.';
+    list.appendChild(p);
+    return;
+  }
+
+  snaps.forEach(d => {
+    const data = d.data() || {};
+    const row = document.createElement('div');
+    row.className = 'cp-row';
+    const left = document.createElement('div');
+    const t = document.createElement('div');
+    t.className = 'swatch-name'; t.textContent = data.email || d.id;
+    const sub = document.createElement('span');
+    sub.className = 'swatch-sub';
+    sub.textContent = (data.note ? data.note + ' \u00b7 ' : '') + 'added by ' + (data.addedBy || 'unknown');
+    left.appendChild(t); left.appendChild(sub);
+
+    const rm = document.createElement('button');
+    rm.className = 'btn btn-danger'; rm.type = 'button'; rm.textContent = 'Remove';
+    rm.addEventListener('click', async () => {
+      if (!confirm('Remove access for ' + (data.email || d.id) + '?')) return;
+      try { await deleteDoc(doc(db, 'admins', d.id)); renderAccess(); }
+      catch (e) { alert('Could not remove: ' + (e.code || e.message)); }
+    });
+
+    row.appendChild(left); row.appendChild(rm);
+    list.appendChild(row);
+  });
+}
+
+async function addAccess() {
+  const email = ($('#acc-email').value || '').trim().toLowerCase();
+  const note = ($('#acc-note').value || '').trim();
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return alert('That does not look like an email address.');
+  try {
+    await setDoc(doc(db, 'admins', email), {
+      email: email, note: note,
+      addedBy: auth.currentUser ? auth.currentUser.email : '',
+      addedAt: new Date().toISOString()
+    });
+    $('#acc-email').value = ''; $('#acc-note').value = '';
+    renderAccess();
+  } catch (e) {
+    alert('Could not give access: ' + (e.code || e.message));
+  }
+}
+
 /* ---------- publish --------------------------------------------------- */
 
 async function publish() {
