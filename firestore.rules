@@ -28,22 +28,46 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Pinned to Firebase UIDs, not email addresses.
+    // WHO MAY WRITE
     //
-    // An email allowlist looked equivalent but was not: Firebase email/password
-    // signUp never verifies that the registrant owns the address, so ANY
-    // allowlisted address without an account behind it was claimable by a
-    // stranger, who would have gained write access the moment they registered.
-    // A UID is assigned by Firebase, is opaque, and cannot be claimed that way.
+    // Two independent paths, deliberately:
     //
-    // To grant someone access: create their account, run
-    //   firebase auth:export /tmp/u.json --project saibrazier
-    // and add their localId to this list, then redeploy the rules.
-    function isAdmin() {
+    // 1. The OWNER, pinned by Firebase UID and hardcoded here. A UID is issued
+    //    by Firebase and cannot be claimed by registering an email address.
+    //    Hardcoding it means the owner can never be locked out of his own site,
+    //    even by another admin, and even if the admins collection is emptied.
+    //
+    // 2. Anyone listed in /admins, keyed by lowercase email — but ONLY with a
+    //    VERIFIED email. That verification requirement is doing real work:
+    //    email/password signup is open to anyone holding the public apiKey, so
+    //    a stranger can register someone else's address. They cannot receive
+    //    the verification mail, so email_verified stays false and they match
+    //    nothing. Without this check an allowlisted-but-unregistered address
+    //    would be claimable, which is the exact hole an earlier version had.
+    function isOwner() {
       return request.auth != null
-        && request.auth.uid in [
-             'tIvm5pmAbWVMQ5UmSDr67Q4zHrg1'   // sai@saibrazier.com
-           ];
+        && request.auth.uid == 'tIvm5pmAbWVMQ5UmSDr67Q4zHrg1';   // sai@saibrazier.com
+    }
+
+    function isAdmin() {
+      return isOwner() || (
+        request.auth != null
+        && request.auth.token.email != null
+        && request.auth.token.email_verified == true
+        && exists(/databases/$(database)/documents/admins/$(request.auth.token.email.lower()))
+      );
+    }
+
+    // ---- who has access -----------------------------------------------------
+    // Readable and writable only by an admin; never world-readable, so the list
+    // of people with access is not itself public.
+    match /admins/{email} {
+      allow read: if isAdmin();
+      allow write: if isAdmin()
+        && request.resource.data.keys().hasOnly(['email', 'addedBy', 'addedAt', 'note'])
+        && request.resource.data.email is string
+        && request.resource.data.email.size() < 200;
+      allow delete: if isAdmin();
     }
 
     function isHex(v) {

@@ -11,10 +11,11 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
 import {
   getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged,
-  sendPasswordResetEmail, setPersistence, browserLocalPersistence
+  sendPasswordResetEmail, setPersistence, browserLocalPersistence,
+  sendEmailVerification
 } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js';
 import {
-  getFirestore, doc, getDoc, setDoc
+  getFirestore, doc, getDoc, setDoc, deleteDoc, collection, getDocs
 } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
 
 const firebaseConfig = {
@@ -702,6 +703,7 @@ $$('.tab').forEach(t => t.addEventListener('click', () => {
 
 $('#page-select').addEventListener('change', renderFields);
 $('#np-add').addEventListener('click', addCustomPage);
+$('#acc-add').addEventListener('click', addAccess);
 $('#publish').addEventListener('click', publish);
 $('#discard').addEventListener('click', async () => {
   if (!confirm('Throw away every change since you last published?')) return;
@@ -755,6 +757,7 @@ onAuthStateChanged(auth, async user => {
   guard('Colours', renderColors, '#swatches');
   guard('To do', renderTodos, '#todos');
   guard('Pages', renderCustom, '#custom-list');
+  guardAsync('Access', renderAccess, '#access-list');
   dirty = false;
   $('#savebar').hidden = true;
 });
