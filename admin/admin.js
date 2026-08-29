@@ -12,7 +12,7 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.14.1/fireba
 import {
   getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged,
   sendPasswordResetEmail, setPersistence, browserLocalPersistence,
-  sendEmailVerification
+  sendEmailVerification, createUserWithEmailAndPassword
 } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js';
 import {
   getFirestore, doc, getDoc, setDoc, deleteDoc, collection, getDocs
@@ -791,6 +791,43 @@ $('#reset-btn').addEventListener('click', async () => {
   err.hidden = false;
 });
 
+
+/* Account creation is deliberately open here, and that is not a weakening:
+   Firebase's signup endpoint is already reachable by anyone holding the public
+   apiKey, so hiding this button would be theatre. Authority comes from
+   firestore.rules, which requires BOTH an entry in /admins AND a verified email
+   address. Someone who creates an account they were not invited to gets an
+   account that can change nothing. */
+$('#create-btn').addEventListener('click', async () => {
+  const err = $('#login-err');
+  const email = $('#email').value.trim();
+  const pw = $('#password').value;
+  err.hidden = true;
+  if (!email || pw.length < 8) {
+    err.textContent = 'Enter your email and a password of at least 8 characters.';
+    err.hidden = false;
+    return;
+  }
+  $('#create-btn').disabled = true;
+  try {
+    const cred = await createUserWithEmailAndPassword(auth, email, pw);
+    await sendEmailVerification(cred.user);
+    err.textContent = 'Account created. Check your email and click the verification link, then sign in.';
+    err.hidden = false;
+  } catch (ex) {
+    const map = {
+      'auth/email-already-in-use': 'That email already has an account. Use Forgot password.',
+      'auth/invalid-email': 'That does not look like an email address.',
+      'auth/weak-password': 'Use a longer password.',
+      'auth/network-request-failed': 'No connection.'
+    };
+    err.textContent = map[ex.code] || ('Could not create the account: ' + (ex.code || ex.message));
+    err.hidden = false;
+  } finally {
+    $('#create-btn').disabled = false;
+  }
+});
+
 $('#signout').addEventListener('click', () => {
   if (dirty && !confirm('You have unpublished changes. Sign out anyway?')) return;
   signOut(auth);
@@ -837,6 +874,16 @@ onAuthStateChanged(auth, async user => {
   $('#signout').hidden = false;
   var vs2 = $('#viewsite'); if (vs2) vs2.hidden = false;
   $('#who').textContent = user.email;
+
+  // An allowlisted user whose email is unverified can read but not write.
+  // Say so plainly rather than letting Publish fail with a permissions error.
+  if (user.uid !== OWNER_UID && !user.emailVerified) {
+    const bar = document.createElement('p');
+    bar.className = 'err';
+    bar.id = 'verify-notice';
+    bar.textContent = 'Your email is not verified, so changes cannot be published yet. Open the Access tab to send yourself a verification link.';
+    $('#view-app').prepend(bar);
+  }
 
   const sel = $('#page-select');
   sel.textContent = '';
