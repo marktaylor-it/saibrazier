@@ -92,6 +92,12 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
       <p class="hint">People who can sign in and edit this site. They must verify their email address before their access takes effect.</p>
       <div id="access-status"></div>
       <div id="access-list"></div>
+      <h2 class="eyebrow" style="margin-top:2rem;">Change your password</h2>
+      <label class="fld"><span class="fld-label">New password</span><input type="password" id="pw-new" autocomplete="new-password"></label>
+      <label class="fld" id="pw-current-wrap" hidden><span class="fld-label">Current password</span><input type="password" id="pw-current" autocomplete="current-password"></label>
+      <p class="err" id="pw-msg" role="alert" hidden></p>
+      <button class="btn btn-primary" type="button" id="pw-save">Change password</button>
+
       <h2 class="eyebrow" style="margin-top:2rem;">Give someone access</h2>
       <label class="fld"><span class="fld-label">Their email</span><input type="email" id="acc-email" placeholder="name@example.com"></label>
       <label class="fld"><span class="fld-label">Note (optional)</span><input type="text" id="acc-note" placeholder="e.g. editor"></label>
@@ -122,6 +128,6 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
   </div>
 </div>
 
-<script type="module" src="admin.js?v=768583bd"></script>
+<script type="module" src="admin.js?v=368add3b"></script>
 </body>
 </html>

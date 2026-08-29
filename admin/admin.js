@@ -12,7 +12,8 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.14.1/fireba
 import {
   getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged,
   sendPasswordResetEmail, setPersistence, browserLocalPersistence,
-  sendEmailVerification, createUserWithEmailAndPassword
+  sendEmailVerification, createUserWithEmailAndPassword,
+  updatePassword, reauthenticateWithCredential, EmailAuthProvider
 } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js';
 import {
   getFirestore, doc, getDoc, setDoc, deleteDoc, collection, getDocs
@@ -692,6 +693,64 @@ async function renderAccess() {
   });
 }
 
+
+/* Changing a password while signed in. Firebase refuses this if the session is
+   more than a few minutes old (auth/requires-recent-login), which is a good
+   protection: it means someone who walks up to an unlocked laptop cannot
+   silently take the account over. When that happens we ask for the current
+   password and reauthenticate rather than dumping the raw error. */
+async function changePassword() {
+  const msg = $('#pw-msg');
+  const next = $('#pw-new').value;
+  const btn = $('#pw-save');
+  msg.hidden = true;
+
+  if (!next || next.length < 8) {
+    msg.textContent = 'Use at least 8 characters.';
+    msg.hidden = false;
+    return;
+  }
+  const u = auth.currentUser;
+  if (!u) { msg.textContent = 'You are signed out.'; msg.hidden = false; return; }
+
+  btn.disabled = true;
+  try {
+    await updatePassword(u, next);
+    msg.textContent = 'Password changed.';
+    msg.hidden = false;
+    $('#pw-new').value = '';
+    $('#pw-current').value = '';
+    $('#pw-current-wrap').hidden = true;
+  } catch (ex) {
+    if (ex.code === 'auth/requires-recent-login') {
+      const cur = $('#pw-current').value;
+      if (!cur) {
+        $('#pw-current-wrap').hidden = false;
+        msg.textContent = 'For safety, confirm your current password and press again.';
+        msg.hidden = false;
+      } else {
+        try {
+          await reauthenticateWithCredential(u, EmailAuthProvider.credential(u.email, cur));
+          await updatePassword(u, next);
+          msg.textContent = 'Password changed.';
+          $('#pw-new').value = ''; $('#pw-current').value = '';
+          $('#pw-current-wrap').hidden = true;
+        } catch (e2) {
+          msg.textContent = e2.code === 'auth/invalid-credential' || e2.code === 'auth/wrong-password'
+            ? 'That current password is not right.'
+            : 'Could not change it: ' + (e2.code || e2.message);
+        }
+        msg.hidden = false;
+      }
+    } else {
+      msg.textContent = 'Could not change it: ' + (ex.code || ex.message);
+      msg.hidden = false;
+    }
+  } finally {
+    btn.disabled = false;
+  }
+}
+
 async function addAccess() {
   const email = ($('#acc-email').value || '').trim().toLowerCase();
   const note = ($('#acc-note').value || '').trim();
@@ -786,7 +845,13 @@ $('#reset-btn').addEventListener('click', async () => {
     await sendPasswordResetEmail(auth, email);
     err.textContent = 'Sent. Check your email for a link to set a new password.';
   } catch (ex) {
-    err.textContent = 'Could not send a reset email.';
+    const map = {
+      'auth/invalid-email': 'That does not look like an email address.',
+      'auth/user-not-found': 'No account uses that address. Use Create account.',
+      'auth/too-many-requests': 'Too many attempts. Wait a few minutes.',
+      'auth/network-request-failed': 'No connection.'
+    };
+    err.textContent = map[ex.code] || ('Could not send a reset email: ' + (ex.code || ex.message));
   }
   err.hidden = false;
 });
@@ -842,6 +907,7 @@ $$('.tab').forEach(t => t.addEventListener('click', () => {
 $('#page-select').addEventListener('change', renderFields);
 $('#np-add').addEventListener('click', addCustomPage);
 $('#acc-add').addEventListener('click', addAccess);
+$('#pw-save').addEventListener('click', changePassword);
 $('#publish').addEventListener('click', publish);
 $('#discard').addEventListener('click', async () => {
   if (!confirm('Throw away every change since you last published?')) return;

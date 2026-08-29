@@ -16,7 +16,7 @@ import re, sys
 REQUIRED = {
   'admin/admin.js': ['markDirty','loadState','readPage','renderFields','renderImages',
                      'renderColors','checkContrast','previewTheme','renderTodos',
-                     'renderCustom','addCustomPage','renderAccess','addAccess','publish','guard','guardAsync',
+                     'renderCustom','addCustomPage','renderAccess','addAccess','changePassword','publish','guard','guardAsync',
                      'resizeToBase64','ratio','lum','srgb','hash'],
   'assets/js/cms.js': ['decodeValue','decodeFields','getDoc','pageSlug','applyBlocks',
                        'themeCss','applyTheme','safeHref','applyLinks','applyMeta',
