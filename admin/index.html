@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Admin | saibrazier.com</title>
-<link rel="stylesheet" href="../assets/css/site.css?v=247cac84">
-<link rel="stylesheet" href="admin.css?v=882f92e4">
+<meta name="color-scheme" content="light dark">
+<title>Editor | saibrazier.com</title>
+<link rel="stylesheet" href="admin.css?v=d0991b2c">
 <script>
 /* GitHub Pages cannot send a frame-ancestors header, and frame-ancestors is
    ignored inside a <meta> CSP — so this is the only available clickjacking
@@ -16,23 +16,48 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
 </script>
 <script src="../assets/js/cms-map.js?v=db673041" defer></script>
 </head>
-<body data-page="admin">
+<body>
 
-<header class="site-header">
-  <div class="wrap nav-inner">
-    <a class="brand" href="../index.html">Sai Brazier</a>
-    <div class="nav-right">
-      <a class="theme-toggle" id="viewsite" href="../index.html" target="_blank" rel="noopener" hidden>View site &#8599;</a>
-      <span class="meta" id="who"></span>
-      <button id="signout" class="theme-toggle" type="button" hidden>Sign out</button>
-    </div>
-  </div>
-</header>
+<!-- ============================================================ icon sprite
+     One <symbol> per icon, referenced with <use>. Inline so the editor needs
+     no icon font, no CDN, and no second request. ======================== -->
+<svg id="sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="_s" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></g>
+  </defs>
+  <symbol id="i-content" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></symbol>
+  <symbol id="i-design" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.7-.7 1.7-1.6 0-.4-.2-.8-.5-1.1-.3-.3-.4-.7-.4-1 0-.9.7-1.6 1.6-1.6H16c3.3 0 6-2.7 6-6 0-5-4.5-8.7-10-8.7z"/></symbol>
+  <symbol id="i-todo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></symbol>
+  <symbol id="i-pages" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14L21 3"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+  <symbol id="i-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-undo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6"/><path d="M3.5 13a9 9 0 1 0 2.1-9.4L3 7"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5M12 3v12"/></symbol>
+  <symbol id="i-signout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.6 7.6a5.5 5.5 0 1 1-7.8 7.8 5.5 5.5 0 0 1 7.8-7.8zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3"/></symbol>
+</svg>
 
-<main id="main" class="wrap">
-
-  <!-- ---------- signed out ---------- -->
-  <section id="view-login" class="admin-login">
+<!-- ============================================================== sign in -->
+<div id="view-login" class="login-screen">
+  <div class="login-card">
+    <div class="login-mark"><span class="dot">SB</span><span>saibrazier.com</span></div>
     <h1>Sign in</h1>
 
     <form id="login-form" novalidate>
@@ -45,89 +70,227 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
         <input type="password" id="password" autocomplete="current-password" required>
       </label>
       <p class="err" id="login-err" role="alert" hidden></p>
-      <div class="row">
-        <button class="btn btn-primary" type="submit" id="login-btn">Sign in</button>
-        <button class="btn btn-quiet" type="button" id="reset-btn">Forgot password</button>
-        <button class="btn btn-quiet" type="button" id="create-btn">Create account</button>
+      <div class="login-actions">
+        <button class="btn btn-primary btn-block" type="submit" id="login-btn">Sign in</button>
+        <div class="login-alt">
+          <button class="btn btn-quiet btn-sm" type="button" id="reset-btn">Forgot password</button>
+          <button class="btn btn-quiet btn-sm" type="button" id="create-btn">Create account</button>
+        </div>
       </div>
     </form>
-  </section>
-
-  <!-- ---------- signed in ---------- -->
-  <section id="view-app" hidden>
-    <nav class="tabs" aria-label="Sections">
-      <button class="tab" data-tab="pages"  aria-current="page">Words</button>
-      <button class="tab" data-tab="colors">Colours</button>
-      <button class="tab" data-tab="todos">To&nbsp;do</button>
-      <button class="tab" data-tab="newpage">Pages</button>
-      <button class="tab" data-tab="access">Access</button>
-    </nav>
-
-    <!-- words -->
-    <div class="panel" data-panel="pages">
-      <label class="fld fld-inline">
-        <span class="fld-label">Page</span>
-        <select id="page-select"></select>
-      </label>
-      <div id="fields"></div>
-      <div id="images"></div>
-    </div>
-
-    <!-- colours -->
-    <div class="panel" data-panel="colors" hidden>
-      <p class="hint">Changes preview live on this page. Nothing is public until you press Publish.</p>
-      <div id="swatches"></div>
-      <div class="contrast" id="contrast" role="status"></div>
-      <button class="btn btn-quiet" type="button" id="reset-colors">Reset to the original palette</button>
-    </div>
-
-    <!-- todos -->
-    <div class="panel" data-panel="todos" hidden>
-      <p class="hint">These show on your site as dashed placeholders. Fill one in and the placeholder disappears.</p>
-      <div id="todos"></div>
-    </div>
-
-    <!-- access -->
-    <div class="panel" data-panel="access" hidden>
-      <p class="hint">People who can sign in and edit this site. They must verify their email address before their access takes effect.</p>
-      <div id="access-status"></div>
-      <div id="access-list"></div>
-      <h2 class="eyebrow" style="margin-top:2rem;">Change your password</h2>
-      <label class="fld"><span class="fld-label">New password</span><input type="password" id="pw-new" autocomplete="new-password"></label>
-      <label class="fld" id="pw-current-wrap" hidden><span class="fld-label">Current password</span><input type="password" id="pw-current" autocomplete="current-password"></label>
-      <p class="err" id="pw-msg" role="alert" hidden></p>
-      <button class="btn btn-primary" type="button" id="pw-save">Change password</button>
-
-      <h2 class="eyebrow" style="margin-top:2rem;">Give someone access</h2>
-      <label class="fld"><span class="fld-label">Their email</span><input type="email" id="acc-email" placeholder="name@example.com"></label>
-      <label class="fld"><span class="fld-label">Note (optional)</span><input type="text" id="acc-note" placeholder="e.g. editor"></label>
-      <button class="btn btn-primary" type="button" id="acc-add">Give access</button>
-      <p class="hint" style="margin-top:1.25rem;">They then create their own account on the sign-in screen using that address, and verify it from the email Firebase sends. Until they verify, they cannot change anything.</p>
-    </div>
-
-    <!-- pages -->
-    <div class="panel" data-panel="newpage" hidden>
-      <p class="hint">Pages you add appear in the top menu of every page.</p>
-      <div id="custom-list"></div>
-      <h2 class="eyebrow" style="margin-top:2rem;">Add a page</h2>
-      <label class="fld"><span class="fld-label">Title</span><input type="text" id="np-title" placeholder="Speaking"></label>
-      <label class="fld"><span class="fld-label">Web address</span><input type="text" id="np-slug" placeholder="speaking"></label>
-      <label class="fld"><span class="fld-label">Opening line</span><textarea id="np-lede" rows="2"></textarea></label>
-      <label class="fld"><span class="fld-label">Body</span><textarea id="np-body" rows="8" placeholder="Leave a blank line between paragraphs."></textarea></label>
-      <button class="btn btn-primary" type="button" id="np-add">Add this page</button>
-    </div>
-  </section>
-</main>
-
-<!-- save bar -->
-<div class="savebar" id="savebar" hidden>
-  <span class="meta" id="save-status">Unpublished changes</span>
-  <div class="row">
-    <button class="btn btn-quiet" type="button" id="discard">Discard</button>
-    <button class="btn btn-primary" type="button" id="publish">Publish</button>
   </div>
 </div>
 
-<script type="module" src="admin.js?v=368add3b"></script>
+<!-- ============================================================ the editor -->
+<div id="view-app" class="app" hidden>
+
+  <header class="topbar">
+    <button class="icon-btn" id="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sidebar">
+      <svg><use href="#i-menu"/></svg>
+    </button>
+    <a class="topbar-brand" href="../index.html"><span class="dot">SB</span>saibrazier</a>
+    <p class="topbar-context" id="topbar-context"></p>
+    <span class="topbar-spacer"></span>
+    <span class="status-chip" id="save-status" role="status" hidden></span>
+    <button class="icon-btn" id="preview-toggle" type="button" aria-label="Show preview" aria-pressed="false">
+      <svg><use href="#i-eye"/></svg>
+    </button>
+    <button class="icon-btn" id="theme-btn" type="button" aria-label="Appearance: follow system">
+      <svg><use href="#i-auto"/></svg>
+    </button>
+    <a class="topbar-link" id="viewsite" href="../index.html" target="_blank" rel="noopener">
+      <svg><use href="#i-external"/></svg>View site
+    </a>
+    <div class="who">
+      <span class="avatar" id="avatar" aria-hidden="true"></span>
+      <span class="who-email" id="who"></span>
+      <button class="icon-btn" id="signout" type="button" aria-label="Sign out">
+        <svg><use href="#i-signout"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="sidebar" id="sidebar" aria-label="Sections">
+    <div class="side-group">
+      <button class="side-item" type="button" data-tab="pages" aria-current="true">
+        <svg><use href="#i-content"/></svg>Content
+      </button>
+      <ul class="side-sub" id="page-list"></ul>
+    </div>
+    <div class="side-group">
+      <p class="side-heading">Site</p>
+      <button class="side-item" type="button" data-tab="colors"><svg><use href="#i-design"/></svg>Design</button>
+      <button class="side-item" type="button" data-tab="newpage"><svg><use href="#i-pages"/></svg>Extra pages</button>
+      <button class="side-item" type="button" data-tab="todos">
+        <svg><use href="#i-todo"/></svg>To do<span class="badge" id="todo-badge" data-empty="true"></span>
+      </button>
+    </div>
+    <div class="side-group">
+      <p class="side-heading">Account</p>
+      <button class="side-item" type="button" data-tab="access"><svg><use href="#i-people"/></svg>People &amp; password</button>
+    </div>
+  </nav>
+
+  <main class="editor" id="editor">
+    <div class="editor-inner">
+
+      <div id="notices"></div>
+
+      <!-- ---------- content ---------- -->
+      <section class="panel" data-panel="pages" aria-label="Content">
+        <div class="page-head">
+          <div>
+            <h1 id="content-title">Content</h1>
+            <p id="content-sub">Edit any text on this page. Nothing goes live until you publish.</p>
+          </div>
+        </div>
+
+        <label class="visually-hidden" for="page-select">Page</label>
+        <select id="page-select" class="visually-hidden" tabindex="-1" aria-hidden="true"></select>
+
+        <div class="searchbar">
+          <svg><use href="#i-search"/></svg>
+          <input type="search" id="field-search" placeholder="Find text on this page" autocomplete="off" spellcheck="false">
+          <button class="clear" type="button" id="field-search-clear" aria-label="Clear search" hidden><svg><use href="#i-x"/></svg></button>
+        </div>
+
+        <div id="fields"></div>
+        <div id="images"></div>
+      </section>
+
+      <!-- ---------- design ---------- -->
+      <section class="panel" data-panel="colors" aria-label="Design" hidden>
+        <div class="page-head">
+          <div>
+            <h1>Design</h1>
+            <p>Colours preview live in the panel on the right.</p>
+          </div>
+          <div class="row">
+            <button class="btn btn-sm" type="button" id="reset-colors"><svg><use href="#i-undo"/></svg>Reset palette</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <header><h2>Colours</h2></header>
+          <div class="card-body">
+            <div id="swatches"></div>
+            <div class="contrast" id="contrast" role="status"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- to do ---------- -->
+      <section class="panel" data-panel="todos" aria-label="To do" hidden>
+        <div class="page-head">
+          <div>
+            <h1>To do</h1>
+            <p>Each of these shows on the site as a dashed placeholder until it is filled in.</p>
+          </div>
+        </div>
+        <div class="card"><div id="todos"></div></div>
+      </section>
+
+      <!-- ---------- extra pages ---------- -->
+      <section class="panel" data-panel="newpage" aria-label="Extra pages" hidden>
+        <div class="page-head">
+          <div>
+            <h1>Extra pages</h1>
+            <p>Pages you add here appear in the menu on every page of the site.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <header><h2>Your pages</h2></header>
+          <div id="custom-list"></div>
+        </div>
+
+        <div class="card">
+          <header><h2>Add a page</h2></header>
+          <div class="card-body">
+            <label class="fld"><span class="fld-label">Title</span><input type="text" id="np-title" placeholder="Speaking"></label>
+            <label class="fld"><span class="fld-label">Web address</span><input type="text" id="np-slug" class="mono" placeholder="speaking"></label>
+            <label class="fld"><span class="fld-label">Opening line</span><textarea id="np-lede" rows="2"></textarea></label>
+            <label class="fld"><span class="fld-label">Body</span><textarea id="np-body" rows="7" placeholder="Leave a blank line between paragraphs."></textarea></label>
+            <button class="btn btn-primary" type="button" id="np-add"><svg><use href="#i-plus"/></svg>Add page</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- people ---------- -->
+      <section class="panel" data-panel="access" aria-label="People and password" hidden>
+        <div class="page-head">
+          <div>
+            <h1>People &amp; password</h1>
+            <p>Who can sign in and edit this site.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <header><h2>You</h2></header>
+          <div id="access-status"></div>
+        </div>
+
+        <div class="card">
+          <header><h2>Editors</h2></header>
+          <div id="access-list"></div>
+        </div>
+
+        <div class="card">
+          <header><h2>Give someone access</h2></header>
+          <div class="card-body">
+            <label class="fld"><span class="fld-label">Their email</span><input type="email" id="acc-email" placeholder="name@example.com"></label>
+            <label class="fld"><span class="fld-label">Note (optional)</span><input type="text" id="acc-note" placeholder="e.g. editor"></label>
+            <button class="btn btn-primary" type="button" id="acc-add"><svg><use href="#i-plus"/></svg>Give access</button>
+            <p class="hint" style="margin-top:12px">They create their own account on the sign-in screen with that address, then click the link Firebase emails them. Until they verify it, they can change nothing.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <header><h2>Change your password</h2></header>
+          <div class="card-body">
+            <label class="fld"><span class="fld-label">New password</span><input type="password" id="pw-new" autocomplete="new-password"></label>
+            <label class="fld" id="pw-current-wrap" hidden><span class="fld-label">Current password</span><input type="password" id="pw-current" autocomplete="current-password"></label>
+            <p class="err" id="pw-msg" role="alert" hidden></p>
+            <button class="btn btn-primary" type="button" id="pw-save"><svg><use href="#i-key"/></svg>Change password</button>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /.editor-inner -->
+
+    <div class="savebar" id="savebar" hidden>
+      <span class="grow save-msg" id="save-msg"></span>
+      <div class="row">
+        <button class="btn btn-quiet" type="button" id="discard">Discard</button>
+        <button class="btn btn-primary" type="button" id="publish">Publish</button>
+      </div>
+    </div>
+  </main>
+
+  <aside class="preview" id="preview" aria-label="Live preview">
+    <div class="preview-bar">
+      <span class="label"><svg><use href="#i-eye"/></svg>Preview</span>
+      <span class="spacer"></span>
+      <div class="seg" role="group" aria-label="Preview width">
+        <button type="button" id="dev-desktop" aria-pressed="true" aria-label="Full width"><svg><use href="#i-monitor"/></svg></button>
+        <button type="button" id="dev-phone" aria-pressed="false" aria-label="Phone width"><svg><use href="#i-phone"/></svg></button>
+      </div>
+      <a class="btn btn-sm btn-quiet" id="preview-open" href="../index.html" target="_blank" rel="noopener" aria-label="Open this page in a new tab">
+        <svg><use href="#i-external"/></svg>
+      </a>
+    </div>
+    <div class="preview-stage">
+      <div class="preview-frame-wrap" id="preview-wrap" data-device="desktop">
+        <iframe id="preview-frame" title="Live preview of the page you are editing"></iframe>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<div class="toasts" id="toasts" role="region" aria-live="polite" aria-label="Notifications"></div>
+<div class="modal-backdrop" id="modal" hidden></div>
+
+<script type="module" src="admin.js?v=77f01b53"></script>
 </body>
 </html>

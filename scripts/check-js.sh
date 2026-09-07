@@ -17,7 +17,19 @@ REQUIRED = {
   'admin/admin.js': ['markDirty','loadState','readPage','renderFields','renderImages',
                      'renderColors','checkContrast','previewTheme','renderTodos',
                      'renderCustom','addCustomPage','renderAccess','addAccess','changePassword','publish','guard','guardAsync',
-                     'resizeToBase64','ratio','lum','srgb','hash'],
+                     'resizeToBase64','ratio','lum','srgb','hash',
+                     # the editor shell
+                     'el','icon','clone','same','toast','confirmDialog','notice','setStatus',
+                     'showTab','buildPageList','openDrawer','closeDrawer','cycleTheme','paintTheme',
+                     'skeleton','groupOf','labelOf','buildField','refreshDots','filterFields',
+                     'currentSlug','updateSideDots','pageHasChanges','countChanges',
+                     # what is live vs what is baked — the revert button depends on all four
+                     'bakedVal','liveVal','workingVal','setBlock','setLink','safeHref',
+                     # drafts
+                     'saveDraft','dropDraft','offerDraft',
+                     # live preview
+                     'previewDoc','previewNav','previewInject','previewHighlight','focusField',
+                     'previewSet','previewApplyAll','fitPreview','setDevice','syncPreview'],
   'assets/js/cms.js': ['decodeValue','decodeFields','getDoc','pageSlug','applyBlocks',
                        'themeCss','applyTheme','safeHref','applyLinks','applyMeta',
                        'applyNav','applyImages','applyTodos','apply'],

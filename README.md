@@ -57,6 +57,22 @@ sees a dead control — they simply get their OS preference.
 Sai edits his own words, colours, placeholder answers, pictures and pages at
 **https://saibrazier.com/admin/**, signed in with Firebase Auth.
 
+The editor is a three-column workspace — sections, fields, and a live preview of the real page in an
+iframe. `admin/admin.css` is **deliberately not** `site.css`: the seven anti-drift rules at the top
+of `site.css` are right for a page someone reads and wrong for a tool someone works in, and the
+reasoning is written into the header of `admin.css`. The design system stays visible where it
+matters, unfaked, in the preview pane.
+
+Two things in the editor depend on details that are easy to break:
+
+- **`data-cms-label` is `"Section — Field"`.** Everything before the em dash becomes the collapsible
+  group in the editor; it is generated from the section's own heading. The `data-cms` **key** is a
+  different thing and must never move — published content is stored under it.
+- **Baked, live and working values are three different things.** Baked is the text in the HTML, live
+  is what a visitor sees now (published override, else baked), working is what would be published.
+  The changed-dots and the Revert button are the difference between the last two, so
+  `bakedVal()` / `liveVal()` / `workingVal()` in `admin.js` have to stay honest.
+
 **Setup is not finished until the three steps in [ADMIN-SETUP.md](ADMIN-SETUP.md) are done** —
 enable Email/Password, create Sai's account *first*, and add `saibrazier.com` to the authorized
 domains. Until then the sign-in screen loads but nobody can get in.

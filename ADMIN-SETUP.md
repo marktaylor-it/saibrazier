@@ -66,12 +66,27 @@ firebase deploy --only firestore:rules --project saibrazier
 
 ## What Sai can change
 
-| Screen | What it does |
+The editor is a three-column workspace: sections down the left, fields in the middle, and a **live
+preview of the real page** on the right. The preview is not a mock-up — it is `../<page>.html` in an
+iframe with the real stylesheet, so a sentence or a colour is judged where it will actually live.
+
+| Section | What it does |
 |---|---|
-| **Words** | Headings, ledes, mottos, venture descriptions and pull quotes, page by page. Also replaces pictures. |
-| **Colours** | The accent and the three venture colours, with live preview. **Publishing is blocked while any colour fails the 4.5:1 readability floor** — the check is real, not advisory. |
+| **Content** | Every piece of text on every page, grouped by the section it belongs to, with the current picture for each image slot. Pick a page from the list under Content. |
+| **Design** | The accent and the three venture colours. **Publishing is blocked while any colour fails the 4.5:1 readability floor** — the check is real, not advisory. |
+| **Extra pages** | Add or delete pages. New pages appear in the top menu of every page automatically. |
 | **To do** | The eight open questions. Filling one in replaces the dashed placeholder on the live site and drops its placeholder styling. |
-| **Pages** | Add or delete pages. New pages appear in the top menu of every page automatically. |
+| **People & password** | Who can sign in, and changing your own password. |
+
+Things worth knowing:
+
+- **Click any text in the preview** and the editor jumps to the field that controls it.
+- A field that differs from what is live shows an amber dot and a **Revert** button. So do the
+  section it sits in and the page in the sidebar, so nothing is ever changed invisibly.
+- **Find text on this page** filters the fields as you type. `⌘K` / `Ctrl-K` jumps to it.
+- `⌘S` / `Ctrl-S` publishes.
+- Edits are kept in the browser as you go. If the tab closes, the next sign-in offers them back —
+  but only if nothing else has been published in the meantime.
 
 Nothing goes live until **Publish**. **Discard** throws away everything since the last publish.
 
